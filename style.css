@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel+Decorative:wght@400;700&display=swap');
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
   overflow-x: hidden;
   font-family: 'Cinzel Decorative', serif;
   background: url('https://www.transparenttextures.com/patterns/old-map.png') repeat;
+  box-sizing: border-box;
+}
+
+body {
   color: #2b1e15;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
@@ -20,7 +25,6 @@ header {
   color: #f0e6d2;
   padding: 1rem 2rem;
   border-bottom: 3px solid #a67c52;
-  font-family: 'Cinzel Decorative', serif;
   width: 100%;
   box-sizing: border-box;
 }
@@ -98,10 +102,17 @@ aside h2 {
   color: #ffd700;
 }
 
+.layout {
+  display: flex;
+  width: 100%;
+  flex: 1; /* Faz o layout crescer e empurrar o footer para o fim */
+  box-sizing: border-box;
+}
+
 main {
   flex-grow: 1;
   padding: 2rem;
-  background: #f7f3e9;
+  background: rgba(247, 243, 233, 0.92); /* Transparente para o fundo aparecer */
   width: 100%;
   box-sizing: border-box;
 }
@@ -139,17 +150,22 @@ main {
   display: block;
 }
 
-.layout {
-  display: flex;
+footer {
+  background-color: #5c1d0d;
+  color: #f0e6d2;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-top: 3px solid #a67c52;
   width: 100%;
   box-sizing: border-box;
+  margin-top: auto; /* Garante que ele fique no fim */
 }
 
 img {
   display: block;
   margin: 0 auto;
 }
-
 
 @media (max-width: 768px) {
   body {
