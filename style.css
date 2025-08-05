@@ -164,6 +164,21 @@ main {
   display: block;
 }
 
+.conteudo-campanha h1 {
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.subtitulo-campanha {
+  padding-top: 0;
+  font-size: 1.2rem;
+  color: #3b2b20;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
 footer {
   background-color: #5c1d0d;
   color: #f0e6d2;
