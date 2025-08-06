@@ -90,10 +90,16 @@ aside h2 {
   font-size: 1.1rem;
   cursor: pointer;
   color: #e8d8c3;
+  text-decoration: none;
 }
 
 .menu-campanha h3:hover{
   color: #e0a557;
+  text-decoration: none;
+}
+
+.menu-campanha a {
+  text-decoration: none;
 }
 
 .menu-campanha ul {
