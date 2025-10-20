@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Campanhas RPG</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="logopag.png" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div class="logo">Porront's RPG's</div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <h2>Campanhas</h2>
+      <div class="menu-campanha" data-campanha="curse-strahd">
+        <a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="O-Conto-do-Dragão-Vermelho">
+        <a href="dragaovermelho.html"><h3>O Conto do dragão Vermelho</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="prisioneira-13">
+        <a href="prisioneira13.html"><h3>Prisioneira 13</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="Sombras-de-Neverneath">
+        <a href="sombrasneverneath.html"><h3>Sombras de NeverNeath</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="colina-do-medo">
+        <a href="colinadomedo.html"><h3>A Colina do Medo</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="oneshot-vecna">
+        <a href="oneshotvecna.html"><h3>Vecna: Ninho do Olho Sombrio (ONESHOT)</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="personagens">
+        <a href="personagens.html"><h3>Personagens</h3></a>
+      </div>
+      
+      <br>
+      <h2>Em Breve:</h2>
+      <div class="menu-campanha" data-campanha="dragoes-dailhadatempestade">
+        <a href="dragoesilhadatempestade.html"><h3>Dragões da Ilha da Tempestade</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="vecna-campanha">
+        <a href="vecnacampnha.html"><h3>Vecna: Véspera da Ruína</h3></a>
+      </div>
+      
+    </aside>
+
+    
+    <main>
+
+      
+
+      
+    </main>
+
+  <script>
+    const campanhas = document.querySelectorAll('.menu-campanha');
+    const conteudos = document.querySelectorAll('.conteudo-campanha');
+
+    campanhas.forEach(menu => {
+      menu.querySelector('h3').addEventListener('click', () => {
+        const campanhaId = menu.getAttribute('data-campanha');
+        conteudos.forEach(sec => {
+          sec.style.display = sec.id === campanhaId ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
