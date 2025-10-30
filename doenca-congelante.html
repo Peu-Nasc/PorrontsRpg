@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Campanhas RPG</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="logopag.png" type="image/x-icon">
+
+  <style>
+    /* O contêiner principal do slider */
+    .storybook-container {
+        position: relative;
+        width: 100%;
+        margin: 20px auto; /* Adiciona um espaço */
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        background-color: #fff;
+        overflow: hidden; /* Esconde slides que não estão ativos */
+    }
+
+    /* Cada página (slide) */
+    .slide {
+        display: none; /* Esconde todas as páginas por padrão */
+    }
+
+    /* A página que está ativa (visível) */
+    .slide.active {
+        display: block;
+        animation: fadeIn 0.5s; /* Animação suave */
+    }
+
+    .slide img {
+        width: 100%;
+        display: block;
+        background-color: #eee; /* Cor de fundo caso a imagem demore a carregar */
+    }
+
+    .slide .text {
+        padding: 25px;
+        font-size: 1.1em;
+        line-height: 1.6;
+        text-align: justify; /* Alinha o texto da história */
+        background-color: #fafafa; /* Um fundo leve para o texto */
+        border-top: 1px solid #eee;
+    }
+    
+    .slide .text-capa {
+        padding: 25px;
+        text-align: center;
+        background-color: #fafafa;
+        border-top: 1px solid #eee;
+    }
+
+    .slide .page-number {
+        display: block;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 15px;
+        color: #777;
+    }
+
+    /* Botões de Navegação */
+    .storybook-nav {
+        cursor: pointer;
+        position: absolute;
+        top: 40%; /* Ajusta a altura dos botões */
+        transform: translateY(-50%);
+        width: auto;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: none;
+        user-select: none;
+        transition: 0.3s ease;
+        z-index: 10;
+    }
+
+    .storybook-nav.prev {
+        left: 0;
+        border-radius: 0 3px 3px 0;
+    }
+    
+    .storybook-nav.next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .storybook-nav:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0.4; }
+        to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Porront's RPG's</div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <h2>Campanhas</h2>
+      <div class="menu-campanha" data-campanha="curse-strahd">
+        <a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="O-Conto-do-Dragão-Vermelho">
+        <a href="dragaovermelho.html"><h3>O Conto do dragão Vermelho</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="prisioneira-13">
+        <a href="prisioneira13.html"><h3>Prisioneira 13</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="Sombras-de-Neverneath">
+        <a href="sombrasneverneath.html"><h3>Sombras de NeverNeath</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="colina-do-medo">
+        <a href="colinadomedo.html"><h3>A Colina do Medo</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="oneshot-vecna">
+        <a href="oneshotvecna.html"><h3>Vecna: Ninho do Olho Sombrio (ONESHOT)</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="doenca-congelante">
+        <a href="doenca-congelante.html"><h3>Doença Congelante</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="personagens">
+        <a href="personagens.html"><h3>Personagens</h3></a>
+      </div>
+      
+      <br>
+      <h2>Em Breve:</h2>
+      <div class="menu-campanha" data-campanha="dragoes-dailhadatempestade">
+        <a href="dragoesilhadatempestade.html"><h3>Dragões da Ilha da Tempestade</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="vecna-campanha">
+        <a href="vecnacampnha.html"><h3>Vecna: Véspera da Ruína</h3></a>
+      </div>
+      
+    </aside>
+
+    <main>
+  <div id="doenca-congelante" class="conteudo-campanha">
+    <h1>Doença Congelante</h1>
+    <h2 class="subtitulo-campanha">(Sistema de RPG: <em><strong>D&D</strong></em>)</h2>
+    <h4 style="text-align: right;"><Strong>DM (Dungeon Master): <em>Peu Porronto</em></Strong></h4>
+    <p>Dizem que o frio do extremo norte não apenas congela a carne, mas também a alma. Em Ishe, essa é uma verdade literal...</p>
+    <h2>Personagens</h2>
+    <ul>
+      <li>Victor Hugo - <strong>Sir Salamenelson, O Clérigo do Zelo</strong></li>
+      </ul>
+
+    <div id="doenca-congelante-s1-p1" class="sessao">
+      <h4 class="titulo-sessao">Sessão 1 - Parte 1: A Melodia Gélida de Ishe</h4>
+      
+      <div class="conteudo-sessao">
+        <div class="storybook-container">
+          
+          <div class="slide active">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0001.jpg" alt="A Melodia Gélida de Ishe">
+            <div class="text-capa">
+              <h2>A Melodia Gélida de Ishe [cite: 67]</h2>
+              <p>De Pedro Henrique Oliveira do Nascimento (Peu Nasc) [cite: 68]</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0002.jpg" alt="Praça da aldeia de Ishe">
+            <div class="text">
+              <p>A aldeia de Ishe estava envolta em um silêncio mortal[cite: 70]. Onde antes havia o som de risadas e o aroma de pão fresco, agora pairava um frio antinatural[cite: 71]. Emil Albus, o líder da aldeia, olhava com desespero para as figuras congeladas que pontilhavam a praça[cite: 72]. Ele se virou para o grupo de aventureiros reunidos diante dele, a esperança brilhando em seus olhos cansados[cite: 73]. "Por favor", ele implorou, "salvem meu povo desta maldição gélida." [cite: 74]</p>
+              <span class="page-number">1 [cite: 75]</span>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0003.jpg" alt="Grupo de aventureiros em Ishe">
+            <div class="text">
+              <p>O grupo, liderado pelo sátiro bardo Fumaça, ouvia atentamente. Dexter, o drow vigilante, mantinha-se nas sombras, seus olhos vermelhos perscrutando cada canto[cite: 77]. Otis Rich, um draconato com um olhar endurecido pela vingança, apertava o punho de sua espada[cite: 78, 79]. Ao seu lado, Sir Salamenelson, o clérigo, murmurava uma prece, sua mão repousando sobre o símbolo sagrado em seu peito[cite: 79].</p>
+              <span class="page-number">2 [cite: 80]</span>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0004.jpg" alt="Fumaça e Túlia Latão">
+            <div class="text">
+              <p>Sua primeira parada foi a choupana de Túlia Latão, uma velha eremita que vivia nos arredores da aldeia[cite: 82]. Com a voz rouca, ela falou da Guilda dos Observantes, um grupo secreto que estudava artefatos antigos, e da Caverna Coaxante, um lugar de poder elemental[cite: 83, 84]. "O frio vem de lá", ela sussurrou, "um frio que congela a alma." [cite: 85]</p>
+              <span class="page-number">3 [cite: 86]</span>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0005.jpg" alt="Dexter e Otis investigando">
+            <div class="text">
+              <p>Em seguida, eles foram ao chalé de Severo Telheiro, um comerciante que havia sucumbido à praga[cite: 88]. Entre seus pertences, Dexter encontrou um recibo da "Curiosidades de Cortaneve", uma loja conhecida por negociar itens raros e, por vezes, perigosos[cite: 89].</p>
+              <span class="page-number">4 [cite: 90]</span>
+            </div>
+          </div>
+
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0006.jpg" alt="Otis em batalha">
+            <div class="text">
+              <p>A "Curiosidades de Cortaneve" era um lugar sombrio e empoeirado. Assim que entraram, foram emboscados por um grupo de bandidos[cite: 92]. A batalha foi rápida e brutal. Otis Rich se movia como um fantasma, sua lâmina encontrando seu alvo com precisão mortal[cite: 93].</p>
+              <span class="page-number">5 [cite: 94]</span>
+            </div>
+          </div>
+
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0007.jpg" alt="Sir Salamenelson usando Bola de Fogo">
+            <div class="text">
+              <p>Sir Salamenelson, vendo seus amigos em perigo, ergueu as mãos e invocou uma Bola de Fogo[cite: 96]. As chamas engoliram a loja, transformando tudo em cinzas e fumaça[cite: 97].</p>
+              <span class="page-number">6 [cite: 98]</span>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0008.jpg" alt="Interrogatório">
+            <div class="text">
+              <p>Eles conseguiram capturar um dos bandidos. Sob o interrogatório de Dexter, ele confessou que trabalhava para uma mulher chamada Húlia[cite: 100]. "Ela está doente", disse o bandido, tremendo. "Na Caverna Coaxante. Ela precisa... do frio." [cite: 101]</p>
+              <span class="page-number">7 [cite: 102]</span>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0009.jpg" alt="Fumaça e o bandido">
+            <div class="text">
+              <p>Fumaça, com um olhar frio, desembainhou sua adaga. "Ele sabe demais", disse ele, e com um movimento rápido, silenciou o bandido para sempre[cite: 104]. No mesmo instante, um som agudo ecoou e a guitarra de Fumaça, que estava em suas costas, rachou[cite: 105]. Uma voz sussurrou em sua mente, uma melodia antiga e assustadora[cite: 106, 107].</p>
+              <span class="page-number">8 [cite: 108]</span>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0010.jpg" alt="Estátua de gelo se formando">
+            <div class="text">
+              <p>Das cinzas da loja, algo começou a se formar. Uma silhueta azul brilhante tomou forma, crescendo e se solidificando até se tornar uma estátua de gelo[cite: 110]. Não era um aldeão, mas a figura de uma mulher com uma expressão de agonia[cite: 111].</p>
+              <span class="page-number">9 [cite: 112]</span>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="Storybooks/Sessão 1 - Parte 1 (StoryBOOK)_pages-to-jpg-0011.jpg" alt="O grupo e a estátua">
+            <div class="text">
+              <p>O grupo se entreolhou, o horror estampado em seus rostos. A praga não era uma doença, mas uma maldição[cite: 114]. E a melodia que Fumaça ouviu, a melodia gélida, era a chave para tudo. A aventura deles estava apenas começando.</p>
+              <span class="page-number">10 [cite: 116]</span>
+            </div>
+          </div>
+          
+
+          <button class="storybook-nav prev">&#10094;</button>
+          <button class="storybook-nav next">&#10095;</button>
+        </div>
+      </div>
+    </div>
+    <div id="doenca-congelante-s1-p2" class="sessao">
+      <h4 class="titulo-sessao">Sessão 1 - Parte 2: Fios do Destino Congelado</h4>
+      <div class="conteudo-sessao">
+        <div class="storybook-container">
+          
+          <div class="slide active">
+            <img src="caminho/para/imagem-s1-p2-capa.jpg" alt="Fios do Destino Congelado">
+            <div class="text-capa">
+              <h2>Fios do Destino Congelado [cite: 234]</h2>
+              <p>De Pedro Henrique Oliveira do Nascimento (Peu Nasc) [cite: 235]</p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <img src="caminho/para/imagem-s1-p2-pag1.jpg" alt="Otis e Salamenelson nas cinzas">
+            <div class="text">
+              <p>Das cinzas da Curiosidades de Cortaneve, uma estátua de gelo profana se erguia, um monumento blasfemo à "cura" que ceifara a vida de Marla Cortaneve[cite: 237, 238]. Sir Salamenelson, o clérigo, sentiu a divindade se contorcer em seu íntimo. A morte era certa, a profanação, absoluta[cite: 239]. Com um recibo de frascos azuis e um nome sussurrado - Shar - o caminho se dividiu[cite: 240]. Otis Rich, um guerreiro draconato cuja fúria queimava mais quente que qualquer incêndio, rosnou o nome do seu destino: "Palischuk"[cite: 241, 242].</p>
+              <span class="page-number">1 [cite: 243]</span>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <img src="caminho/para/imagem-s1-p2-pag2.jpg" alt="Dexter e Fumaça na neve">
+            <div class="text">
+              <p>Dexter, o elfo sombrio cuja presença era uma sombra na neve, assentiu. "Eu vou com ele." [cite: 245] Seus olhos vermelhos brilhavam sob o capuz, prometendo uma vigilância tão letal quanto suas flechas[cite: 246]. Enquanto a dupla partia para a trilha gelada, Fumaça, o bardo sátiro com um sorriso que escondia mil truques, ajustou seu alaúde[cite: 247]. "Parece que nós, Sir Salamenelson, temos um encontro na Caverna Coaxante." [cite: 248]</p>
+              <span class="page-number">2 [cite: 249]</span>
+            </div>
+          </div>
+          
+          <button class="storybook-nav prev">&#10094;</button>
+          <button class="storybook-nav next">&#10095;</button>
+        </div>
+      </div>
+    </div>
+    </div>
+</main>
+
+    <script>
+    // Esta função inicializa todos os storybooks da página
+    function inicializarStorybooks() {
+      // Encontra todos os contêineres de storybook
+      const storybooks = document.querySelectorAll('.storybook-container');
+
+      // Itera sobre cada storybook encontrado
+      storybooks.forEach(book => {
+        const slides = book.querySelectorAll('.slide');
+        const prevBtn = book.querySelector('.storybook-nav.prev');
+        const nextBtn = book.querySelector('.storybook-nav.next');
+        let currentSlideIndex = 0; // O índice começa no primeiro slide (0)
+
+        // Função para mostrar um slide específico
+        function showSlide(index) {
+          // Esconde todos os slides
+          slides.forEach(slide => {
+            slide.style.display = 'none';
+            slide.classList.remove('active');
+          });
+          
+          // Mostra o slide correto
+          slides[index].style.display = 'block';
+          slides[index].classList.add('active');
+        }
+
+        // Evento para o botão "Próximo"
+        nextBtn.addEventListener('click', () => {
+          currentSlideIndex++;
+          // Se passar do último slide, volta para o primeiro
+          if (currentSlideIndex >= slides.length) {
+            currentSlideIndex = 0;
+          }
+          showSlide(currentSlideIndex);
+        });
+
+        // Evento para o botão "Anterior"
+        prevBtn.addEventListener('click', () => {
+          currentSlideIndex--;
+          // Se voltar do primeiro slide, vai para o último
+          if (currentSlideIndex < 0) {
+            currentSlideIndex = slides.length - 1;
+          }
+          showSlide(currentSlideIndex);
+        });
+
+        // Mostra o primeiro slide (a capa) ao carregar
+        showSlide(currentSlideIndex);
+      });
+    }
+
+    // Chama a função de inicialização quando o documento estiver pronto
+    document.addEventListener('DOMContentLoaded', inicializarStorybooks);
+  </script>
+<script src="script.js"></script>
+</body>
+</html>
