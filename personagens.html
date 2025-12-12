@@ -3,835 +3,665 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Campanhas RPG</title>
+  <title>Registro de Campanhas RPG - Dossiês das Lendas</title>
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="Imagens/logopag.png" type="image/x-icon">
+  <style>
+    /* Estilos Visuais Aprimorados */
+    body { background-color: #f0f2f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; }
+    
+    /* Layout do Card Expansível */
+    details.dossier-card {
+        background: #fff;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        border: 1px solid #e0e0e0;
+        transition: all 0.3s ease;
+    }
+    details.dossier-card[open] {
+        margin-bottom: 40px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        border-left-width: 8px;
+    }
+
+    /* Cabeçalho (Resumo) */
+    summary.dossier-header {
+        padding: 20px 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        border-radius: 8px;
+        list-style: none;
+        transition: background 0.2s;
+    }
+    summary.dossier-header:hover { background: #e2e6ea; }
+    summary.dossier-header::-webkit-details-marker { display: none; }
+
+    .header-content h2 { margin: 0; font-family: 'Georgia', serif; font-size: 1.6em; color: #2c3e50; }
+    .header-content .subtitle { font-size: 0.95em; color: #7f8c8d; font-style: italic; margin-top: 5px; }
+    .header-meta { text-align: right; }
+    .player-badge { background: #333; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; }
+    .class-badge { color: #555; font-size: 0.85em; display: block; margin-top: 5px; }
+
+    /* Corpo do Dossiê */
+    .dossier-body { padding: 30px; display: flex; gap: 30px; border-top: 1px solid #eee; animation: slideDown 0.4s ease-out; flex-wrap: wrap; }
+    .dossier-visual { flex: 0 0 250px; text-align: center; }
+    .dossier-img { width: 100%; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 4px solid #fff; object-fit: cover; }
+    .dossier-text { flex: 1; min-width: 300px; }
+
+    /* Seções da História */
+    .timeline-section { 
+        position: relative; 
+        padding-left: 25px; 
+        margin-bottom: 25px; 
+        border-left: 2px solid #ddd; 
+    }
+    .timeline-section::before {
+        content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: #999;
+    }
+    .section-title { font-weight: bold; text-transform: uppercase; font-size: 0.9em; color: #555; display: block; margin-bottom: 8px; letter-spacing: 1px; }
+    
+    /* Caixas Especiais */
+    .origin-box { background: #e0f2f1; border-left: 4px solid #009688; padding: 15px; margin-bottom: 25px; border-radius: 0 5px 5px 0; font-size: 0.95em; }
+    .secret-box { background: #fbe9e7; border-left: 4px solid #d84315; padding: 15px; margin: 20px 0; font-style: italic; font-size: 0.95em; }
+    .destiny-box { background: #37474f; color: #fff; padding: 15px; border-radius: 5px; margin-top: 30px; text-align: center; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+    /* Cores Temáticas (Bordas e Detalhes) */
+    .theme-valeria { border-left-color: #d4ac0d !important; }
+    .theme-valeria .timeline-section::before { background: #d4ac0d; }
+    
+    .theme-strahd { border-left-color: #8b0000 !important; }
+    .theme-strahd .timeline-section::before { background: #8b0000; }
+
+    .theme-neverwinter { border-left-color: #27ae60 !important; }
+    .theme-neverwinter .timeline-section::before { background: #27ae60; }
+
+    .theme-vecna { border-left-color: #6c3483 !important; }
+    .theme-vecna .timeline-section::before { background: #6c3483; }
+
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    @media (max-width: 768px) {
+        .dossier-body { flex-direction: column; }
+        .dossier-visual { margin: 0 auto; }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">Porront's RPG's</div>
+    <div class="logo">Porront's RPG's - Arquivos da Lenda</div>
   </header>
 
   <div class="layout">
     <aside>
       <h2>Campanhas</h2>
-      <div class="menu-campanha" data-campanha="curse-strahd">
-        <a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="O-Conto-do-Dragão-Vermelho">
-        <a href="dragaovermelho.html"><h3>O Conto do dragão Vermelho</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="prisioneira-13">
-        <a href="prisioneira13.html"><h3>Prisioneira 13</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="Sombras-de-Neverneath">
-        <a href="sombrasneverneath.html"><h3>Sombras de NeverNeath</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="colina-do-medo">
-        <a href="colinadomedo.html"><h3>A Colina do Medo</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="oneshot-vecna">
-        <a href="oneshotvecna.html"><h3>Vecna: Ninho do Olho Sombrio (ONESHOT)</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="doenca-congelante">
-        <a href="doenca-congelante.html"><h3>Doença Congelante</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="personagens">
-        <a href="personagens.html"><h3>Personagens</h3></a>
-      </div>
-      
-      <br>
-      <h2>Em Breve:</h2>
-      <div class="menu-campanha" data-campanha="dragoes-dailhadatempestade">
-        <a href="dragoesilhadatempestade.html"><h3>Dragões da Ilha da Tempestade</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="vecna-campanha">
-        <a href="vecnacampnha.html"><h3>Vecna: Véspera da Ruína</h3></a>
-      </div>
-      
+      <div class="menu-campanha"><a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a></div>
+      <div class="menu-campanha"><a href="dragaovermelho.html"><h3>O Conto do dragão Vermelho</h3></a></div>
+      <div class="menu-campanha"><a href="prisioneira-13.html"><h3>Prisioneira 13</h3></a></div>
+      <div class="menu-campanha"><a href="sombrasneverneath.html"><h3>Sombras de NeverNeath</h3></a></div>
+      <div class="menu-campanha"><a href="colinadomedo.html"><h3>A Colina do Medo</h3></a></div>
+      <div class="menu-campanha"><a href="oneshotvecna.html"><h3>Vecna: Ninho do Olho Sombrio</h3></a></div>
+      <div class="menu-campanha"><a href="doenca-congelante.html"><h3>Doença Congelante</h3></a></div>
+      <div class="menu-campanha"><a href="personagens.html"><h3>Personagens</h3></a></div>
+      <div class="menu-campanha"><a href="oprincipecaido.html"><h3>O Príncipe Caído</h3></a></div>
     </aside>
 
     <main>
     <div id="personagens" class="conteudo-campanha">
-  <h1>Personagens de todas as Aventuras</h1>
+  <h1>Dossiê Completo das Lendas</h1>
+  <p><em>"Histórias não terminam, elas apenas mudam de narrador."</em> — Aqui estão registradas as vidas, as mortes e os renascimentos de cada herói.</p>
   <br>
-  <h2>Curse of Strahd</h2>
-    <div id="thalindor" class="sessao">
-  <h4 class="titulo-sessao">Thalindor, o Ranger Vampiro</h4>
-  <div class="conteudo-sessao">
-    <p>
-      Thalindor, o elfo ranger, mostrou-se um estrategista nato e um protetor habilidoso em momentos críticos de sua jornada em Baróvia:
-    </p>
-    <ul>
-      <li><strong>Sessão 1:</strong> Auxiliou na análise do mapa de Baróvia, identificando pontos estratégicos para futuras explorações.</li>
-      <li><strong>Sessão 3:</strong> Guiou o grupo até o cemitério de Baróvia, evitando emboscadas de lobos e garantindo segurança para o enterro de Kolyan Indirovich.</li>
-      <li><strong>Sessão 5:</strong> Investigou o lago Zarovich e descobriu pistas importantes sobre Anna Krezkova e a conexão com Strahd.</li>
-      <li><strong>Sessão 7:</strong> Realizou disparos precisos contra as crias vampíricas durante a defesa da igreja de São Andral, protegendo os aldeões.</li>
-      <li><strong>Sessão 8:</strong> Liderou o reconhecimento das ruas de Vallaki antes da revolução, permitindo que o grupo se movesse com segurança durante o caos.</li>
-      <li><strong>Sessão 9:</strong> Usou suas habilidades de sobrevivência para encontrar uma rota de fuga alternativa do Castelo Ravenloft, caso o grupo fosse encurralado.</li>
-    </ul>
-    <p>
-      Thalindor une estratégia e bravura, sendo uma peça indispensável no grupo, especialmente em momentos que exigem precisão e conhecimento do terreno.
-    </p>
-  </div>
-    </div>
 
-    <div id="arnaldo" class="sessao">
-  <h4 class="titulo-sessao">Arnaldo, o Bardo Licantropo</h4>
-  <div class="conteudo-sessao">
-    <p>
-      Arnaldo, o vibrante bardo humano, destacou-se como a alma do grupo, trazendo carisma e inspiração em momentos cruciais de sua jornada em Baróvia:
-    </p>
-    <p>
-      Arnaldo é o coração do grupo, combinando música, eloquência e carisma para manter a moral alta e garantir que seus aliados nunca percam a esperança em meio às trevas de Baróvia.
-    </p>
-  </div>
-    </div>
+  <h2 style="color: #8b0000; border-bottom: 3px solid #8b0000; padding-bottom: 5px;">I. O Coro de Rato (Lendas da Baróvia)</h2>
 
-    <div id="clerigo" class="sessao">
-  <h4 class="titulo-sessao">Harien Butico - O Guardião da Luz</h4>
-  <div class="conteudo-sessao">
-      <h2>Harien Butico</h2>
-  <p><strong>Nome do Jogador:</strong> Victor Hugo</p>
-  <p><strong>Raça:</strong> Aasimar</p>
-  <p><strong>Classe:</strong> Clérigo</p>
-  <p><strong>Descrição:</strong> Harien Butico Solaris é filho do lendário Chico Butico, conhecido por todo o reino pelo famoso estabelecimento de sua família: o Fura Coco. Carregando o nome e a honra dos Butico, Harien parte em uma jornada sagrada com dois grandes objetivos: aprimorar os dons clericais herdados de seu pai — o aclamado Clérigo Supremo — e expandir o império do Fura Coco para além das fronteiras.</p>
-  <p>Com um coração cheio de fé, ambição e um propósito secreto confiado por Chico Butico, Harien busca se tornar tão grandioso quanto o Primeiro Butico, alcançando um dia o patamar dos próprios deuses.</p>
-  <p>Como clérigo do grupo, Harien é o farol de esperança e cura. Sua fé inabalável tem sido crucial para manter viva a chama da esperança em meio às trevas de Baróvia, guiando seus companheiros com luz e determinação.</p>
-    <p>
-      Com devoção e poder sagrado, o clérigo é a âncora espiritual que guia e protege seus aliados na escuridão implacável de Baróvia.
-    </p>
-  </div>
-    </div>
-
-    <div id="erasmus" class="sessao"> 
-      <h4 class="titulo-sessao">Erasmus, o Ladino Pálido</h4> 
-      <div class="conteudo-sessao"> 
-        <p><div id="erasmus-viktor" class="personagem">
-  <h2>Erasmus, o Ladino Pálido (Viktor)</h2>
-  <p><strong>Nome do Jogador:</strong> Thiago (Thigas / Thy / Bigas)</p>
-  <p><strong>Raça:</strong> Dhampir</p>
-  <p><strong>Classe:</strong> Ladino</p><br>
-  <p><strong>Pela primeira vez, a verdadeira história de Erasmus é revelada.
-Veja o story book ilustrado que mostra os sacrifícios, as batalhas e os segredos de um dos maiores heróis de Neverwinter: </strong><a href="https://gemini.google.com/share/b140dce95f34">Clique Aqui</a></p><br>
-  <p><strong>Descrição:</strong> Erasmus, também conhecido como Viktor "O Ladino Pálido", é um dhampir mestre das sombras e da furtividade. Sua agilidade, astúcia e habilidade com adagas têm sido cruciais para o sucesso e a sobrevivência do grupo nas perigosas terras de Baróvia. De temperamento calculista e olhar frio, Viktor sabe explorar as fraquezas de seus inimigos e se mover entre as sombras sem ser detectado.</p>
-  <p>Apesar do passado misterioso e da natureza meio vampírica, sua lealdade ao grupo é firme, e sua sagacidade tem ajudado a desvendar os segredos sombrios de Curse of Strahd, mantendo os companheiros um passo à frente das trevas.</p>
-  <img src="Imagens/erasmus com seu novo escudo.jpg" alt="">
-</div>
-</p>
-      </div> 
-    </div>
-
-    <div id="porronto" class="sessao">
-      <h4 class="titulo-sessao">Porronto, O destemido</h4>
-      <div class="conteudo-sessao">
+  <details class="dossier-card theme-strahd">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Porronto Runaférrea</h2>
+        <div class="subtitle">O Eco da Redenção | O Pequeno Gigante</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Peu</span>
+        <span class="class-badge">Mago Gnomo</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoPorronto.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Neto do lendário e louco Mordenkainen. Sua vila nos Bosques Sussurrantes foi aniquilada pelo mago das sombras Maltraxis. Porronto foi o único sobrevivente, carregando a culpa e buscando poder proibido para salvar seu povo.</div>
         
-        <img src="Imagens/porronto2.jpg" alt="" height="275px"  width="200px" >
-        <p>
-      <h2>Porronto Runaférrea, o Eco da Redenção</h2>
-  <p><strong>Nome do Jogador:</strong> Peu</p>
-  <p><strong>Raça:</strong> Gnomo da Floresta</p>
-  <p><strong>Classe:</strong> Mago</p>
-  <p><strong>Descrição:</strong>  
-    Porronto nasceu no coração dos Bosques Sussurrantes, numa vila gnômica fundada por seu avô, Mordenkainen, que desapareceu misteriosamente. Essa vila foi protegida por séculos por tradições mágicas e uma profunda conexão com o mundo natural.  
-    Jovem prodígio, Porronto destacou-se por sua curiosidade insaciável e engenhosas invenções mágicas, sendo um guardião da paz, mas também um espírito inquieto, sempre buscando algo além dos limites de seu lar.  
-  </p>
-  <p>
-    A paz foi destruída quando Maltraxis, um mago das sombras, atacou sua vila, aprisionando seu povo e deixando Porronto sozinho entre as ruínas. Jurou encontrá-los, custe o que custar.  
-    Ao encontrar um grimório infernal, fez um pacto desesperado com Zal'kareth, um diabo, ganhando poder mas pagando um preço amargo, com corrupção e destruição.  
-    Depois de perceber o custo do pacto, Porronto rejeitou o diabo e busca agora redenção, combatendo com suas próprias forças e aprendizados, espalhando esperança e buscando salvar seu povo de forma justa.  
-  </p>
-  <p>
-    Porronto é uma chama na escuridão, enfrentando seus próprios demônios enquanto luta para provar que mesmo os que falham podem encontrar um novo caminho.  
-  </p>
-    </p>
-    <p>
-      Porronto combina inteligência, curiosidade e poder mágico, provando ser uma peça fundamental no grupo contra as forças da Baróvia.
-      <img src="Imagens/MAGO PORRONT FOTOOT.jfif" alt="" height="275px"  width="200px" >
-      <img src="Imagens/imagem1 da historia.jpg" alt="">
-      <img src="Imagens/imagem2 da historia.jpg" alt="">
-      <img src="Imagens/imagem3 da historia.jpg" alt="">
-      <img src="Imagens/imagem 4 da historia.jpg" alt="">
-      <img src="Imagens/imagem5 da historia.jpg" alt="">
-      <img src="Imagens/imagem6 da historia.jpg" alt="">
-      <img src="Imagens/imagem 7 da historia.jpg" alt="">
-      <img src="Imagens/imagem8 da historia.jpg" alt="">
-    </p>
+        <div class="timeline-section">
+          <span class="section-title">A Jornada na Baróvia</span>
+          <p>Sua ganância custou-lhe o braço na Casa da Morte e a vida contra Baba Lysaga, mas ele retornou. No Templo de Âmbar, acumulou conhecimento proibido, aprendendo o feitiço <em>Desejo (Wish)</em>.</p>
+        </div>
+        <div class="timeline-section">
+          <span class="section-title">A Batalha Final</span>
+          <p>Na guerra contra Strahd, usou seu Desejo supremo não para si, mas para ressuscitar todo o exército aliado massacrado, virando a maré da batalha.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Morto (Lenda). Sacrificou-se transformado em T-Rex para proteger os amigos do sopro do Dragão Strahd.</div>
       </div>
     </div>
-    
-    <div id="makar-peuneiva" class="sessao">
-      <h4 class="titulo-sessao">Makar "Mata-Ursos"</h4>
-      <div class="conteudo-sessao">
+  </details>
+
+  <details class="dossier-card theme-strahd">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Erasmus (Viktor)</h2>
+        <div class="subtitle">O General Dhampir</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Thigas</span>
+        <span class="class-badge">Ladino / Dhampir</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/erasmus com seu novo escudo.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Filho raptado de Rudolph Van Richten. Criado como "brinquedo" nas masmorras de Strahd, cresceu sem memória como o ladino Viktor.</div>
+        
+        <div class="timeline-section">
+          <span class="section-title">A Ascensão</span>
+          <p>Recuperou a memória ao encontrar o pai. Tornou-se um general frio. Com a arma <em>Harum Scarum</em>, executou o mordomo Rahadin e feriu Strahd mortalmente na tumba.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Guardião. Permaneceu na Baróvia para reconstruir a terra ao lado de seu pai ressuscitado.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-strahd">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Harien Butico</h2>
+        <div class="subtitle">A Luz Divina</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Vh</span>
+        <span class="class-badge">Clérigo Aasimar</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/fotoHarienButico.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Herdeiro do império "Fura Coco" e filho de Chico Butico. Sua missão era provar seu valor divino e expandir os negócios da família.</div>
+        
+        <div class="timeline-section">
+          <span class="section-title">O Caminho da Fé</span>
+          <p>Recusou pactos sombrios no Templo de Âmbar. Reforjou a espada sagrada <em>Solâmina</em>. Casou-se com o bardo Arnaldo.</p>
+        </div>
+        <div class="timeline-section">
+          <span class="section-title">O Milagre</span>
+          <p>No confronto final, fundiu sua alma com a espada, tornando-se pura luz para obliterar o Dragão Strahd, deixando de existir no plano material.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Luz Eterna. Ascendeu ao plano divino.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-strahd">
+    <summary class="dossier-header">
+      <div class="header-content">
         <h2>Makar "Mata-Ursos"</h2>
-  <p><strong>Nome do Jogador:</strong> Pedro Neiva</p>
-  <p><strong>Raça:</strong> Golias</p>
-  <p><strong>Classe:</strong> Bárbaro</p>
-  <p><strong>Descrição:</strong>  
-    Makar, da vida à Elaukane, mais conhecido como Makar ,um imponente golias de 2,40m de altura, com pele cinza escurecida como chumbo, cabelo em moicano curto e barba fechada. Seu peitoral exibe grandes cicatrizes de garras de urso, testemunho das batalhas que enfrentou.  
-    Veste roupas aparentemente feitas por ele mesmo e uma capa feita de pele de urso, símbolo de uma lendária vitória. Empunha um machado adornado que pertenceu a seu pai antes de um desastre que marcou sua vida.  
-  </p>
-  <p>
-    Conhecido por sua bravura e força, Makar é um líder nato em combates intensos na Baróvia, enfrentando criaturas temíveis e protegendo seus aliados com determinação incomparável.  
-  </p>
+        <div class="subtitle">A Muralha</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Pedro Neiva</span>
+        <span class="class-badge">Bárbaro Golias</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/makar.jfif" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Um colosso de 2,40m que matou um urso atroz com um machado simples.</div>
+        <div class="timeline-section">
+          <p>Tornou-se portador da <em>Lança de Sangue</em> e líder do Clã Presa de Ferro. Foi a linha de frente inquebrável contra as hordas de vampiros.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Caçador. Partiu de navio com Arnaldo para caçar Maltraxis.</div>
+      </div>
+    </div>
+  </details>
 
-  <h3>Feitos Memoráveis</h3>
-  <ul>
-    <li>Enfrentou e derrotou criaturas imponentes usando seu machado adornado.</li>
-    <li>Demonstrou bravura ao liderar o grupo em combates cruciais.</li>
-    <li>Carrega a capa de pele de urso que simboliza sua vitória em uma batalha lendária.</li>
-    <li>Salvou aliados em momentos críticos com sua força e coragem.</li>
-  </ul>
-        <img src="Imagens/makar.jfif" alt="" height="275px"  width="200px" style="position: center;">
+  <details class="dossier-card theme-strahd">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Arnaldo</h2>
+        <div class="subtitle">O Bardo Alfa</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Lucca Torres</span>
+        <span class="class-badge">Bardo Licantropo</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoArnaldo.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="timeline-section">
+          <span class="section-title">A Transformação</span>
+          <p>Infectado com licantropia, abraçou a fera para se tornar líder da alcateia de lobisomens. Casou-se com Harien Butico.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Caçador. Partiu com Makar em busca de vingança.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-strahd">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Thalindon</h2>
+        <div class="subtitle">O Carcereiro</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Guilherme</span>
+        <span class="class-badge">Ranger / Vampiro</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/Thalindon_o_lorde.jpeg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>A Maldição:</strong> Um elfo ranger transformado em Cria Vampírica por Strahd como punição.</div>
         
-    <p>
-      Sua história inspira o grupo, refletindo a resiliência necessária para sobreviver às adversidades de Ravenloft.
-    </p>
+        <div class="timeline-section">
+          <span class="section-title">A Virada</span>
+          <p>Usou um Desejo da <em>Lâmina da Sorte</em> para andar sob o sol ("Vampiro Diurno"). Lutou contra seu criador para libertar a terra.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Lorde da Baróvia. Sacrificou sua liberdade para assumir o trono e manter a prisão dimensional fechada para sempre.</div>
       </div>
     </div>
-<br><br>
-<hr>
-<br><br>
-  <h2>O Conto do Dragão Vermelho</h2>
-<div id="mestre-chan-chifu" class="sessao">
-  <h4 class="titulo-sessao">Mestre Chan Shifu, O Monge</h4>
-  <div class="conteudo-sessao">
-    <p>  <h2>Mestre Chan Shifu</h2>
-  <p><strong>Nome do Jogador:</strong> Victor (Vitu)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Monge</p>
-  <p><strong>Descrição:</strong> Nascido no isolado e sereno Monastério da Água do Norte, Chan Shifu foi moldado desde jovem pela disciplina do Kung Fu e pela busca da reflexão profunda. Durante décadas, ele seguiu os preceitos de seus mestres com devoção, até que um evento não revelado — e ainda hoje mal digerido — o levou à expulsão do templo.</p>
-  <p>Desde então, Chan vagou pelas Terras Intermédias, um andarilho errante com os punhos sempre prontos e a garrafa nunca muito longe. Ele enfrentou o mundo com sabedoria torta, conselhos enigmáticos e uma personalidade amarga temperada por um senso de justiça silencioso.</p>
-  <p>Hoje, aos 70 anos, Mestre Chan finalmente encontrou a tão buscada paz interior — ou algo próximo disso. Apesar de seu jeito sarcástico e respostas que soam mais como charadas do que ensinamentos, há bondade verdadeira em seu coração. Ele é um sobrevivente da alma e do corpo, um velho mestre que ainda tem muito a ensinar... mesmo que nem sempre pareça.</p></p>
-  </div>
-    </div>
+  </details>
 
-    <div id="molel-stars" class="sessao">
-  <h4 class="titulo-sessao">Mol'el Stars, O Gnomo da Floresta Artificer</h4>
-  <div class="conteudo-sessao">
-    <p><h2>Mol'el Stars</h2>
-  <p><strong>Nome do Jogador:</strong> Thiago (Thigas / Thy / Bigas)</p>
-  <p><strong>Raça:</strong> Gnomo da Floresta</p>
-  <p><strong>Classe:</strong> Artífice</p>
-  <p><strong>Descrição:</strong>  
-    Mol'el Stars é um pequeno gnomo de pele roxa, sempre equipado com óculos de proteção e uma máscara de solda que refletem seu espírito inventivo e atento aos detalhes. Veste-se com roupas típicas de artesão e carrega um bracelete tecnomágico, símbolo de sua especialização em fundir magia e tecnologia.  
-  </p>
-<img src="Imagens/imgmoleu.jfif" alt="" height="275px"  width="200px" style="position: center;"></p>
-  </div>
-    </div>
+  <h2 style="color: #27ae60; border-bottom: 3px solid #27ae60; padding-bottom: 5px; margin-top: 50px;">II. A Comitiva de Neverwinter</h2>
 
-    <div id="thorin-morgran" class="sessao">
-  <h4 class="titulo-sessao">Thorin Morgran - FALTA FAZER</h4>
-  <div class="conteudo-sessao">
-    <p><h2>Thorin Morgran</h2>
-  <p><strong>Nome do Jogador:</strong> Guilherme Luiz</p>
-  <p><strong>Raça:</strong> Anão da Colina</p>
-  <p><strong>Classe:</strong> Clérigo do Domínio da Luz</p>
-  <p><strong>Descrição:</strong></p>
-</div></p>
-  </div>
-
-    <div id="Olivando-Erebor" class="sessao">
-  <h4 class="titulo-sessao">Olivando Erebor, Mago Humano</h4>
-  <div class="conteudo-sessao">
-    <p><h2>Olivando Erebor</h2>
-  <p><strong>Nome do Jogador:</strong> Vinicius (Vini)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Mago</p>
-  <p><strong>Descrição:</strong>  
-    Olivando Erebor é um jovem humano de 18 anos que iniciou sua jornada arcana como aprendiz do misterioso mago gnomo Porronto Runaférrea. Antes da partida de Porronto para a sombria Baróvia, Erebor aprendeu o básico das artes arcanas com ele. Apesar de Porronto raramente falar sobre seu passado, revelou que sua família havia sido levada por um mago extremamente poderoso e maligno, cujo nome permaneceu em segredo.  
-    <br><br>
-    Erebor carrega no braço uma runa-tatuagem com o símbolo da família Runaférrea — um elo mágico aconselhado por Porronto como medida de proteção. Caso esteja em perigo, bastaria tocar a runa e pronunciar “Runaférrea” para que seu antigo mestre receba o sinal. Esse elo marca não apenas sua ligação mágica, mas também o profundo laço de confiança entre mestre e aprendiz.
-  </p></p>
-  </div>
-    </div>
-
-    <div id="Mith-Varloc" class="sessao">
-  <h4 class="titulo-sessao">Mith Varloc</h4>
-  <div class="conteudo-sessao">
-    <p><h2>Mith Varloc</h2>
-  <p><strong>Nome do Jogador:</strong> Davi</p>
-  <p><strong>Raça:</strong> Meio-orc</p>
-  <p><strong>Classe:</strong> Bárbaro</p>
-  <p><strong>Descrição:</strong>  
-    <!-- Adicione aqui uma breve descrição do personagem -->
-  </p></p>
-  </div>
-    </div>
-<br><br>
-<hr>
-<br><br>
-  <h2>Prisioneira 13</h2>
-    <div id="molel-stars" class="sessao">
-  <h4 class="titulo-sessao">Mol'el Stars, O Gnomo da Floresta Artificer</h4>
-  <div class="conteudo-sessao">
-    <p><h2>Mol'el Stars</h2>
-  <p><strong>Nome do Jogador:</strong> Thiago (Thigas / Thy / Bigas)</p>
-  <p><strong>Raça:</strong> Gnomo da Floresta</p>
-  <p><strong>Classe:</strong> Artífice</p>
-  <p><strong>Descrição:</strong>  
-    Mol'el Stars é um pequeno gnomo de pele roxa, sempre equipado com óculos de proteção e uma máscara de solda que refletem seu espírito inventivo e atento aos detalhes. Veste-se com roupas típicas de artesão e carrega um bracelete tecnomágico, símbolo de sua especialização em fundir magia e tecnologia. Após suas aventuras com seus novos companheiros, especialmente a missão em Fim da Farra, Mol'el permanece desaparecido — seu paradeiro é um mistério, assim como os segredos que talvez ainda carrega.  
-  </p>
-<img src="Imagens/imgmoleu.jfif" alt="" height="275px"  width="200px" style="position: center;"></p>
-  </div>
-    </div>
-
-    <div id="mestre-chan-chifu" class="sessao">
-  <h4 class="titulo-sessao">Mestre Chan Shifu, O Monge</h4>
-  <div class="conteudo-sessao">
-    <p>  <h2>Mestre Chan Shifu</h2>
-  <p><strong>Nome do Jogador:</strong> Victor (Vitu)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Monge</p>
-  <p><strong>Descrição:</strong> Nascido no isolado e sereno Monastério da Água do Norte, Chan Shifu foi moldado desde jovem pela disciplina do Kung Fu e pela busca da reflexão profunda. Durante décadas, ele seguiu os preceitos de seus mestres com devoção, até que um evento não revelado — e ainda hoje mal digerido — o levou à expulsão do templo.</p>
-  <p>Desde então, Chan vagou pelas Terras Intermédias, um andarilho errante com os punhos sempre prontos e a garrafa nunca muito longe. Ele enfrentou o mundo com sabedoria torta, conselhos enigmáticos e uma personalidade amarga temperada por um senso de justiça silencioso.</p>
-  <p>Hoje, aos 70 anos, Mestre Chan finalmente encontrou a tão buscada paz interior — ou algo próximo disso. Apesar de seu jeito sarcástico e respostas que soam mais como charadas do que ensinamentos, há bondade verdadeira em seu coração. Ele é um sobrevivente da alma e do corpo, um velho mestre que ainda tem muito a ensinar... mesmo que nem sempre pareça.</p>
-  <p>Após os eventos no Inn Plain Sight, e com a formação de um novo grupo de aventureiros, Chan Shifu começou a sentir-se mais vivo — como se uma nova fase estivesse se iniciando em sua jornada. As experiências compartilhadas durante a missão em Fim da Farra, especialmente ao lado de Mol'el Stars, reacenderam em Chan um laço que há muito ele não sentia: a fraternidade.
-<br><br>
-Mas desde a batalha final... Mol'el desapareceu. E Shifu, silenciosamente, carrega o peso desse mistério. Ele pouco fala sobre o que realmente aconteceu naquele confronto, guardando para si fragmentos de culpa e perguntas não respondidas. Onde está Mol'el? O que aconteceu com ele?
-<br><br>
-Agora, além dos fantasmas de seu passado monástico, Chan se vê assombrado por traições mais recentes: dois de seus antigos companheiros — seu velho aprendiz e o próprio Mol'el Stars — parecem ter seguido caminhos obscuros. Ainda é cedo para saber a verdade... mas para Chan, a estrada à frente não é apenas uma jornada externa: é uma travessia interna, entre perdão, perda e propósito.
-
-</p></p>
-  </div>
-    </div>
-
-    <div id="Olivando-Erebor" class="sessao">
-  <h4 class="titulo-sessao">Olivando Erebor, Mago Humano</h4>
-  <div class="conteudo-sessao">
-    <p><h2>Olivando Erebor</h2>
-  <p><strong>Nome do Jogador:</strong> Vinicius (Vini)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Mago</p>
-  <p><strong>Descrição:</strong>  
-    Olivando Erebor é um jovem humano de 18 anos que iniciou sua jornada arcana como aprendiz do misterioso mago gnomo Porronto Runaférrea. Antes da partida de Porronto para a sombria Baróvia, Erebor aprendeu o básico das artes arcanas com ele. Apesar de Porronto raramente falar sobre seu passado, revelou que sua família havia sido levada por um mago extremamente poderoso e maligno, cujo nome permaneceu em segredo.  
-    <br><br>
-    Erebor carrega no braço uma runa-tatuagem com o símbolo da família Runaférrea — um elo mágico aconselhado por Porronto como medida de proteção. Caso esteja em perigo, bastaria tocar a runa e pronunciar “Runaférrea” para que seu antigo mestre receba o sinal. Esse elo marca não apenas sua ligação mágica, mas também o profundo laço de confiança entre mestre e aprendiz.
-  </p></p>
-  </div>
-    </div>
-
-    <div id="thorin-morgran" class="sessao">
-  <h4 class="titulo-sessao">Thorin Morgran - FALTA FAZER</h4>
-  <div class="conteudo-sessao">
-    <p><h2>Thorin Morgran</h2>
-  <p><strong>Nome do Jogador:</strong> Guilherme Luiz</p>
-  <p><strong>Raça:</strong> Anão da Colina</p>
-  <p><strong>Classe:</strong> Clérigo do Domínio da Luz</p>
-  <p><strong>Descrição:</strong></p>
-</p>
-  </div>
-  </div>
-<br><br>
-<hr>
-<br><br>    
-<h2>Sombras de NeverNeath</h2>
-  <div id="molel-stars" class="sessao">
-    <h4 class="titulo-sessao">Mol'el Stars</h4>
-  <div class="conteudo-sessao">
-  <h2>Mol'el Stars</h2>
-  <p><strong>Nome do Jogador:</strong> Thiago (Thigas / Thy / Bigas)</p>
-  <p><strong>Raça:</strong> Gnomo da Floresta</p>
-  <p><strong>Classe:</strong> Artífice</p>
-  <p><strong>Descrição:</strong>
-    Mol'el Stars é um pequeno gnomo de pele roxa, sempre equipado com óculos de proteção e uma máscara de solda que refletem seu espírito inventivo e atento aos detalhes. Veste-se com roupas típicas de artesão e carrega um bracelete tecnomágico, símbolo de sua especialização em fundir magia e tecnologia. Após suas aventuras com seus novos companheiros, especialmente a missão em Fim da Farra, Mol'el permanece desaparecido — seu paradeiro é um mistério, assim como os segredos que talvez ainda carrega.
-    <br><br>
-    Porém, durante o colapso de Neverneath, retornou no momento exato, surgindo de um portal de energia pura. Silencioso, preciso e com um olhar diferente, salvou os heróis de um destino fatal ao redirecionar um feixe arcano com seu escudo. Desde então, paira uma dúvida entre seus aliados: Mol'el voltou... mas será que voltou inteiro?
-  </p>
-</div>
-  </div>
-
-<div id="mestre-chan-chifu" class="sessao">
-  <h4 class="titulo-sessao">Mestre Chan Shifu</h4>
-  <div class="conteudo-sessao">
-  <h2>Chan Shifu</h2>
-  <p><strong>Nome do Jogador:</strong>  Victor (Vitu)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Monge</p>
-  <p><strong>Descrição:</strong>
-    Nascido no isolado e sereno Monastério da Água do Norte, Chan Shifu foi moldado desde jovem pela disciplina do Kung Fu e pela busca da reflexão profunda. Durante décadas, ele seguiu os preceitos de seus mestres com devoção, até que um evento não revelado — e ainda hoje mal digerido — o levou à expulsão do templo.</p>
-  <p>Desde então, Chan vagou pelas Terras Intermédias, um andarilho errante com os punhos sempre prontos e a garrafa nunca muito longe. Ele enfrentou o mundo com sabedoria torta, conselhos enigmáticos e uma personalidade amarga temperada por um senso de justiça silencioso.</p>
-  <p>Hoje, aos 70 anos, Mestre Chan finalmente encontrou a tão buscada paz interior — ou algo próximo disso. Apesar de seu jeito sarcástico e respostas que soam mais como charadas do que ensinamentos, há bondade verdadeira em seu coração. Ele é um sobrevivente da alma e do corpo, um velho mestre que ainda tem muito a ensinar... mesmo que nem sempre pareça.</p>
-  <p>Após os eventos no Inn Plain Sight, e com a formação de um novo grupo de aventureiros, Chan Shifu começou a sentir-se mais vivo — como se uma nova fase estivesse se iniciando em sua jornada. As experiências compartilhadas durante a missão em Fim da Farra, especialmente ao lado de Mol'el Stars, reacenderam em Chan um laço que há muito ele não sentia: a fraternidade.
-<br><br>
-Mas desde a batalha final... Mol'el desapareceu. E Shifu, silenciosamente, carrega o peso desse mistério. Ele pouco fala sobre o que realmente aconteceu naquele confronto, guardando para si fragmentos de culpa e perguntas não respondidas. Onde está Mol'el? O que aconteceu com ele?
-<br><br>
-Agora, além dos fantasmas de seu passado monástico, Chan se vê assombrado por traições mais recentes: dois de seus antigos companheiros — seu velho aprendiz e o próprio Mol'el Stars — parecem ter seguido caminhos obscuros. Ainda é cedo para saber a verdade... mas para Chan, a estrada à frente não é apenas uma jornada externa: é uma travessia interna, entre perdão, perda e propósito.
-    <br>
-    <br>
-    Chan Shifu, acreditava ter encontrado a paz — até reencontrar a guerra nas sombras de Neverneath. Após sobreviver ao desaparecimento de Mol'el em Fim da Farra, enfrentou horrores arcanos e espectros ao lado de antigos e novos companheiros. No coração do labirinto, lutou para proteger Mako e os demais, usando até um pergaminho de Revivificar para salvar a vida do aliado. Agora, carrega o peso da responsabilidade, dos segredos e de velhas feridas que nunca cicatrizaram.
-  </p>
-  </div>
-</div>
-
-<div id="Olivando-Erebor" class="sessao">
-  <h4 class="titulo-sessao">Olivando Erebor</h4>
-  <div class="conteudo-sessao">
-  <h2>Olivando Erebor</h2>
-  <p><strong>Nome do Jogador:</strong> Vinicius (Vini)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Mago</p>
-  <p><strong>Descrição:</strong>
-    Olivando Erebor é um jovem humano de 18 anos que iniciou sua jornada arcana como aprendiz do misterioso mago gnomo Porronto Runaférrea. Antes da partida de Porronto para a sombria Baróvia, Erebor aprendeu o básico das artes arcanas com ele. Apesar de Porronto raramente falar sobre seu passado, revelou que sua família havia sido levada por um mago extremamente poderoso e maligno, cujo nome permaneceu em segredo.  
-    <br><br>
-    Erebor carrega no braço uma runa-tatuagem com o símbolo da família Runaférrea — um elo mágico aconselhado por Porronto como medida de proteção. Caso esteja em perigo, bastaria tocar a runa e pronunciar “Runaférrea” para que seu antigo mestre receba o sinal. Esse elo marca não apenas sua ligação mágica, mas também o profundo laço de confiança entre mestre e aprendiz.
-    <br><br>  
-    Olivando Erebor demonstrou inteligência e coragem nos subterrâneos de Neverneath. Identificou fragmentos arcanos, negociou com micônides e, por fim, tocou o Cetro do Guardião. O preço foi alto: seu braço foi corrompido e seu olho esquerdo ficou cego após uma visão apocalíptica. Ainda assim, completou o ritual de purificação com Thoric, e hoje carrega tanto poder quanto cicatrizes. A runa dos Runaférrea ainda brilha em seu braço — mas será proteção, ou um chamado de algo maior?
-  </p>
-  </div>
-</div>
-
-<div id="thorin-morgran" class="sessao">
-  <h4 class="titulo-sessao">Thorin Morgran - FALTA FAZER</h4>
-  <div class="conteudo-sessao">
-  <h2>Thorin Morgran</h2>
-  <p><strong>Nome do Jogador:</strong> Guilherme Luiz</p>
-  <p><strong>Raça:</strong> Anão da Colina</p>
-  <p><strong>Classe:</strong> Clérigo do Domínio da Luz</p>
-  <p><strong>Descrição:</strong>
-    Thorin Morgran serviu com honra nas primeiras fases da missão, ao lado de Erebor na Casa do Conhecimento. Mas, antes da descida a Neverneath, foi convocado por Dagult Brasanunca para uma crise de fé em Elturel. Sua ausência foi sentida, mas seu legado permanece no preparo que ajudou a iniciar — e nos rastros de luz que deixou para trás.
-  </p>
-  </div>
-</div>
-
-<div id="Thoric-BrightWill" class="sessao">
-  <h4 class="titulo-sessao">Thoric BrightWill</h4>
-  <div class="conteudo-sessao">
-  <h2>Thoric BrightWill</h2>
-  <p><strong>Nome do Jogador:</strong> Thiago (Thigas / Thy / Bigas)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Bruxo</p>
-  <p><strong>Descrição:</strong>
-    <p>Descubra a jornada de Thoric Brightwill como você nunca viu antes! <br>
-<strong>Acesse o link e mergulhe em um story book ilustrado que revela a origem da grandiosidade e o legado deste herói lendário:</strong> <a href="https://gemini.google.com/share/f842de95fecb" target="_blank ">Clique Aqui</a></p>
-    Thoric nasceu na linhagem real, filho do Rei Adrien e da rainha Lirien. Desde jovem, demonstrou talento nato ao combate, treinado por seu tio, Tenente da força real de Valéria, mas seu destino mudou quando aos seu aniversário de 18 anos ocorreu um golpe de estado liderado por Malak, seu tio, durante o ataque thoric presenciou a morte de seus pais e irmão e tentou impedir seu Mentor/Tio em um duelo, porém, foi derrotado, sendo empalado pela espada de seu pai, usada por seu tio, e jogado no Vale dos sussurros, lugar conhecido por ser umas das entradas para shadowfell.
-    <br>
-    <br>
-    <strong><em>O Pacto:</em></strong> Ferido, desesperado e a beira da morte o jovem sentiu um frio extremo, acompanhado de uma presença, áurea de fúria e vingança, assim escutando uma entidade, propondo um acordo, onde em troca de vigor e força para sua sobrevivência e assim conseguir sua vingança, ele deveria ajudar o seu Salvador e o tirar de sua prisão no reino de Shadowfell.
-    <br>
-    <br>
-    Durante 3 anos, Thoric foi caçado por um grupo de caçadores de bruxos, porém em um certo dia, todos sumiram do mapa, sem nenhum tipo de explicação.
-    <br>
-    <br>
-    Ao passar do tempo o jovem,utilizou de suas habilidades em combate e conhecimentos bruxos para  ganhar a vida, fazendo parte do grupo, "presa e caça", uma liga de caçadores que matam qualquer tipo de animal e criatura por dinheiro.
-    <br>
-    <br>
-    Convocado como substituto por Dagult Brasanunca, Thoric BrightWill, o Bruxo Escarlate, se uniu aos heróis nos momentos mais sombrios. Frio, calculista e poderoso, conduziu Erebor no ritual de purificação do cetro. Partiu após a missão sem explicações, levando apenas sua recompensa e um anel com a insígnia de Neverwinter. Mas pactos raramente terminam com o silêncio.
-  </p>
-  <img src="Imagens/thoric em forma de draconato.jpg" alt="">
-  <br>
-  <video src="Imagens/thoricdraconatodandotp.mp4" autoplay loop muted></video>
-  <br>
-  <video src="Imagens/thoricdraconatodandousandolaminaesverdeada.mp4" autoplay loop muted></video>
-  
-  </div>
-</div>
-
-<div id="mako" class="sessao">
-  <h4 class="titulo-sessao">Mako</h4>
-  <div class="conteudo-sessao">
-  <h2>Mako</h2>
-  <p><strong>Nome do Jogador:</strong> Biel</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Guerreiro</p>
-  <p><strong>Descrição:</strong>
-    Ninguém mais se lembra do nome que ele carregava antes. Nem mesmo ele.
-    <br>
-    <br>
-O tempo... o tempo deixou de seguir as regras desde o dia em que os gritos dos mineradores ecoaram pela pedra rachada de Neverwinter. Eles tinham aberto algo que jamais deveria ser tocado: um antigo túnel esquecido, enterrado nas profundezas abaixo da cidade, que levava direto às Ruínas de Neverneath. Lá, sob camadas de silêncio e poeira, repousava um artefato envolto em trevas — um instrumento, arma ou relíquia forjada antes mesmo da Queda dos Deuses.
-<br>
-<br>
-<em>Um fragmento de Everflame.</em>
-<br><br>
-O nome soava distante, como um sussurro vindo das brasas de uma fogueira prestes a se apagar. Ele não viveu o esplendor daquele reino, pois nasceu após a sua ruína. Seus pais falavam pouco, quase como se temessem dar nome à dor. E um dia, eles também se foram. Desde então, ele carregava consigo a herança de um povo extinto — o último herdeiro da civilização perdida de Everflame.
-<br><br>
-Quando os mineradores abriram o túnel, ele estava entre eles. Talvez guiado por um chamado que não compreendia. Mas o que veio a seguir foi catástrofe: um portal rompeu-se com brutalidade, rasgando o véu entre realidades. Aqueles que ousaram cruzar o limiar sem proteção foram consumidos — pele desfeita, olhos ardendo como carvão. Mas ele resistiu.
-<br>
-<br>
-Preso em Neverneath, a cidade subterrânea que existe entre o mundo real e as sombras esquecidas, ele sobrevive. Os dias se tornaram indistintos. O tempo... escorre como areia seca entre os dedos. Não sabe mais quanto tempo se passou. Anos? Décadas? Séculos? Talvez não importe. O que importa é que ele quer sair.
-<br>
-<br>
-Quer escapar daquilo que corrompe as paredes. Quer impedir que a relíquia de Everflame caia nas mãos erradas. Quer entender por que sua linhagem o levou até ali.
-<br>
-<br>
-<strong><em>E quer, acima de tudo... lembrar quem ele é.</em></strong>
-    <br>
-    <br>
-    Anos, Decadas, Séculos depois - Não se sabe ao certo - Mako foi encontrado preso em Neverneath, onde o tempo não segue leis conhecidas. Outrora herói de Neverwinter, viveu décadas entre espectros e ilusões. Retornou ao mundo real com os heróis, empunhando sua lâmina como nos velhos tempos. Mas o mundo que conhecia mudou — e talvez ele também. Nem mesmo Mako sabe se ainda há um lugar para ele.
-  </p>
-  </div>
-</div>
-<br><br>
-<hr>
-<br><br>
-
-  <h2>Vecna: Ninho do Olho Sombrio</h2>
-<div id="deculain-butico" class="sessao">
-  <h4 class="titulo-sessao">Deculain Butico 2°</h4>
-  <div class="conteudo-sessao">
-    <h3><strong>Capítulo 1: O Peso de um Nome</strong></h3>
-    <p>Deculain Butico nasceu sob o estandarte da família mais poderosa — e insana — de clérigos que os multiversos já viram. Os Butico não eram meros servos dos deuses; eles negociavam com divindades, abriam franquias de templos como se fossem tavernas e, acima de tudo, dominavam a arte sagrada do Fura Coco — um estabelecimento lendário que, dependendo de quem perguntasse, era um santuário de cura, ou covil de mercenários divinos. Mas Deculain não se contentaria em ser apenas mais um futuro clérigo celestial da família. Ele queria mais. Queria ser digno do nome Butico não por nascimento, mas por conquista.</p>
-    <h3><strong>Capítulo 2: O Exílio na Montanha</strong></h3>
-    <p>Abandonando os negócios da família, Deculain escalou o Pico do Esquecimento, uma montanha tão alta que até os deuses cochilavam antes de chegar ao topo. Lá, ele se tornou um eremita, meditando sobre os ensinamentos sagrados e treinando seu corpo para suportar o frio cortante e os ventos que carregavam sussurros de antigos loucos.
-      <br><br>
-      <em><strong>Foi então que ele apareceu.</strong></em>
-    </p>
-    <h3><strong>Capítulo 3: O Velho Nômade</strong></h3>
-    <p>Um guerreiro vestido em trapos e armadura desgastada surgiu na neve, como se o próprio inverno o tivesse cuspido lá. Seu nome era Garthok, o Sem-Lar, um espadachim que dizia ter duelado com tempestades e sobrevivido.
-      <br><br>
-    — "Você treina seu espírito, garoto, mas sua espada está tão afiada quanto uma colher de mingau", zombou o velho.
-    <br><br>
-    Deculain, orgulhoso, desafiou-o. Em três golpes, estava de costas no chão, com a neve entrando em lugares que nem mesmo os deuses deveriam ver.
-    <br><br>
-    <strong>Garthok riu.</strong>
-    <br>
-    — "Quer ser forte? Aprenda a lutar antes de rezar."
-    </p>
-    <h3><strong>Capítulo 4: Aprendizado nas Sombras</strong></h3>
-    <p>
-      Sob a tutela do nômade, Deculain aprendeu que:
-      <br><br>
-      Um Butico não ora por vitória — ele a esmaga na garganta do inimigo.
-      <br><br>
-      A melhor magia divina é um bom golpe na nuca.
-      <br><br>
-      Se você gritar 'PELO PODER DE BUTICO!' alto o suficiente, até um deus vai hesitar.
-      <br><br>
-      Anos se passaram, e assim começou a verdadeira jornada do Clérigo-Guerreiro que Aprendeu a Duelar Antes de Rezar.
-    </p>
-    <img src="Imagens/fotodecanlainbutico.jpg" alt="Retrato facial de Deculain Butico">
-  </div>
-</div>
-
-<div id="theron-dareth" class="sessao">
-  <h4 class="titulo-sessao">Theron Dareth</h4>
-  <div class="conteudo-sessao">
-    <h3><strong>FAZER</strong></h3>
-    <p></p>
-  </div>
-</div>
-
-<div id="brutus-tithanos" class="sessao">
-  <h4 class="titulo-sessao">Brutus Tithanos</h4>
-  <div class="conteudo-sessao">
-    <h3><strong>PRÓLOGO: O ESTRONDO DA LENDA</strong></h3>
-    <p>Nos campos sangrentos de Aderoth, onde o trovão da guerra nunca cessa e o eco das batalhas ressoa nos ossos dos vivos, ergue-se uma figura titânica: Brutus Tithanos, o Cavaleiro do Eco.
-    <br><br>
-    Alto como um pinheiro do norte, musculoso como as colunas de um templo antigo, e tão silencioso quanto a própria morte quando se aproxima… Brutus não é apenas um guerreiro: ele é o sussurro da guerra que nunca terminou.
-    <br><br>
-    Mas o que o torna lendário não é apenas sua presença ou sua espada colossal — uma lâmina tão longa e pesada que dois homens comuns mal conseguiriam levantá-la. Nem mesmo sua armadura de aço negro, forjada a partir dos restos fundidos de catapultas e canhões vencidos, é o que o torna temido.
-    <br><br>
-    Não.
-    <br>
-    O que o torna uma lenda…
-    <br>
-    É o eco.
-    </p>
-    <h3><strong>CAPÍTULO 1: NASCIDO DO CAMPO DE BATALHA</strong></h3>
-    <p>
-    Brutus nasceu em Tarnhelm, um reino marcado por séculos de conflito. Filho de um ferreiro e uma capitã da guarda, cresceu entre martelos e espadas. Aos 14, empunhava aço. Aos 18, foi alistado. Aos 20, liderava pelotões.
-    <br><br>
-    Mas foi na Guerra Silenciosa que seu destino mudou.
-    <br><br>
-    Uma arma proibida, o Coração do Vazio, detonou no campo de batalha. A explosão não destruiu corpos, mas almas. Homens viraram sombras, ecos de si mesmos. Brutus sobreviveu, mas algo dentro dele descolou.
-    <br><br>
-    Desde então, ele pode rasgar o tecido do tempo e convocar um Eco — uma cópia etérea de si mesmo, que luta, morre e retorna.
-    <br><br>
-    O povo o chama de Cavaleiro do Eco.
-    <br>
-    Alguns sussurram que o próprio Vazio o marcou. 
-    </p>
-    <h3><strong>CAPÍTULO 2: O LAÇO COM O CLÃ QUEBRA MACHADO</strong></h3>
-    <p>
-    Antes de se tornar uma lenda, Brutus foi enviado às Montanhas Galena para alianças com os clãs anões. Lá, conheceu Tharnak Glintstone, irmão de Korda, do orgulhoso Clã Quebra Machado.
-    <br><br>
-    Juntos, repeliram uma invasão duergar nos salões de Khundrukar. Brutus ganhou o título de "Eco de Ferro", um forasteiro honrado como irmão de batalha.
-    <br><br>
-    Anos depois, o clã caiu em desgraça. Korda foi presa como Prisioneira 13, acusada de crimes que Brutus sabia serem mentiras.
-    <br><br>
-    Ele jurou descobrir a verdade.  
-    </p>
-    <h3><strong>CAPÍTULO 3: O SEGREDO DO CETRO DO GUARDIÃO</strong></h3>
-    <p>
-    Em ruínas anãs, Brutus encontrou inscrições sobre um artefato perdido: o Cetro do Guardião, forjado por forças unidas dos Harpistas, dos Magos de Mystryl e do agora extinto Reino de Everflame criaram uma arma final, um cetro, um artefato que Brutus não sabe ao certo o seu nome. projetado para impedir entidades fora do espaço-tempo normal de cruzarem para Faerûn sem serem convocadas.
-    <br><br>
-    Brutus agora vagueia entre planos, seu Eco resonando 
-    </p>
-    <h3><strong>CAPÍTULO 4: Uma Nova Missão</strong></h3>
-    <p>
-    Depois de tempos viajando por Faerun, Brutus soube por meio de suas fontes confiáveis que não revelavam seus nomes, que a Irmã de seu velho amigo falecido em batallha Tharnak Glintstone, estava presa na grandiosa e lendária Prisão de Fim da Farra , com isso ele lembrou que Tharnak em tempos antigos o fez prometer que se algo acontecesse com ele, ele cuidaria de sua irmã Korda. Então ele queria entender oque de fato havia acontecido com Korda, e partiu em direção a Fim da Farra, ele conhecia a Diretora da Prisão, talvez ela disponibilizasse algumas informações.
-    <br><br>
-    O vento cortava como uma lâmina enferrujada quando Brutus Tithanos pisou no pátio da prisão Fim da Farra. Seus passos não faziam som. Nunca faziam.
-    <br><br>
-    A diretora, uma mulher de olhos frios e mãos marcadas por algemas, recebeu-o com um misto de respeito e desconfiança.
-    <br><br>
-    <em>— "Brutus Tithanos. O Cavaleiro do Eco." — Ela cruzou os braços. — "O que um homem como você quer numa cova como essa?"</em>
-    <br><br>
-    <strong>Ele não sorriu. Nunca sorria.</strong>
-    <br>
-    — "Informação."
-    <br><br>
-    Ela contou-lhe do Livro da Razão, roubado por dois fugitivos: um gnomo roxo e um velho de barba branca. Nomes falsos: Remi e Shoyo.
-    <br><br>
-    Mas Brutus não estava ali por livros.
-    <br><br>
-    <em>— "E a Prisioneira 13? Korda Glintstone."</em>
-    <br>
-    <br>
-    A diretora franziu a testa.
-    <em>— "Por que ela te interessa?"</em>
-    <em>— "Dívida de sangue." - Disse Brutus firme.</em>
-    <br><br>
-    A mulher cedeu. Afinal, era Brutus Tithanos.
-    <br><br>
-    Então eles foram até a cela dela, porém algo de estranho ressuou.
-    <br>
-    <strong><em>A cela de Korda estava vazia.</em></strong>
-    <br><br>
-    Não apenas a dela.
-      <br>
-    Outros dois haviam sumido:
-    <ul>
-      <li><strong>Ervan SounFallen</strong> — Um prisioneiro recente, cheiro de magia barata e desespero.</li>
-      <li><strong>shar (O elfo)</strong> — Preso por conspiração de assassinato e ter sido um dos responsaveis pelo assassinato do Rei Adrien e da rainha Lirien, e de seu filho do reino de Valéria.</li>
-    </ul>
-    <br><br>
-    <em>A diretora entregou-lhe os retratos dos suspeitos:</em>
-    <ul>
-      <li><strong>Remi</strong>  — Gnomo roxo, sorriso de quem já traiu dez vezes antes do café da manhã.</li>
-      <li><strong>Shoyo</strong>  — Velho como as montanhas, olhos que já viram demais.</li>
-      <li><strong>Kamar</strong> — Musculoso, olhos roxos, barba ruiva. Cheiro de trouxa com sorte.</li>
-    </ul>
-    <br>
-    Brutus dobrou os papéis e guardou no coldre.
-    <br>
-    <em><strong>— "Eles vão me levar até ela."</strong></em>
-    </p>
-    <h3>CAPÍTULO 5: O VELHO E A GAZETA DA COSTA DA ESPADA</h3>
-    <p>
-    Baldur's Gate cheirava a mentira e peixe podre
-      <br><br>
-    Brutus viu na praça: um Velho como as montanhas, olhos que já viram demais.
-    <br>
-    <em>Seria aquele o bendito <strong>Shoyo</strong>?</em>
-    <br><br>
-    O homem segurava um jornal da Gazeta Espada da Costa, mas seus olhos não liam. Estavam vazios. Como os de um cadáver que ainda não sabia que tinha morrido.
-    <br><br>
-    Brutus seguiu-o.
-    <br>
-    Silêncio. Sombra. Eco.
-    <br><br>
-    O velho levou-o até Luskan, entrou numa fortaleza escura. Brutus escalou um telhado próximo, observou pela janela.
-    <br><br>
-    Dentro, o velho conversava com vultos. Brutus não ouviu as palavras, mas viu os gestos: medo e urgência.
-    <br><br>
-    Quando o velho partiu para Neverwinter, Brutus perdeu-o.
-    <br><br>
-    Até que, um mês depois, o reencontrou.
-    <br><br>
-    Desta vez, o velho estava com um mago, um clérigo... e um gnomo roxo.
-    <br>
-    <em><strong>Seria aquele o tal Remi?</strong></em>
-    <br><br>
-    Tudo levava Brutus a pensar que de fato havia encontrado os tal invasores de <strong>Fim da Farra</strong>
-    <br><br>
-    O gnomo ria, contando uma história:
-    <br>
-    <em>— "E aí, Shifu, lembra quando a gente invadiu Fim da Farra? Aquela cela da anã era tão apertada que—"</em>
-    <br><br>
-    Brutus não ouviu o resto.
-    <br>
-    <em><strong>Korda estava com eles?</strong></em>
-    <br>
-    Brutus aproximou-se da casa.
-    <br>
-    Não chamou. Não anunciou-se.
-    <br>
-    Bateu na porta.
-    </p>
-    <img style="width: 200px;" height="370px" src="Imagens/fotobrutus.jpg" alt="">
-  </div>
-</div>
-
-<div id="molel-stars" class="sessao">
-    <h4 class="titulo-sessao">Mol'el Stars</h4>
-  <div class="conteudo-sessao">
-  <h2>Mol'el Stars</h2>
-  <p><strong>Nome do Jogador:</strong> Thiago (Thigas / Thy / Bigas)</p>
-  <p><strong>Raça:</strong> Gnomo da Floresta</p>
-  <p><strong>Classe:</strong> Artífice</p>
-  <p><strong>Descrição:</strong>
-    Mol'el Stars é um pequeno gnomo de pele roxa, sempre equipado com óculos de proteção e uma máscara de solda que refletem seu espírito inventivo e atento aos detalhes. Veste-se com roupas típicas de artesão e carrega um bracelete tecnomágico, símbolo de sua especialização em fundir magia e tecnologia. Após suas aventuras com seus novos companheiros, especialmente a missão em Fim da Farra, Mol'el permanece desaparecido — seu paradeiro é um mistério, assim como os segredos que talvez ainda carrega.
-    <br><br>
-    Porém, durante o colapso de Neverneath, retornou no momento exato, surgindo de um portal de energia pura. Silencioso, preciso e com um olhar diferente, salvou os heróis de um destino fatal ao redirecionar um feixe arcano com seu escudo. Desde então, paira uma dúvida entre seus aliados: Mol'el voltou... mas será que voltou inteiro?
-  </p>
-</div>
-</div>
-
-<div id="mestre-chan-chifu" class="sessao">
-  <h4 class="titulo-sessao">Mestre Chan Shifu</h4>
-  <div class="conteudo-sessao">
-  <h2>Chan Shifu</h2>
-  <p><strong>Nome do Jogador:</strong>  Victor (Vitu)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Monge</p>
-  <p><strong>Descrição:</strong>
-    Nascido no isolado e sereno Monastério da Água do Norte, Chan Shifu foi moldado desde jovem pela disciplina do Kung Fu e pela busca da reflexão profunda. Durante décadas, ele seguiu os preceitos de seus mestres com devoção, até que um evento não revelado — e ainda hoje mal digerido — o levou à expulsão do templo.</p>
-  <p>Desde então, Chan vagou pelas Terras Intermédias, um andarilho errante com os punhos sempre prontos e a garrafa nunca muito longe. Ele enfrentou o mundo com sabedoria torta, conselhos enigmáticos e uma personalidade amarga temperada por um senso de justiça silencioso.</p>
-  <p>Hoje, aos 70 anos, Mestre Chan finalmente encontrou a tão buscada paz interior — ou algo próximo disso. Apesar de seu jeito sarcástico e respostas que soam mais como charadas do que ensinamentos, há bondade verdadeira em seu coração. Ele é um sobrevivente da alma e do corpo, um velho mestre que ainda tem muito a ensinar... mesmo que nem sempre pareça.</p>
-  <p>Após os eventos no Inn Plain Sight, e com a formação de um novo grupo de aventureiros, Chan Shifu começou a sentir-se mais vivo — como se uma nova fase estivesse se iniciando em sua jornada. As experiências compartilhadas durante a missão em Fim da Farra, especialmente ao lado de Mol'el Stars, reacenderam em Chan um laço que há muito ele não sentia: a fraternidade.
-<br><br>
-Mas desde a batalha final... Mol'el desapareceu. E Shifu, silenciosamente, carrega o peso desse mistério. Ele pouco fala sobre o que realmente aconteceu naquele confronto, guardando para si fragmentos de culpa e perguntas não respondidas. Onde está Mol'el? O que aconteceu com ele?
-<br><br>
-Agora, além dos fantasmas de seu passado monástico, Chan se vê assombrado por traições mais recentes: dois de seus antigos companheiros — seu velho aprendiz e o próprio Mol'el Stars — parecem ter seguido caminhos obscuros. Ainda é cedo para saber a verdade... mas para Chan, a estrada à frente não é apenas uma jornada externa: é uma travessia interna, entre perdão, perda e propósito.
-    <br>
-    <br>
-    Chan Shifu, acreditava ter encontrado a paz — até reencontrar a guerra nas sombras de Neverneath. Após sobreviver ao desaparecimento de Mol'el em Fim da Farra, enfrentou horrores arcanos e espectros ao lado de antigos e novos companheiros. No coração do labirinto, lutou para proteger Mako e os demais, usando até um pergaminho de Revivificar para salvar a vida do aliado. Agora, carrega o peso da responsabilidade, dos segredos e de velhas feridas que nunca cicatrizaram.
-  </p>
-  </div>
-</div>
-
-<div id="Olivando-Erebor" class="sessao">
-  <h4 class="titulo-sessao">Olivando Erebor</h4>
-  <div class="conteudo-sessao">
-  <h2>Olivando Erebor</h2>
-  <p><strong>Nome do Jogador:</strong> Vinicius (Vini)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Mago</p>
-  <p><strong>Descrição:</strong>
-    Olivando Erebor é um jovem humano de 18 anos que iniciou sua jornada arcana como aprendiz do misterioso mago gnomo Porronto Runaférrea. Antes da partida de Porronto para a sombria Baróvia, Erebor aprendeu o básico das artes arcanas com ele. Apesar de Porronto raramente falar sobre seu passado, revelou que sua família havia sido levada por um mago extremamente poderoso e maligno, cujo nome permaneceu em segredo.  
-    <br><br>
-    Erebor carrega no braço uma runa-tatuagem com o símbolo da família Runaférrea — um elo mágico aconselhado por Porronto como medida de proteção. Caso esteja em perigo, bastaria tocar a runa e pronunciar “Runaférrea” para que seu antigo mestre receba o sinal. Esse elo marca não apenas sua ligação mágica, mas também o profundo laço de confiança entre mestre e aprendiz.
-    <br><br>  
-    Olivando Erebor demonstrou inteligência e coragem nos subterrâneos de Neverneath. Identificou fragmentos arcanos, negociou com micônides e, por fim, tocou o Cetro do Guardião. O preço foi alto: seu braço foi corrompido e seu olho esquerdo ficou cego após uma visão apocalíptica. Ainda assim, completou o ritual de purificação com Thoric, e hoje carrega tanto poder quanto cicatrizes. A runa dos Runaférrea ainda brilha em seu braço — mas será proteção, ou um chamado de algo maior?
-  </p>
-  </div>
-</div>
-
-<div id="thorin-morgran" class="sessao">
-  <h4 class="titulo-sessao">Thorin Morgran - FALTA FAZER</h4>
-  <div class="conteudo-sessao">
-  <h2>Thorin Morgran</h2>
-  <p><strong>Nome do Jogador:</strong> Guilherme Luiz</p>
-  <p><strong>Raça:</strong> Anão da Colina</p>
-  <p><strong>Classe:</strong> Clérigo do Domínio da Luz</p>
-  <p><strong>Descrição:</strong>
-    Thorin Morgran serviu com honra nas primeiras fases da missão, ao lado de Erebor na Casa do Conhecimento. Mas, antes da descida a Neverneath, foi convocado por Dagult Brasanunca para uma crise de fé em Elturel. Sua ausência foi sentida, mas seu legado permanece no preparo que ajudou a iniciar — e nos rastros de luz que deixou para trás.
-  </p>
-  </div>
-</div>
-
-<div id="mako" class="sessao">
-  <h4 class="titulo-sessao">Mako</h4>
-  <div class="conteudo-sessao">
-  <h2>Mako</h2>
-  <p><strong>Nome do Jogador:</strong> Biel</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Guerreiro</p>
-  <p><strong>Descrição:</strong>
-    Ninguém mais se lembra do nome que ele carregava antes. Nem mesmo ele.
-    <br>
-    <br>
-O tempo... o tempo deixou de seguir as regras desde o dia em que os gritos dos mineradores ecoaram pela pedra rachada de Neverwinter. Eles tinham aberto algo que jamais deveria ser tocado: um antigo túnel esquecido, enterrado nas profundezas abaixo da cidade, que levava direto às Ruínas de Neverneath. Lá, sob camadas de silêncio e poeira, repousava um artefato envolto em trevas — um instrumento, arma ou relíquia forjada antes mesmo da Queda dos Deuses.
-<br>
-<br>
-<em>Um fragmento de Everflame.</em>
-<br><br>
-O nome soava distante, como um sussurro vindo das brasas de uma fogueira prestes a se apagar. Ele não viveu o esplendor daquele reino, pois nasceu após a sua ruína. Seus pais falavam pouco, quase como se temessem dar nome à dor. E um dia, eles também se foram. Desde então, ele carregava consigo a herança de um povo extinto — o último herdeiro da civilização perdida de Everflame.
-<br><br>
-Quando os mineradores abriram o túnel, ele estava entre eles. Talvez guiado por um chamado que não compreendia. Mas o que veio a seguir foi catástrofe: um portal rompeu-se com brutalidade, rasgando o véu entre realidades. Aqueles que ousaram cruzar o limiar sem proteção foram consumidos — pele desfeita, olhos ardendo como carvão. Mas ele resistiu.
-<br>
-<br>
-Preso em Neverneath, a cidade subterrânea que existe entre o mundo real e as sombras esquecidas, ele sobrevive. Os dias se tornaram indistintos. O tempo... escorre como areia seca entre os dedos. Não sabe mais quanto tempo se passou. Anos? Décadas? Séculos? Talvez não importe. O que importa é que ele quer sair.
-<br>
-<br>
-Quer escapar daquilo que corrompe as paredes. Quer impedir que a relíquia de Everflame caia nas mãos erradas. Quer entender por que sua linhagem o levou até ali.
-<br>
-<br>
-<strong><em>E quer, acima de tudo... lembrar quem ele é.</em></strong>
-    <br>
-    <br>
-    Anos, Decadas, Séculos depois - Não se sabe ao certo - Mako foi encontrado preso em Neverneath, onde o tempo não segue leis conhecidas. Outrora herói de Neverwinter, viveu décadas entre espectros e ilusões. Retornou ao mundo real com os heróis, empunhando sua lâmina como nos velhos tempos. Mas o mundo que conhecia mudou — e talvez ele também. Nem mesmo Mako sabe se ainda há um lugar para ele.
-  </p>
-  </div>
-</div>
-<br><br>
-<hr>
-<br><br>
-<h2>Doença Congelante</h2>
-<div id="dexter-zarveth" class="sessao">
-  <h4 class="titulo-sessao">Dexter Zarveth, O ladino Guerreiro</h4>
-  <div class="conteudo-sessao">
-    <h3><strong>FAZER</strong></h3>
-    <p></p>
-  </div>
-</div>
-
-<div id="sir-salamenelson" class="sessao">
-  <h4 class="titulo-sessao">Sir Salamenelson, O Clérigo do Zelo</h4>
-  <div class="conteudo-sessao">
-    <h3><strong>FAZER</strong></h3>
-    <p></p>
-  </div>
-</div>
-
-<div id="fumaça-bardo" class="sessao">
-  <h4 class="titulo-sessao">Fumaça, O Bardo das Sombras</h4>
-  <div class="conteudo-sessao">
-    <h3><strong>FAZER</strong></h3>
-    <p></p>
-  </div>
-</div>
-
-<div id="Thoric-BrightWill" class="sessao">
-  <h4 class="titulo-sessao">Thoric BrightWill</h4>
-  <div class="conteudo-sessao">
-  <h2>Thoric BrightWill</h2>
-  <p><strong>Nome do Jogador:</strong> Thiago (Thigas / Thy / Bigas)</p>
-  <p><strong>Raça:</strong> Humano</p>
-  <p><strong>Classe:</strong> Bruxo</p>
-  <p><strong>Descrição:</strong>
-    <p>Descubra a jornada de Thoric Brightwill como você nunca viu antes! <br>
-<strong>Acesse o link e mergulhe em um story book ilustrado que revela a origem da grandiosidade e o legado deste herói lendário:</strong> <a href="https://gemini.google.com/share/f842de95fecb" target="_blank ">Clique Aqui</a></p>
-    Thoric nasceu na linhagem real, filho do Rei Adrien e da rainha Lirien. Desde jovem, demonstrou talento nato ao combate, treinado por seu tio, Tenente da força real de Valéria, mas seu destino mudou quando aos seu aniversário de 18 anos ocorreu um golpe de estado liderado por Malak, seu tio, durante o ataque thoric presenciou a morte de seus pais e irmão e tentou impedir seu Mentor/Tio em um duelo, porém, foi derrotado, sendo empalado pela espada de seu pai, usada por seu tio, e jogado no Vale dos sussurros, lugar conhecido por ser umas das entradas para shadowfell.
-    <br>
-    <br>
-    <strong><em>O Pacto:</em></strong> Ferido, desesperado e a beira da morte o jovem sentiu um frio extremo, acompanhado de uma presença, áurea de fúria e vingança, assim escutando uma entidade, propondo um acordo, onde em troca de vigor e força para sua sobrevivência e assim conseguir sua vingança, ele deveria ajudar o seu Salvador e o tirar de sua prisão no reino de Shadowfell.
-    <br>
-    <br>
-    Durante 3 anos, Thoric foi caçado por um grupo de caçadores de bruxos, porém em um certo dia, todos sumiram do mapa, sem nenhum tipo de explicação.
-    <br>
-    <br>
-    Ao passar do tempo o jovem,utilizou de suas habilidades em combate e conhecimentos bruxos para  ganhar a vida, fazendo parte do grupo, "presa e caça", uma liga de caçadores que matam qualquer tipo de animal e criatura por dinheiro.
-    <br>
-    <br>
-    Convocado como substituto por Dagult Brasanunca, Thoric BrightWill, o Bruxo Escarlate, se uniu aos heróis nos momentos mais sombrios. Frio, calculista e poderoso, conduziu Erebor no ritual de purificação do cetro. Partiu após a missão sem explicações, levando apenas sua recompensa e um anel com a insígnia de Neverwinter. Mas pactos raramente terminam com o silêncio.
-  </p>
-  <img src="Imagens/thoric em forma de draconato.jpg" alt="">
-  <br>
-  <video src="Imagens/thoricdraconatodandotp.mp4" autoplay loop muted></video>
-  <br>
-  <video src="Imagens/thoricdraconatodandousandolaminaesverdeada.mp4" autoplay loop muted></video>
-  
-  </div>
-</div>
-
+  <details class="dossier-card theme-neverwinter">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Mestre Chan Shifu</h2>
+        <div class="subtitle">O Monge Cínico</div>
       </div>
+      <div class="header-meta">
+        <span class="player-badge">Victor</span>
+        <span class="class-badge">Monge</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoShifu.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Nascido no isolado Monastério da Água do Norte, foi expulso aos 70 anos. Vagou como um andarilho bêbado até ser contratado por Dagult Brasanunca. Apesar do cinismo, esconde um coração bondoso.</div>
+        
+        <div class="timeline-section">
+          <span class="section-title">O Conto do Dragão Vermelho</span>
+          <p>Juntou-se ao grupo por dinheiro. Ajudou a vencer Cinderhowl, mas foi preso por recusar entregar o Orbe da Draconidade a Dagult Brasanunca, provando sua integridade.</p>
+        </div>
+        <div class="timeline-section">
+          <span class="section-title">Prisioneira 13</span>
+          <p>Infiltrou-se na prisão como "Shoyo". Lutou fisicamente contra seu amigo Mol'el para impedir que ele explodisse a prisão e matasse inocentes. Saiu vitorioso, mas carrega a culpa da fuga do amigo.</p>
+        </div>
+        <div class="timeline-section">
+          <span class="section-title">Sombras de NeverNeath</span>
+          <p>Assumiu a liderança nas catacumbas. Sacrificou recursos sagrados (um pergaminho de Reviver) para trazer o guerreiro Mako de volta à vida.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Um dos conselheiros da Lâmina Escarlate em Neverwinter.</div>
+      </div>
+    </div>
+  </details>
+
+
+  <details class="dossier-card theme-neverwinter">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Olivando Erebor (Vaethar)</h2>
+        <div class="subtitle">O Aprendiz Caído</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Vini</span>
+        <span class="class-badge">Mago (Necromante)</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoErebor.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Jovem aprendiz de Porronto. Começou ingênuo, negociando com dragões em <em>O Conto do Dragão Vermelho</em>.</div>
+        
+        <div class="timeline-section">
+          <span class="section-title">A Corrupção (NeverNeath)</span>
+          <p>Ao tocar no Cetro do Guardião, teve uma visão do apocalipse que cegou seu olho e necrotizou seu braço. Tentou curar-se com um ritual proibido e foi possuído por <strong>Vaethar</strong>, uma entidade feérica caída.</p>
+        </div>
+        <div class="timeline-section">
+          <span class="section-title">A Traição (O Príncipe Caído)</span>
+          <p>Revelou sua nova face. Traiu o grupo, roubou grimórios proibidos e fugiu para as sombras.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Renegado. Busca recuperar sua divindade roubada.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-neverwinter">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Thorin Morgran</h2>
+        <div class="subtitle">O Compasso Moral</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Guilherme</span>
+        <span class="class-badge">Clérigo Anão</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-text">
+        <div class="timeline-section">
+          <p>Clérigo da Luz. Essencial em <em>O Conto do Dragão Vermelho</em> para descobrir a traição de Ervan Soulfallen. Deixou o grupo antes de <em>Neverneath</em> para uma missão urgente em Elturel.</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-neverwinter">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Mako</h2>
+        <div class="subtitle">O Guerreiro do Tempo</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Biel</span>
+        <span class="class-badge">Guerreiro</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Herdeiro de Everflame. Ficou preso nas ruínas de Neverneath por décadas quando um túnel colapsou.</div>
+        <div class="timeline-section">
+          <p>Resgatado por Shifu, luta para entender o mundo moderno. O tempo para ele não passou, mas o mundo mudou.</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-neverwinter">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Mith Varloc</h2>
+        <div class="subtitle">A Força Bruta</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Davi</span>
+        <span class="class-badge">Bárbaro</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-text">
+        <p>Guerreiro feroz que serviu como a linha de frente do grupo em <em>O Conto do Dragão Vermelho</em>.</p>
+      </div>
+    </div>
+  </details>
+
+  <h2 style="color: #d4ac0d; border-bottom: 3px solid #d4ac0d; padding-bottom: 5px; margin-top: 50px;">III. A Corte de Valéria</h2>
+
+  <details class="dossier-card theme-valeria">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Thoric BrightWill</h2>
+        <div class="subtitle">O Rei da Vontade</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Thigas</span>
+        <span class="class-badge">Bruxo -> Paladino</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/thorichtmlpersonagem.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Príncipe traído pelo tio Malak. Sobreviveu à beira da morte fazendo um pacto com o demônio <strong>Korthok</strong>.</div>
+        
+        <div class="secret-box"><strong>O Interlúdio Dracônico:</strong> Transformado em Draconato por magia sagrada, viveu em paz por 7 meses. Mas ao buscar vingança contra o assassino <strong>Shar</strong>, Korthok arrancou violentamente seus poderes, tornando-o humano e frágil novamente.</div>
+        
+        <div class="timeline-section">
+          <span class="section-title">A Reconquista (O Príncipe Caído)</span>
+          <p>Liderou a marcha para recuperar Valéria. No confronto final, recusou entregar sua alma. Com pura <strong>Vontade</strong>, reforjou a espada do pai em luz sagrada, baniu o demônio e matou Malak.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Rei-Guardião do Reino de Valéria. Vigia a fenda entre mundos pela eternidade.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-valeria">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Dexter Zarveth</h2>
+        <div class="subtitle">A Cobrança Sem Face</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Guilherme</span>
+        <span class="class-badge">Ladino Assassino</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoDexter.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Serial Killer "Lúrien Sombraluz" com mais de 600 mortes de criminosos. Foi a Ishe e Neverwinter seguindo pistas sobre a morte de seu pai adotivo.</div>
+        
+        <div class="timeline-section">
+          <span class="section-title">O Julgamento</span>
+          <p>Descobriu que sua aliada <strong>Korda Glintstone</strong> (a Prisioneira 13) foi quem traiu e matou seu pai. Executou-a friamente nas ruínas de Valéria.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Conselheiro Real. O protetor sombrio do Rei Thoric.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-valeria">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Otis Rich (Thoric BrightWill)</h2>
+        <div class="subtitle">O Draconato Renascido</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Thigas</span>
+        <span class="class-badge">Feiticeiro Draconato</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/thoric em forma de draconato.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box">
+          <strong>A Identidade Secreta</strong><br>
+          "Otis Rich" nunca existiu como uma pessoa separada. Foi a identidade adotada por <strong>Thoric BrightWill</strong> durante o período em que a magia de purificação o transformou em um Draconato. O nome é um anagrama para esconder seu passado real.
+        </div>
+        <div class="timeline-section">
+          <span class="section-title">A Caçada em Ishe</span>
+          <p>Sob este disfarce, investigou a Doença Congelante e localizou <strong>Shar</strong>. Foi nesta forma que ele sentiu, pela primeira e única vez, o que era ter poder próprio, vindo do sangue de dragão, e não de um pacto. Sua existência como Otis terminou quando Korthok arrancou essa forma dele.</p>
+        </div>
+        <div class="destiny-box">STATUS: Extinto. Thoric retornou à forma humana.</div>
+      </div>
+    </div>
+  </details>
+
+  <h2 style="color: #4a235a; border-bottom: 3px solid #4a235a; padding-bottom: 5px; margin-top: 50px;">IV. Os Agentes da Lâmina Escarlate (Vecna)</h2>
+
+  <details class="dossier-card theme-valeria">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Crow Shadowmere</h2>
+        <div class="subtitle">A Sombra</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Caio</span>
+        <span class="class-badge">Ranger Shadar-Kai</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoCrow.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Servo devoto da Rainha Corvo. Viu em Valéria uma blasfêmia cósmica (um reino que não morria).</div>
+        <div class="timeline-section">
+          <p>Protegeu Thoric das garras de Korthok e guiou o grupo pelas névoas de Valéria (seu habitat natural).</p>
+        </div>
+        <div class="destiny-box">DESTINO: Caçador. Partiu para enfrentar as novas ameaças.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-valeria">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Sir Salamenelson</h2>
+        <div class="subtitle">O Bibliotecário Butico</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Vh</span>
+        <span class="class-badge">Clérigo do Zelo</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/fotosalamenlson.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Herdeiro do Templo do Salame. Viaja o mundo com seu "Salaminicídio" curando e temperando justiça.</div>
+        <div class="timeline-section">
+          <p>Em <em>Doença Congelante</em>, combateu o gelo com fogo. Em <em>O Príncipe Caído</em>, reviveu o grifo Flechada no deserto usando um diamante e fé.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Aliado. Continua a luta contra o culto.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-valeria">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Fumaça</h2>
+        <div class="subtitle">O Arauto Silencioso</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Vini</span>
+        <span class="class-badge">Bardo Sátiro</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/fumaça.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem: Hélian Kaelen</strong><br>
+        Único sobrevivente do "Círculo do Casco Animado", um clã de bardos protetores de uma floresta mágica. O Reino de Lindor invadiu a floresta, massacrou seu povo e o capturou criança. Forçado a ser menestrel na corte dos assassinos, aprendeu a manipular para sobreviver. Fugiu e tornou-se "Fumaça", um charlatão cínico que esconde a dor.</div>
+        
+        <div class="secret-box"><strong>A Corrupção (Doença Congelante):</strong> Em Ishe, no laboratório de um necromante, encontrou um diário do seu clã e uma lasca de obsidiana. Ao tocá-la, a voz de <strong>O Deus dos Segredos</strong> invadiu sua mente: "A vida é um grito; o Silêncio é a paz." Aprendeu a "Primeira Estrofe" do Hino da Decadência e foi aliciado pela entidade para ser um instrumento do fim.</div>
+        
+        <div class="timeline-section">
+          <span class="section-title">O Sacrifício (O Príncipe Caído)</span>
+          <p>Durante a batalha contra Malak, teve o braço esquerdo (marcado pelo O Deus dos Segredos) decepado num momento de tempo parado. Sobreviveu como um instrumento quebrado.</p>
+        </div>
+        <div class="destiny-box">DESTINO: O Arauto. Segue os passos de Vecna, jurado a destruir o Reino de Lindor.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-vecna">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Theron Dareth</h2>
+        <div class="subtitle">O Paladino Cego</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Pedro Neiva</span>
+        <span class="class-badge">Paladino / Bruxo</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoTheron.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box">
+          <strong>Origem: A Luz na Lama</strong><br>
+          Nascido na miséria em Vareth’s Hollow. Aos 9 anos, salvou vítimas de uma enchente com as próprias mãos. Juntou-se à Companhia da Lança Escarlate e, ferido nas catacumbas de Caer Varnak, encontrou uma estátua de três olhos. Uma voz prometeu-lhe poder para ser "o maior paladino de Faerûn". Ele aceitou, acreditando servir a um Deus da Verdade.
+        </div>
+
+        <div class="secret-box">
+          <strong>O Grande Segredo de Theron:</strong> Theron foi ....
+          <!-- <strong>O Grande Segredo (A Mentira):</strong> Theron foi enganado. Seu patrono não é um deus, mas <strong>Xy'phos</strong>, um Nothilid antigo e Mestre Espião de <strong>Vecna</strong>. Xy'phos usa a moralidade inabalável de Theron para eliminar cultos rivais e encontrar artefatos para Vecna. Theron é o herói que, sem saber, abre as portas para o vilão. -->
+        </div>
+
+        <div class="destiny-box">DESTINO: Peão da Luz. Atua como o "Portador do Silêncio", sem saber a quem realmente serve.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-vecna">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Odysseus Yeager</h2>
+        <div class="subtitle">O Ladrão de Outro Mundo</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Lucca</span>
+        <span class="class-badge">Ladino Trickster</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoOdysseus.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Vindo de outra dimensão. Foi coagido pela entidade <strong>Mask</strong> (Deus dos Ladrões) a fazer escolhas impossíveis.</div>
+        <div class="timeline-section">
+            <span class="section-title">A Maldição de Mask</span>
+            <p>O Deus dos Ladrões o enredou numa teia de promessas impossíveis: "Roubar a <em>Mão Putrificada</em> e você voltará para casa." Desde então, Odysseus é um homem dividido entre dois mundos — um caçador obcecado, perseguindo um artefato que pode ser sua salvação ou sua perdição. Cada noite o tormenta com fragmentos de memórias de uma dimensão que talvez nunca tenha existido.</p>
+        </div>
+        <div class="destiny-box">DESTINO: Em busca da Mão Putrificada.</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-vecna">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Deculain Butico II</h2>
+        <div class="subtitle">O Clérigo Pugilista</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Victor Hugo</span>
+        <span class="class-badge">Clérigo/Guerreiro</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/fotodecanlainbutico.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <div class="origin-box"><strong>Origem:</strong> Primo de Harien. Exilou-se no Pico do Esquecimento para treinar. Aprendeu com um nômade que "a melhor magia divina é um soco na nuca".</div>
+        <div class="timeline-section">
+          <p>Viu sua fé ser profanada nas catacumbas do culto do Olho.</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-card theme-vecna">
+    <summary class="dossier-header">
+      <div class="header-content">
+        <h2>Kanye Quest & Brutus</h2>
+        <div class="subtitle">O Guerreiro e o Eco</div>
+      </div>
+      <div class="header-meta">
+        <span class="player-badge">Guilherme</span>
+        <span class="class-badge">Echo Knight</span>
+      </div>
+    </summary>
+    <div class="dossier-body">
+      <div class="dossier-visual"><img src="Imagens/FotoKanyeQuest.jpg" class="dossier-img"></div>
+      <div class="dossier-text">
+        <p><strong>Kanye:</strong> Guerreiro que luta ao lado de seu "Eco". Invadiu o QG procurando Korda, mas aliou-se ao grupo.<br>
+        <strong>Brutus Tithanos:</strong> Guerreiro lendário de Tarnhelm que sobreviveu à detonação do "Coração do Vazio", ganhando a habilidade de invocar Ecos. Desapareceu em combate.</p>
+      </div>
+    </div>
+  </details>
+
+</div>
     </main>
 
     <script>
-    const campanhas = document.querySelectorAll('.menu-campanha');
-    const conteudos = document.querySelectorAll('.conteudo-campanha');
-
-    campanhas.forEach(menu => {
-      menu.querySelector('h3').addEventListener('click', () => {
-        const campanhaId = menu.getAttribute('data-campanha');
-        conteudos.forEach(sec => {
-          sec.style.display = sec.id === campanhaId ? 'block' : 'none';
+      // Script para fechar outros cards ao abrir um
+      const details = document.querySelectorAll("details");
+      details.forEach((targetDetail) => {
+        targetDetail.addEventListener("click", () => {
+          details.forEach((detail) => {
+            if (detail !== targetDetail) {
+              detail.removeAttribute("open");
+            }
+          });
         });
       });
-    });
-  </script>
-  <script src="script.js"></script>
+    </script>
 </body>
 </html>
