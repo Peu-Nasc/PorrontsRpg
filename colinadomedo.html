@@ -3,9 +3,158 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Campanhas RPG</title>
+  <title>A Colina do Medo | Crônicas da Terra Média</title>
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="Imagens/logopag.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Eagle+Lake&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- TEMA: O UM ANEL (ESTÉTICA TERRA MÉDIA) --- */
+    :root {
+        --forest-green: #2d3e24;
+        --deep-gold: #c5a059;
+        --ancient-sepia: #e8dcc4;
+        --shadow-black: #0d0d0d;
+        --blood-rune: #8b0000;
+        --iron-brown: #4e3b24;
+    }
+
+    main#colina-medo-page {
+        background-color: var(--shadow-black) !important;
+        background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+        color: #2c1e14;
+        font-family: 'Lora', serif;
+        padding: 40px 20px;
+    }
+
+    .middle-earth-container {
+        max-width: 950px;
+        margin: 0 auto;
+        background: var(--ancient-sepia);
+        border: 15px solid var(--iron-brown);
+        border-image: url('https://www.transparenttextures.com/patterns/exclusive-paper.png') 30 stretch;
+        padding: 50px;
+        box-shadow: 0 0 50px rgba(0,0,0,1);
+        position: relative;
+    }
+
+    .header-tolkien {
+        text-align: center;
+        border-bottom: 2px solid var(--forest-green);
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+    }
+
+    .header-tolkien h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        color: var(--forest-green);
+        margin: 0;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+
+    .sub-runico {
+        font-family: 'Eagle Lake', cursive;
+        color: var(--blood-rune);
+        font-size: 1.1rem;
+        display: block;
+        margin-top: 5px;
+    }
+
+    /* --- FERRAMENTA DE MINIMIZAR (ACCORDION) --- */
+    .capitulo-wrapper {
+        margin-bottom: 20px;
+        border: 1px solid rgba(45, 62, 36, 0.3);
+    }
+
+    .capitulo-trigger {
+        background: rgba(45, 62, 36, 0.1);
+        padding: 15px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s;
+        user-select: none;
+    }
+
+    .capitulo-trigger:hover {
+        background: rgba(45, 62, 36, 0.2);
+    }
+
+    .capitulo-trigger h2 {
+        font-family: 'Cinzel', serif;
+        color: var(--iron-brown);
+        margin: 0;
+        font-size: 1.4rem;
+    }
+
+    .capitulo-icon {
+        font-family: 'Cinzel', serif;
+        color: var(--forest-green);
+        font-weight: bold;
+        transition: transform 0.3s;
+    }
+
+    .capitulo-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, padding 0.3s ease;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Estado Ativo */
+    .capitulo-wrapper.active .capitulo-content {
+        max-height: 5000px; /* Suficiente para textos longos */
+        padding: 30px;
+        border-top: 1px solid rgba(45, 62, 36, 0.2);
+    }
+
+    .capitulo-wrapper.active .capitulo-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Estilo do Texto */
+    .chronicle-text {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        text-align: justify;
+    }
+
+    .sacrificio-box {
+        font-style: italic;
+        background: rgba(139, 0, 0, 0.05);
+        border: 1px dashed var(--blood-rune);
+        padding: 15px;
+        margin: 20px 0;
+        text-align: center;
+        color: var(--blood-rune);
+    }
+
+    .party-scroll {
+        background: rgba(45, 62, 36, 0.1);
+        border: 1px solid var(--forest-green);
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .party-scroll h3 {
+        font-family: 'Cinzel', serif;
+        color: var(--forest-green);
+        margin-top: 0;
+    }
+
+    footer {
+        margin-top: 50px;
+        text-align: center;
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        border-top: 1px solid var(--forest-green);
+        padding-top: 20px;
+        opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -57,85 +206,100 @@
       
     </aside>
 
-    <main>
-    <div id="colina-do-medo" class="conteudo-campanha">
-  <h1>A Colina do Medo</h1>
-  <h2 class="subtitulo-campanha">(Sistema de RPG: <em><strong>O Um Anel</strong></em>)</h2>
-  <h4 style="text-align: right;"><Strong>DM (Dungeon Master): <em>Guilherme</em></Strong></h4>
-  <p></p>
+    <main id="colina-medo-page">
+      <div class="middle-earth-container">
+        
+        <div class="header-tolkien">
+            <h1>A Colina do Medo</h1>
+            <span class="sub-runico">Sistema: O Um Anel</span>
+        </div>
 
-   <h2>Personagens</h2>
-  <ul>
-    <li>Pedro Neiva - <strong>Gwindor Glorfindel (Alto Elfo de Valfenda)</strong></li>
-    <li>Peu - <strong>Porronto Alfredo (Hobbit)</strong></li>
-    <li>Thigas - <strong>Bardan (Bardeses)</strong></li>
-    <li>Vini - <strong>Salim Balathun (Patrulheiro do Norte)</strong></li>
-    <li>Vh - <strong>Bombur com dois erri (anão do povo de Durin)</strong></li>
-  </ul>
+        <section class="party-scroll">
+            <h3>Personagens</h3>
+            <ul style="list-style: 'ᛉ '; padding-left: 20px;">
+                <li>Pedro Neiva - <strong>Gwindor Glorfindel (Alto Elfo de Valfenda)</strong></li>
+                <li>Peu - <strong>Porronto Alfredo (Hobbit)</strong></li>
+                <li>Thigas - <strong>Bardan (Bardeses)</strong></li>
+                <li>Vini - <strong>Salim Balathun (Patrulheiro do Norte)</strong></li>
+                <li>Vh - <strong>Bombur com dois erri (Anão do povo de Durin)</strong></li>
+            </ul>
+        </section>
 
-  <div id="colina-do-medo-sessao1" class="sessao">
-    <h4 class="titulo-sessao">Capitulo 1 - Um Buraco de Troll Como Nenhum Outro</h4>
-    <div class="conteudo-sessao">
-    <h1 style="text-align: center;">Um Buraco de Troll Como Nenhum Outro</h1>
-  <p>
-    Sob os céus enegrecidos da Terra dos Homens, a noite desceu como um manto de sombras sobre a antiga taverna Pônei Saltitante. Ali, entre o ranger das madeiras e o tilintar das canecas, reuniam-se figuras pouco comuns: três viajantes vindos das longínquas terras do leste, dois anões de passo firme e olhos desconfiados, e um grupo de cinco aventureiros cujas presenças ecoavam o prenúncio de eventos grandiosos.
-    <br><br>
-    O clima era de alegria efêmera, como costuma ser nas vésperas do desconhecido. Então, cruzando as portas do salão como o vento que antecede a tempestade, entrou um anão de barba flamejante, trazendo consigo o cheiro de trilhas esquecidas e promessas enterradas. Seu nome era Jari, herdeiro distante de um passado coberto por terra e poeira dourada. Em mãos, carregava histórias de um tesouro oculto — relíquia do tempo de seu tio-avô Bori, cuja lenda ainda tremeluzia entre os ecos das montanhas do norte.
-    <br><br>
-    Os corações dos aventureiros, já inflamados pela bebida e pela esperança, encontraram naquela narrativa um propósito. Mas o destino, sempre atento àqueles que ousam sonhar com ouro fácil, tratou de lançar sua sombra: um homem de semblante exausto e vestes escuras surgiu entre os presentes. Seu olhar era o de quem carregava um fardo impossível, e sua alma, dilacerada por perdas há muito suportadas, pairava como um presságio entre os homens.
-    <br><br>
-    A atmosfera da taverna pesou. O estranho revelou uma dor que ultrapassava o mero desejo por riqueza: uma tragédia envolvia sua família, levada pelos trolls que habitavam as profundezas esquecidas das Colinas do Vento. As palavras carregadas de pesar não apenas comoveram os ouvintes, mas moldaram o caminho que haveriam de trilhar.
-    <br><br>
-    <em>Assim se formou a decisão: ao alvorecer, partiriam rumo ao desconhecido.</em>
-    <br><br>
-    A jornada teve início sob um céu cinzento, como se o próprio mundo prendesse a respiração. Enquanto as colinas se erguiam ao longe, sombras começaram a se alongar sobre os viajantes. Jari, outrora alegre e confiante, demonstrava agora sinais de inquietação que não passaram despercebidos por Gwindor e Salim — dois olhos atentos em um mundo repleto de enganos.
-    <br><br>
-    Foi então que, ao abrigo de uma conversa silenciosa, revelou-se a traição. Diamorc, o homem abatido, confessou seu papel no engano. Fora cúmplice de Jari, atraindo incautos à promessa de glória, apenas para entregá-los aos trolls das colinas. Seu pesar era real, mas o sangue em suas mãos não menos verdadeiro.
-    <br><br>
-    Quando o grupo alcançou o acampamento próximo ao Vale Oculto, a tensão tornou-se insuportável. Os corações pulsavam como tambores de guerra. Jari, confrontado, viu-se cercado pela verdade e pelo medo. Na tentativa desesperada de fuga, correu com o desespero de quem foge não apenas de homens, mas de si mesmo. Mas não havia como escapar do juízo. Um cão de guerra, selvagem e treinado para o combate, o interceptou. Salim, tão veloz quanto o trovão, o alcançou e impôs a confissão final.
-    <br><br>
-    A verdade era cruel: <em>os trolls utilizavam Jari como isca viva, e muitas almas já haviam perecido sob seu engano.</em>
-    <br><br>
-    A aproximação ao vale revelou presenças ocultas entre as pedras e sombras. Os trolls estavam ali, mas não esperavam a audácia dos que avançavam. Com passos leves e respiração contida, os aventureiros cruzaram o domínio inimigo sem serem notados.
-    <br><br>
-    Nas profundezas do vale, Porronto Alfredo, pequeno em estatura mas imenso em coragem, tomou a dianteira. Um dos trolls, atraído por sua ousadia, capturou-o com mãos imensas e o levou àquela a quem chamavam de “Mamãe”. O hobbit, porém, manteve a esperança viva, mesmo diante do grotesco.
-    <br><br>
-    Em outro ponto das colinas, Bombur — guerreiro de braços poderosos e alma inquieta — descobriu um caminho secreto entre as ruínas de uma fazenda abandonada. Ali encontrou Csylda Heather, órfã e sobrevivente, cujos olhos traziam a dor de uma família destruída. Juntos, encontraram uma passagem subterrânea que os levou às entranhas do covil troll.
-    <br><br>
-    Entre pedras partidas e silêncio tenso, Bombur adentrou um depósito ancestral. Movido pela visão do ouro acumulado, por um momento foi dominado pela cobiça — um fardo tão pesado quanto qualquer armadura. Seu deslize provocou o desabamento de parte do teto, atraindo os monstros.
-    <br><br>
-    Os trolls chegaram com fúria, mas não encontraram presas indefesas. Bardan, destemido e veloz, lançou sua corda como o laço da justiça e iniciou o confronto. A batalha foi intensa, mas o primeiro troll caiu sob a força da aliança entre Bardan e Bombur.
-    <br><br>
-    Enquanto isso, nas águas negras de um lago oculto, Gwindor e Salim encontraram a família de Diamorc — acorrentada, enfraquecida, mas viva. Antes que a libertação pudesse acontecer, foram surpreendidos por Nelly Braços Longos, uma criatura deformada e letal, que emergiu das profundezas como uma maldição ancestral.
-    <br><br>
-    O combate que se seguiu foi feroz. As águas tornaram-se vermelhas sob o aço de Salim, que, girando sua lâmina como um vendaval, rasgou a carne da criatura e partiu sua fúria em dois.
-    <br><br>
-    <em>O sacrifício, porém, chegou em seguida.</em>
-    <br><br>
-    Dois trolls restantes, atraídos pelo conflito, desceram sobre Porronto Alfredo com força brutal. O golpe foi tão devastador quanto inevitável. Sua luz extinguiu-se ali, sob os olhos de seus companheiros.
-    <br><br>
-    A dor transformou-se em fúria. Bombur ergueu seu machado, soltou o grito dos antigos e golpeou o crânio de um dos trolls, selando sua ruína. O último monstro, por sua vez, encontrou o fim diante da figura silenciosa de Salim, que, curvando-se como fera ancestral, avançou com precisão sobrenatural, partindo a criatura em duas com um único corte final.
-    <br><br>
-    Quando o silêncio caiu novamente sobre o vale, restavam apenas os ecos da batalha, os corpos dos caídos, e a certeza de que os vivos haviam enfrentado as trevas — e vencido, por ora.
-  </p>
-  </div>
-</div>
+        <div class="capitulo-wrapper">
+            <div class="capitulo-trigger">
+                <h2>Capitulo 1 - Um Buraco de Troll Como Nenhum Outro</h2>
+                <span class="capitulo-icon">▼</span>
+            </div>
+            
+            <div class="capitulo-content">
+                <article class="chronicle-text">
+                    <p>Sob os céus enegrecidos da Terra dos Homens, a noite desceu como um manto de sombras sobre a antiga taverna Pônei Saltitante. Ali, entre o ranger das madeiras e o tilintar das canecas, reuniam-se figuras pouco comuns: três viajantes vindos das longínquas terras do leste, dois anões de passo firme e olhos desconfiados, e um grupo de cinco aventureiros cujas presenças ecoavam o prenúncio de eventos grandiosos.</p>
+                    
+                    <p>O clima era de alegria efêmera, como costuma ser nas vésperas do desconhecido. Então, cruzando as portas do salão como o vento que antecede a tempestade, entrou um anão de barba flamejante, trazendo consigo o cheiro de trilhas esquecidas e promessas enterradas. Seu nome era Jari, herdeiro distante de um passado coberto por terra e poeira dourada. Em mãos, carregava histórias de um tesouro oculto — relíquia do tempo de seu tio-avô Bori, cuja lenda ainda tremeluzia entre os ecos das montanhas do norte.</p>
+
+                    <p>Os corações dos aventureiros, já inflamados pela bebida e pela esperança, encontraram naquela narrativa um propósito. Mas o destino, sempre atento àqueles que ousam sonhar com ouro fácil, tratou de lançar sua sombra: um homem de semblante exausto e vestes escuras surgiu entre os presentes. Seu olhar era o de quem carregava um fardo impossível, e sua alma, dilacerada por perdas há muito suportadas, pairava como um presságio entre os homens.</p>
+
+                    <p>A atmosfera da taverna pesou. O estranho revelou uma dor que ultrapassava o mero desejo por riqueza: uma tragédia envolvia sua família, levada pelos trolls que habitavam as profundezas esquecidas das Colinas do Vento. As palavras carregadas de pesar não apenas comoveram os ouvintes, mas moldaram o caminho que haveriam de trilhar.</p>
+
+                    <p>Assim se formou a decisão: ao alvorecer, partiriam rumo ao desconhecido.</p>
+
+                    <p>A jornada teve início sob um céu cinzento, como se o próprio mundo prendesse a respiração. Enquanto as colinas se erguiam ao longe, sombras começaram a se alongar sobre os viajantes. Jari, outrora alegre e confiante, demonstrava agora sinais de inquietação que não passaram despercebidos por Gwindor e Salim — dois olhos atentos em um mundo repleto de enganos.</p>
+
+                    <p>Foi então que, ao abrigo de uma conversa silenciosa, revelou-se a traição. Diamorc, o homem abatido, confessou seu papel no engano. Fora cúmplice de Jari, atraindo incautos à promessa de glória, apenas para entregá-los aos trolls das colinas. Seu pesar era real, mas o sangue em suas mãos não menos verdadeiro.</p>
+
+                    <p>Quando o grupo alcançou o acampamento próximo ao Vale Oculto, a tensão tornou-se insuportável. Os corações pulsavam como tambores de guerra. Jari, confrontado, viu-se cercado pela verdade e pelo medo. Na tentativa desesperada de fuga, correu com o desespero de quem foge não apenas de homens, mas de si mesmo. Mas não havia como escapar do juízo. Um cão de guerra, selvagem e treinado para o combate, o interceptou. Salim, tão veloz quanto o trombão, o alcançou e impôs a confissão final.</p>
+
+                    <div class="sacrificio-box">
+                        A verdade era cruel: os trolls utilizavam Jari como isca viva, e muitas almas já haviam perecido sob seu engano.
+                    </div>
+
+                    <p>A aproximação ao vale revelou presenças ocultas entre as pedras e sombras. Os trolls estavam ali, mas não esperavam a audácia dos que avançavam. Com passos leves e respiração contida, os aventureiros cruzaram o domínio inimigo sem serem notados.</p>
+
+                    <p>Nas profundezas do vale, Porronto Alfredo, pequeno em estatura mas imenso em coragem, tomou a dianteira. Um dos trolls, atraído por sua ousadia, capturou-o com mãos imensas e o levou àquela a quem chamavam de “Mamãe”. O hobbit, porém, manteve a esperança viva, mesmo diante do grotesco.</p>
+
+                    <p>Em outro ponto das colinas, Bombur — guerreiro de braços poderosos e alma inquieta — descobriu um caminho secreto entre as ruínas de uma fazenda abandonada. Ali encontrou Csylda Heather, órfã e sobrevivente, cujos olhos traziam a dor de uma família destruída. Juntos, encontraram uma passagem subterrânea que os levou às entranhas do covil troll.</p>
+
+                    <p>Entre pedras partidas e silêncio tenso, Bombur adentrou um depósito ancestral. Movido pela visão do ouro acumulado, por um momento foi dominado pela cobiça — um fardo tão pesado quanto qualquer armadura. Seu deslize provocou o desabamento de parte do teto, atraindo os monstros.</p>
+
+                    <p>Os trolls chegaram com fúria, mas não encontraram presas indefesas. Bardan, destemido e veloz, lançou sua corda como o laço da justiça e iniciou o confronto. A batalha foi intensa, mas o primeiro troll caiu sob a força da aliança entre Bardan e Bombur.</p>
+
+                    <p>Enquanto isso, nas águas negras de um lago oculto, Gwindor e Salim encontraram a família de Diamorc — acorrentada, enfraquecida, mas viva. Antes que a libertação pudesse acontecer, foram surpreendidos por Nelly Braços Longos, uma criatura deformada e letal, que emergiu das profundezas como uma maldição ancestral.</p>
+
+                    <p>O combate que se seguiu foi feroz. As águas tornaram-se vermelhas sob o aço de Salim, que, girando sua lâmina como um vendaval, rasgou a carne da criatura e partiu sua fúria em dois.</p>
+
+                    <div class="sacrificio-box">
+                        O sacrifício, porém, chegou em seguida.
+                    </div>
+
+                    <p>Dois trolls restantes, atraídos pelo conflito, desceram sobre Porronto Alfredo com força brutal. O golpe foi tão devastador quanto inevitável. Sua luz extinguiu-se ali, sob os olhos de seus companheiros.</p>
+
+                    <p>A dor transformou-se em fúria. Bombur ergueu seu machado, soltou o grito dos antigos e golpeou o crânio de um dos trolls, selando sua ruína. O último monstro, por sua vez, encontrou o fim diante da figura silenciosa de Salim, que, curvando-se como fera ancestral, avançou com precisão sobrenatural, partindo a criatura em duas com um único corte final.</p>
+
+                    <p>Quando o silêncio caiu novamente sobre o vale, restavam apenas os ecos da batalha, os corpos dos caídos, e a certeza de que os vivos haviam enfrentado as trevas — e vencido, por ora.</p>
+                </article>
+            </div>
+        </div>
+
+        <footer>
+            REGISTROS DO LIVRO VERMELHO // TERRA MÉDIA - QUARTA ERA <br>
+            Mestre do Saber: Guilherme
+        </footer>
       </div>
     </main>
+  </div>
 
-    <script>
-    const campanhas = document.querySelectorAll('.menu-campanha');
-    const conteudos = document.querySelectorAll('.conteudo-campanha');
-
-    campanhas.forEach(menu => {
-      menu.querySelector('h3').addEventListener('click', () => {
-        const campanhaId = menu.getAttribute('data-campanha');
-        conteudos.forEach(sec => {
-          sec.style.display = sec.id === campanhaId ? 'block' : 'none';
+  <script>
+    // Lógica para Expandir/Minimizar Capítulos
+    document.addEventListener('DOMContentLoaded', () => {
+        const triggers = document.querySelectorAll('.capitulo-trigger');
+        
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const wrapper = trigger.parentElement;
+                wrapper.classList.toggle('active');
+            });
         });
-      });
     });
   </script>
-  <script src="script.js"></script>
 </body>
 </html>
