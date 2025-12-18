@@ -3,9 +3,248 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Campanhas RPG</title>
+  <title>Vecna: Ninho do Olho Sombrio | Dossiê Proibido</title>
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="Imagens/logopag.png" type="image/x-icon">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- TEMA: A CORRUPÇÃO DO SUSSURRADO --- */
+    :root {
+        --vecna-green: #00ff41; /* Verde Terminal/Necrótico */
+        --vecna-glow: rgba(0, 255, 65, 0.3);
+        --void-purple: #35005b;
+        --blood-red: #8a0b0b;
+        --bg-dark: #050505;
+        --paper-texture: #121212;
+        --text-main: #c0c0c0;
+    }
+
+    body {
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'IM Fell English', serif; /* Fonte de livro antigo */
+    }
+
+    main#vecna-page {
+        background-image: 
+            linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(5,5,5,1)),
+            url('https://www.transparenttextures.com/patterns/dark-matter.png');
+        padding: 40px 20px;
+        min-height: 100vh;
+    }
+
+    .dossie-container {
+        max-width: 950px;
+        margin: 0 auto;
+        background: var(--paper-texture);
+        border: 1px solid #333;
+        box-shadow: 0 0 40px var(--vecna-glow);
+        padding: 60px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Borda Mágica Animada */
+    .dossie-container::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 5px;
+        background: linear-gradient(90deg, var(--void-purple), var(--vecna-green), var(--void-purple));
+        animation: energy-flow 3s infinite linear;
+    }
+
+    @keyframes energy-flow {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
+
+    /* Cabeçalho Aterrorizante */
+    .header-sombrio {
+        text-align: center;
+        margin-bottom: 50px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 30px;
+    }
+
+    .header-sombrio h1 {
+        font-family: 'Creepster', cursive;
+        font-size: 4rem;
+        color: var(--vecna-green);
+        text-shadow: 2px 2px 0px #000, 0 0 15px var(--vecna-green);
+        margin: 0;
+        letter-spacing: 2px;
+    }
+
+    .header-sombrio h2 {
+        font-family: 'Cinzel Decorative', cursive;
+        color: #666;
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+
+    /* Texto de Introdução */
+    .intro-text {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        border-left: 3px solid var(--vecna-green);
+        padding-left: 25px;
+        margin-bottom: 40px;
+        background: linear-gradient(90deg, rgba(0,255,65,0.05), transparent);
+    }
+
+    /* Lista de Personagens Estilo Ficha */
+    .char-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 15px;
+        margin-bottom: 50px;
+    }
+
+    .char-card {
+        background: #0a0a0a;
+        border: 1px solid #333;
+        padding: 15px;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    .char-card:hover {
+        border-color: var(--vecna-green);
+        box-shadow: 0 0 10px var(--vecna-glow);
+    }
+
+    .char-card strong { color: var(--vecna-green); }
+
+    /* --- SISTEMA DE SESSÕES (ACCORDION) --- */
+    .sessao-box {
+        margin-bottom: 20px;
+        border: 1px solid #333;
+    }
+
+    .sessao-trigger {
+        background: linear-gradient(45deg, #0f0f0f, #1a1a1a);
+        padding: 25px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid transparent;
+        transition: 0.4s;
+    }
+
+    .sessao-trigger:hover {
+        background: #111;
+        border-left: 5px solid var(--vecna-green);
+    }
+
+    .sessao-trigger h3 {
+        font-family: 'Cinzel Decorative', cursive;
+        color: #eee;
+        font-size: 1.6rem;
+        margin: 0;
+    }
+
+    .sessao-icon {
+        font-size: 1.5rem;
+        color: #444;
+        transition: 0.3s;
+    }
+
+    .sessao-content {
+        display: none;
+        padding: 40px;
+        background: #0e0e0e;
+        line-height: 1.8;
+        font-size: 1.15rem;
+        border-top: 1px solid var(--vecna-green);
+    }
+
+    /* Estado Ativo */
+    .sessao-box.active .sessao-content { display: block; }
+    .sessao-box.active .sessao-trigger { border-bottom-color: var(--vecna-green); }
+    .sessao-box.active .sessao-icon { color: var(--vecna-green); transform: rotate(180deg); }
+
+    /* Estilos Específicos de Conteúdo */
+    .dialogo-vecna {
+        font-family: 'Cinzel Decorative', cursive;
+        color: var(--vecna-green);
+        text-align: center;
+        font-size: 1.3rem;
+        margin: 30px 0;
+        text-shadow: 0 0 5px var(--vecna-glow);
+    }
+
+    .nota-papel {
+        background: #d8cba8;
+        color: #2c1e14;
+        padding: 15px;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        transform: rotate(-1deg);
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+        margin: 20px auto;
+        max-width: 80%;
+        text-align: center;
+    }
+
+    .destaque-vermelho { color: #ff4444; font-weight: bold; }
+    
+    .youtube-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        background: transparent;
+        border: 1px solid var(--vecna-green);
+        color: var(--vecna-green);
+        font-family: 'Roboto Mono', monospace;
+        text-decoration: none;
+        margin-top: 20px;
+        transition: 0.3s;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .youtube-btn:hover {
+        background: var(--vecna-green);
+        color: #000;
+        box-shadow: 0 0 20px var(--vecna-glow);
+    }
+
+    /* Galeria */
+    .grid-imagens {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+    }
+    
+    .grid-imagens img {
+        width: 100%;
+        border: 2px solid #333;
+        transition: 0.3s;
+        opacity: 0.7;
+    }
+
+    .grid-imagens img:hover {
+        opacity: 1;
+        border-color: var(--vecna-green);
+        transform: scale(1.02);
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 0.8rem;
+        color: #555;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -14,504 +253,276 @@
 
   <div class="layout">
     <aside>
-      <h2>Campanhas</h2>
-      <div class="menu-campanha" data-campanha="curse-strahd">
-        <a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="O-Conto-do-Dragão-Vermelho">
-        <a href="dragaovermelho.html"><h3>O Conto do dragão Vermelho</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="prisioneira-13">
-        <a href="prisioneira13.html"><h3>Prisioneira 13</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="Sombras-de-Neverneath">
-        <a href="sombrasneverneath.html"><h3>Sombras de NeverNeath</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="colina-do-medo">
-        <a href="colinadomedo.html"><h3>A Colina do Medo</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="oneshot-vecna">
-        <a href="oneshotvecna.html"><h3>Vecna: Ninho do Olho Sombrio (ONESHOT)</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="doenca-congelante">
-        <a href="doenca-congelante.html"><h3>Doença Congelante</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="principe-caido">
-        <a href="oprincipecaido.html"><h3>O Principe Caíado</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="verao-sangrento">
-        <a href="veraosangrento.html"><h3>Verão Sangrento</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="personagens">
-        <a href="personagens.html"><h3>Personagens</h3></a>
-      </div>
-      
-      <br>
-      <h2>Em Breve:</h2>
-      <div class="menu-campanha" data-campanha="dragoes-dailhadatempestade">
-        <a href="dragoesilhadatempestade.html"><h3>Dragões da Ilha da Tempestade</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="vecna-campanha">
-        <a href="vecnacampnha.html"><h3>Vecna: Véspera da Ruína</h3></a>
-      </div>
-      
+      <h2>Crônicas</h2>
+      <div class="menu-campanha"><a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a></div>
+      <div class="menu-campanha" style="border-left: 4px solid var(--vecna-green);"><a href="oneshotvecna.html"><h3>👁️ Vecna: Ninho do Olho</h3></a></div>
+      <div class="menu-campanha"><a href="index.html"><h3>Início</h3></a></div>
     </aside>
 
-    <main>
-    <div id="oneshot-vecna" class="conteudo-campanha">
-  <h1>Vecna: Ninho do Olho Sombrio</h1>
-  <h2 class="subtitulo-campanha">(Sistema de RPG: <em><strong>D&D</strong></em>)</h2>
-  <h4 style="text-align: right;"><Strong>DM (Dungeon Master): <em>Peu Porronto</em></Strong></h4>
-  <p>
-    <strong><em>Olá Aventureiros</em></strong>
-    <br>
-    Após os acontecimentos na Pousada Inn Plain Sight, Os acontecimentos em Fim da farra e as profundezas de Neverneath, a escuridão não recuou… ela apenas mudou de lugar.
-    <br>
-    <br>
-    Os heróis de Neverwinter repousam sob o teto de um novo lar, recompensados por sua bravura — mas inquietos por seus fantasmas.
-    <br>
-    <br>
-    Visões perturbadoras, símbolos antigos, mortos que sussurram verdades escondidas...
-    <br>
-    <br>
-    Há quem diga que certos nomes devem ser esquecidos. Que certos deuses não devem ser lembrados. Que certos olhos jamais deveriam se abrir.
-    <br>
-    <br>
-    <em>Mas o tempo da ignorância acabou.</em>
-    <br>
-    <br>
-    A sombra que vigia além do véu observa… e se prepara para cair sobre Faerûn.
-    <br>
-    <br>
-    <strong><em>O Olho os viu.</em></strong>
-    <br>
-    <br>Agora, ele quer que vocês olhem de volta.
+    <main id="vecna-page">
+      <div class="dossie-container">
+        
+        <div class="header-sombrio">
+            <h1>Vecna: Ninho do Olho Sombrio</h1>
+            <h2>(Sistema de RPG: D&D) | DM: Peu Porronto</h2>
+        </div>
 
+        <div class="intro-text">
+            <p><strong>Olá Aventureiros</strong></p>
+            <p>Após os acontecimentos na Pousada Inn Plain Sight, Os acontecimentos em Fim da farra e as profundezas de Neverneath, a escuridão não recuou… ela apenas mudou de lugar.</p>
+            <p>Os heróis de Neverwinter repousam sob o teto de um novo lar, recompensados por sua bravura — mas inquietos por seus fantasmas.</p>
+            <p>Visões perturbadoras, símbolos antigos, mortos que sussurram verdades escondidas...</p>
+            <p>Há quem diga que certos nomes devem ser esquecidos. Que certos deuses não devem ser lembrados. Que certos olhos jamais deveriam se abrir.</p>
+            <p>Mas o tempo da ignorância acabou.</p>
+            <p>A sombra que vigia além do véu observa… e se prepara para cair sobre Faerûn.</p>
+            <p style="color: var(--vecna-green); font-size: 1.4rem; text-align: center;"><strong>O Olho os viu.</strong></p>
+            <p>Agora, ele quer que vocês olhem de volta. Uma nova aventura está prestes a começar</p>
+        </div>
 
-Uma nova aventura está prestes a começar
-  </p>
+        <div class="char-grid">
+            <div class="char-card"><strong>Victor:</strong> Mestre Chan Shifu (Monge)</div>
+            <div class="char-card"><strong>Thigas:</strong> Mol'el Stars (Artificer)</div>
+            <div class="char-card"><strong>Thigas:</strong> Thoric BrightWill (Bruxo)</div>
+            <div class="char-card"><strong>Guilherme:</strong> Kanye Quest (Guerreiro)</div>
+            <div class="char-card"><strong>Guilherme:</strong> Bruthus (Eco)</div>
+            <div class="char-card"><strong>Vini:</strong> Olivando Erebor (Mago)</div>
+            <div class="char-card"><strong>Victor Hugo:</strong> Deculain Butico 2° (Clérigo)</div>
+            <div class="char-card"><strong>Pedro Neiva:</strong> Theron Dareth (Paladino)</div>
+            <div class="char-card"><strong>Lucca Torres:</strong> Odysseu Yeager (Ladino)</div>
+        </div>
 
-  <h2>Personagens</h2>
-  <ul>
-    <li><strong>Victor</strong> - Mestre Chan Shifu, um Monge Humano</li>
-    <li><strong>Thigas</strong> - Mol'el Stars, um Gnomo da Floresta Artificer</li>
-    <li><strong>Thigas</strong> - Thoric BrightWill, O Bruxo Escarlate Humano</li>
-    <li><strong>Guilherme</strong> - Kanye Quest, O Guerreiro do Caminho do Eco</li>
-    <li><strong>Guilherme</strong> - Bruthus, O Eco</li>
-    <li><strong>Vini</strong> - Olivando Erebor, Mago Humano</li>
-    <li><strong>Victor Hugo</strong> - Deculain Butico 2°, O Clérigo</li>
-    <li><strong>Pedro Neiva</strong> - Theron Dareth, o Paladino Bruxo</li>
-    <li><strong>Lucca Torres</strong> - Odysseu Yeager, O Elfo Ladino trickster</li>
-  </ul>
+        <div class="sessao-box">
+            <div class="sessao-trigger">
+                <h3>Sessão 1 — O Olho é o Caminho</h3>
+                <span class="sessao-icon">👁</span>
+            </div>
+            <div class="sessao-content">
+                <p><strong>Vecna: Ninho do Olho Sombrio</strong><br>
+                📍 Local: Neverwinter, Quatro semanas após os eventos em Neverneath.</p>
 
-  <br>
-  <div id="vecna-oneshot-sessao1" class="sessao">
-    <h4 class="titulo-sessao">Sessão 1 — O Olho é o Caminho</h4>
-    <div class="conteudo-sessao">
-    <h1>Vecna: Ninho do Olho Sombrio</h1>
-  <p style="text-align: center;">
-    📍 Local: Neverwinter, Quatro semanas após os eventos em Neverneath.
-  </p>
-  <h3>Prólogo — O Eco de Algo Maior</h3>
-  <p>
-    Após a purificação do Cetro do Guardião e a fuga do labirinto de Neverneath, o grupo vive seus dias no QG em Bairro Alto, presenteado por Dagult Brasanunca.
-    <ul>
-      <li><strong>Erebor</strong> se afasta em estudos arcanos, atormentado por visões sombrias.</li>
-      <li><strong>Shifu</strong> treina em silêncio, ainda com dúvidas sobre Korda.</li>
-      <li><strong>Thorin</strong> parte para o norte, deixando um bilhete e o símbolo de Lathander.</li>
-      <li><strong>Maku</strong> se mantém reservado desde sua ressurreição</li>
-      <li><strong>Mol’el</strong> está estranhamente diferente desde que voltou.</li>
-      <li><strong>Thoric</strong> desapareceu sem deixar rastro, mas há quem diga quem em noite chuvosas, jura ter visto alguém de vestes escarlates entres os becos de Neverwinter.</li>
-    </ul>
-    Lorde Dagul Brasanunca, vai até os heróis mais uma vez em busca de seus serviços, ele oferefce 75po para cada um que patrulhar durante a semana, para garantir que está tudo bem. Erebor e Shifu aceitam.
-  </p>
-  <h3>Dias de Exploração:</h3>
-  <p>
-    <strong><em>Dia 1 — Sussurros no Mercado Noturno</em></strong>
-    <br>
-    Erebor e Shifu patrulham o distrito comercial, ouvindo rumores sobre “olhos que não são de gente” e desaparecimentos.
-    Enquanto isso, Kanye Quest invade o QG procurando Korda Glinstone, mas acaba encontrando apenas Mol’el. A tensão vira bebedeira, e quando Erebor e Shifu retornam, encontram os dois já embriagados, iniciando uma aliança desconfiada.
-    <br><br>
-    <strong><em>Dia 2 — A Criança que Sabia Demais</em></strong>
-    <br>
-    Um menino de rua entrega um desenho com um crânio rodeado por olhos e fala sobre o “Olho que Tudo Vê”. A interação termina de forma estranha, com a criança fugindo e deixando Erebor irritado. Kanye interroga Shifu sobre Korda, mas decide permanecer no grupo para “garantir a verdade”.
-    <br><br>
-    <strong><em>Dia 3 — A Vela que Não Apaga</em></strong>
-    <br>
-    Uma carta urgente leva o grupo ao templo, onde conhecem Deculain Butico II.
-    No altar, uma vela negra com runas desconhecidas não pode ser apagada e provoca visões inquietantes. Ao tentar levá-la a Brasanunca, a vela desaparece no caminho, deixando apenas o cheiro de fumaça fria. Deculain decide se unir ao grupo para investigar.
-    <br><br>
-    <strong><em>Dia 4 — Sangue na Fonte</em></strong>
-    <br>
-    Durante uma ronda, o grupo encontra uma fonte jorrando sangue. Um mendigo murmura palavras sobre o “Olho que não pisca”. Surge Theron Dareth, que já investiga os símbolos e rituais do Olho, juntando-se aos aventureiros.
-    <br><br>
-    <strong><em>Dia 5 — O Ladrão do Outro Lado</em></strong>
-    <br>
-    Invasões misteriosas nas docas não levam ouro ou bens valiosos — apenas comida. O capitão do porto oferece qualquer pagamento no Leviatã Encalhado para quem capturar o ladrão.
-    O grupo encontra Odisseu Yeager, um ladino que não sabe onde é de fato seu mundo, que age sob ordens de um "amigo" que prometeu levá-lo de volta para casa se ele recuperar a Mão Putrificada, cuja localização está perdida, mas cujo destino começa em Neverwinter.
-    Uma rajada de vento e o sussurro “O Olho é o caminho” ecoam antes de Odisseu tentar se esquivar do grupo.
+                <h4>Prólogo — O Eco de Algo Maior</h4>
+                <p>Após a purificação do Cetro do Guardião e a fuga do labirinto de Neverneath, o grupo vive seus dias no QG em Bairro Alto, presenteado por Dagult Brasanunca.</p>
+                <ul>
+                    <li>Erebor se afasta em estudos arcanos, atormentado por visões sombrias.</li>
+                    <li>Shifu treina em silêncio, ainda com dúvidas sobre Korda.</li>
+                    <li>Thorin parte para o norte, deixando um bilhete e o símbolo de Lathander.</li>
+                    <li>Maku se mantém reservado desde sua ressurreição</li>
+                    <li>Mol’el está estranhamente diferente desde que voltou.</li>
+                    <li>Thoric desapareceu sem deixar rastro, mas há quem diga quem em noite chuvosas, jura ter visto alguém de vestes escarlates entres os becos de Neverwinter.</li>
+                </ul>
+                <p>Lorde Dagul Brasanunca, vai até os heróis mais uma vez em busca de seus serviços, ele oferefce 75po para cada um que patrulhar durante a semana, para garantir que está tudo bem. Erebor e Shifu aceitam.</p>
 
-    No meio da busca, Kanye é subitamente tomado por uma crise, murmurando para “Bruthus” que “agora não é hora”. Antes que possam entender, um grito rompe a noite.
-  </p>
-  <h3>O Chamado de Kevori</h3>
-  <p>
-    O grupo encontra <strong>Kevori</strong> chorando sobre o corpo de seu irmão, Delvin. Um globo ocular ressecado rola de sua mão. <br>
-Mol’el descobre um papel escondido no corpo com a frase <strong><em>“Salve o Imortal”</em></strong> .
-Quando a frase é lida, o olho começa a flutuar e brilhar em verde, apontando como uma bússola para um beco escondido. Atrás de tábuas frágeis, um túnel desce para as <strong>catacumbas</strong>.
-  </p>
-  <br>
-  <h3>ENTRANDO NINHO do Olho Sombrio👁️</h3>
-  <p>
-    <strong><em>N1 – Túnel de Entrada</em></strong><br>
-    <ul>
-      <li>A noite em Neverwinter parecia mais fria quando Kanye Quest invocou Bruthus, e cada aventureiro conjurou feitiços de proteção — <em>Armadura Arcana, Mortalha Espiritual, Luz.</em></li>
-      <li>A descida pelos túneis úmidos levou-os até <em>N2 – Câmara Meio-Desmoronada.</em></li>
-    </ul>
-    <br><br>
+                <h4>Dias de Exploração:</h4>
+                <p><strong>Dia 1 — Sussurros no Mercado Noturno:</strong> Erebor e Shifu patrulham o distrito comercial, ouvindo rumores sobre “olhos que não são de gente” e desaparecimentos. Enquanto isso, Kanye Quest invade o QG procurando Korda Glinstone, mas acaba encontrando apenas Mol’el. A tensão vira bebedeira, e quando Erebor e Shifu retornam, encontram os dois já embriagados, iniciando uma aliança desconfiada.</p>
+                <p><strong>Dia 2 — A Criança que Sabia Demais:</strong> Um menino de rua entrega um desenho com um crânio rodeado por olhos e fala sobre o “Olho que Tudo Vê”. A interação termina de forma estranha, com a criança fugindo e deixando Erebor irritado. Kanye interroga Shifu sobre Korda, mas decide permanecer no grupo para “garantir a verdade”.</p>
+                <p><strong>Dia 3 — A Vela que Não Apaga:</strong> Uma carta urgente leva o grupo ao templo, onde conhecem Deculain Butico II. No altar, uma vela negra com runas desconhecidas não pode ser apagada e provoca visões inquietantes. Ao tentar levá-la a Brasanunca, a vela desaparece no caminho, deixando apenas o cheiro de fumaça fria. Deculain decide se unir ao grupo para investigar.</p>
+                <p><strong>Dia 4 — Sangue na Fonte:</strong> Durante uma ronda, o grupo encontra uma fonte jorrando sangue. Um mendigo murmura palavras sobre o “Olho que não pisca”. Surge Theron Dareth, que já investiga os símbolos e rituais do Olho, juntando-se aos aventureiros.</p>
+                <p><strong>Dia 5 — O Ladrão do Outro Lado:</strong> Invasões misteriosas nas docas não levam ouro ou bens valiosos — apenas comida. O capitão do porto oferece qualquer pagamento no Leviatã Encalhado para quem capturar o ladrão. O grupo encontra Odisseu Yeager, um ladino que não sabe onde é de fato seu mundo, que age sob ordens de um "amigo" que prometeu levá-lo de volta para casa se ele recuperar a Mão Putrificada, cuja localização está perdida, mas cujo destino começa em Neverwinter. Uma rajada de vento e o sussurro “O Olho é o caminho” ecoam antes de Odisseu tentar se esquivar do grupo. No meio da busca, Kanye é subitamente tomado por uma crise, murmurando para “Bruthus” que “agora não é hora”. Antes que possam entender, um grito rompe a noite.</p>
 
-    <strong><em>N2 – Câmara Meio-Desmoronada</em></strong><br>
-    <ul>
-      <li>A água salobra cobria parte do chão e o som de goteiras ecoava. Ao explorarem, <strong>perceberam uma passagem secreta</strong> levando ao <strong>N7</strong>.</li>
-      <li>Erebor, veloz, conjurou <strong>Passo Nebuloso</strong> e foi o primeiro a atravessar, sumindo no corredor. Mol’el, Deculain e Odisseu seguiram logo depois.</li>
-      <li>Do outro lado, Erebor já não estava. Mol’el e Deculain seguiram para o sul <strong>(N9)</strong> em busca dele, enquanto Odisseu foi atraído por uma porta a oeste <strong>(N6)</strong>.</li>
-    </ul>
-    <br><br>
+                <h4>O Chamado de Kevori</h4>
+                <p>O grupo encontra Kevori chorando sobre o corpo de seu irmão, Delvin. Um globo ocular ressecado rola de sua mão. Mol’el descobre um papel escondido no corpo com a frase:</p>
+                <div class="nota-papel">“Salve o Imortal”</div>
+                <p>Quando a frase é lida, o olho começa a flutuar e brilhar em verde, apontando como uma bússola para um beco escondido. Atrás de tábuas frágeis, um túnel desce para as catacumbas.</p>
 
-    <strong><em>N6 – Tumba do Cavaleiro (Odisseu)</em></strong><br>
-    <ul>
-      <li>Odisseu encontrou um sarcófago dourado, seu relevo mostrando duas mulheres sobre um campo e uma cidade. Entre armas e armaduras enferrujadas, apenas <strong>um escudo intacto</strong> resistia ao tempo.</li>
-      <li>Enquanto isso, Erebor explorava o <strong>N9</strong>.</li>
-    </ul>
-    <br><br>
+                <h3 style="text-align: center; color: var(--vecna-green); margin-top: 40px;">ENTRANDO NINHO do Olho Sombrio👁️</h3>
+                
+                <p><strong>N1 – Túnel de Entrada:</strong> A noite em Neverwinter parecia mais fria quando Kanye Quest invocou Bruthus, e cada aventureiro conjurou feitiços de proteção — Armadura Arcana, Mortalha Espiritual, Luz. A descida pelos túneis úmidos levou-os até N2 – Câmara Meio-Desmoronada.</p>
+                <p><strong>N2 – Câmara Meio-Desmoronada:</strong> A água salobra cobria parte do chão e o som de goteiras ecoava. Ao explorarem, perceberam uma passagem secreta levando ao N7. Erebor, veloz, conjurou Passo Nebuloso e foi o primeiro a atravessar, sumindo no corredor. Mol’el, Deculain e Odisseu seguiram logo depois. Do outro lado, Erebor já não estava. Mol’el e Deculain seguiram para o sul (N9) em busca dele, enquanto Odisseu foi atraído por uma porta a oeste (N6).</p>
+                <p><strong>N6 – Tumba do Cavaleiro (Odisseu):</strong> Odisseu encontrou um sarcófago dourado, seu relevo mostrando duas mulheres sobre um campo e uma cidade. Entre armas e armaduras enferrujadas, apenas um escudo intacto resistia ao tempo. Enquanto isso, Erebor explorava o N9.</p>
+                <p><strong>N9 – Câmara do Lodo Cinzento (Erebor, Mol’el, Deculain):</strong> O fedor pútrido denunciou três montes de lodo morto-vivo. Erebor, invisível, aguardou… até que todos perceberam a ameaça ao mesmo tempo. Erebor lançou Bola de Fogo. Mol’el acionou seus engenhos mecânicos. Deculain canalizou sua energia divina. A vitória foi rápida, mas respingos do limo atingiram Erebor, anulando sua invisibilidade.</p>
+                <p><strong>N3 – Túnel Inundado (Shifu, Theron, Kanye/Bruthus):</strong> Enquanto isso, Shifu, Theron e Kanye entravam num túnel com um metro de água. De repente, cinco aquanomolos emergiram. O combate foi caótico: socos, espadas, teias mecânicas e mordidas aquáticas. Bruthus desapareceu após sofrer um golpe crítico.</p>
 
-    <strong><em>N9 – Câmara do Lodo Cinzento (Erebor, Mol’el, Deculain)</em></strong><br>
-    <ul>
-      <li>O fedor pútrido denunciou três montes de <strong>lodo morto-vivo</strong>. Erebor, invisível, aguardou… até que todos perceberam a ameaça ao mesmo tempo.</li>
-      <ul>
-        <li><strong>Erebor</strong> lançou Bola de Fogo</li>
-        <li><strong>Mol’el</strong> acionou seus engenhos mecânicos</li>
-        <li><strong>Deculain</strong> canalizou sua energia divina.</li>
-      </ul>
-      <li>A vitória foi rápida, mas respingos do limo atingiram Erebor, anulando sua invisibilidade.</li>
-    </ul>
-    <br><br>
+                <h4>Encontro – N4: Rotunda Cinerária</h4>
+                <p>Após o combate, Odisseu juntou-se ao grupo de Shifu e Theron. No centro da rotunda, um fantasma sem cabeça pairava sobre um orbe luminescente. Theron ouviu a voz de seu “patrono”: <em>"Quase, meu aprendiz… vá mais ao sul."</em> (Sua mão brilhou com o símbolo antes que sumisse.) Odisseu lembrou-se que fantasmas confusos podem recuperar a memória ao ouvirem seus nomes. Mol’el então chega na Rotunda Cinerária então investigou o N5. Enquanto Odysseu partiu em direção a encontro de Erebor e Deculain.</p>
 
-    <strong><em>N3 – Túnel Inundado (Shifu, Theron, Kanye/Bruthus)</em></strong><br>
-    <ul>
-      <li>Enquanto isso, Shifu, Theron e Kanye entravam num túnel com um metro de água. De repente, <strong>cinco aquanomolos emergiram</strong>.</li>
-      <li>O combate foi caótico: socos, espadas, teias mecânicas e mordidas aquáticas. Bruthus desapareceu após sofrer um golpe crítico.</li>
-    </ul>
-    <br><br>
+                <p><strong>N5 – Tumba do Mago (Mol’el):</strong> Entre pergaminhos e incenso, Mol’el encontrou um medalhão dourado com a inscrição: “Minha querida Chanelle”. Ao pronunciar o nome diante do fantasma no N4, Chanelle recuperou a lucidez e revelou: Um grupo de humanoides profanou a cripta ao sul, infestando-a com zumbis. Ela viu Delvin fugindo, perseguido por um homem de manto cinza. O culto de Vecna “sempre encontra quem ousa olhar demais”.</p>
 
-    <strong><em>Encontro – N4: Rotunda Cinerária</em></strong><br>
-    <ul>
-      <li>Após o combate, Odisseu juntou-se ao grupo de Shifu e Theron. No centro da rotunda, <strong>um fantasma sem cabeça</strong> pairava sobre um orbe luminescente.</li>
-      <li>Theron ouviu a voz de seu “patrono”:
-        <br>
-        <em>"Quase, meu aprendiz… vá mais ao sul."</em>
-        <strong>(Sua mão brilhou com o símbolo antes que sumisse.)</strong>
-      </li>
-      <br>
-      <li>Odisseu lembrou-se que fantasmas confusos podem recuperar a memória ao ouvirem seus nomes.</li>
-      <li>Mol’el então chega na Rotunda Cinerária então investigou o N5. Enquanto Odysseu partiu em direção a encontro de Erebor e Deculain.</li>
-    </ul>
-    <br><br>
+                <p><strong>N11 – Porta do Olho Místico (Erebor, Odisseu, Deculain):</strong> Enquanto isso, Erebor, Odisseu e Deculain avançavam para o oeste. Diante deles, uma porta verde-escura com um crânio esculpido, uma órbita ocular vazia. Erebor colocou o olho ressecado encontrado anteriormente. A porta se abriu com um brilho verde doentio, revelando uma escada que desce ainda mais nas catacumbas.</p>
 
-    <strong><em>N5 – Tumba do Mago (Mol’el)</em></strong><br>
-    <ul>
-      <li>Entre pergaminhos e incenso, Mol’el encontrou um medalhão dourado com a inscrição: <em><strong>“Minha querida Chanelle”.</strong></em>
-      <br>
-      Ao pronunciar o nome diante do fantasma no N4, Chanelle recuperou a lucidez e revelou:
-      <ul>
-        <li>Um grupo de humanoides profanou a cripta ao sul, infestando-a com zumbis.</li>
-        <li>Ela viu <strong>Delvin</strong> fugindo, perseguido por um homem de manto cinza.</li>
-        <li>O culto de Vecna “sempre encontra quem ousa olhar demais”.</li>
-      </ul>
-    </li>
-    </ul>
-    <br><br>
+                <div class="destaque-vermelho" style="text-align: center; margin-top: 30px;">
+                    Situação final!<br>
+                    Grupo 1 (Erebor, Odisseu, Deculain) está diante da escada do N11.<br>
+                    Grupo 2 (Mol’el, Shifu, Theron, Kanye, aranha mecânica) está prestes a entrar no N10.<br>
+                    O culto está próximo… e o Olho observa.
+                </div>
 
-    <strong><em>N11 – Porta do Olho Místico (Erebor, Odisseu, Deculain)</em></strong><br>
-    <ul>
-      <li>Enquanto isso, Erebor, Odisseu e Deculain avançavam para o oeste. Diante deles, uma porta verde-escura com um crânio esculpido, uma órbita ocular vazia.</li>
-      <li>Erebor colocou o <strong>olho ressecado</strong> encontrado anteriormente. A porta se abriu com um brilho verde doentio, revelando <strong>uma escada que desce ainda mais nas catacumbas</strong>.</li>
-    </ul>
-    <br>
-    <h3><em>Situação final!</em></h3>
-    <ul>
-      <li><strong>Grupo 1</strong> <em>(Erebor, Odisseu, Deculain)</em> está diante da escada do N11.</li>
-      <li><strong>Grupo 2</strong> <em>(Mol’el, Shifu, Theron, Kanye, aranha mecânica)</em> está prestes a entrar no N10.</li>
-    </ul>
-    <h4 style="text-align: center;">O culto está próximo… e o Olho observa.</h4>
-  </p>
-          <p style="text-align: center;"><strong>(Continua)</strong></p>
-          <br>
-          <p>Acesse o link para assistir os video da sessão da aventura!! <a href="https://youtube.com/live/--7Qmj5sWrk?feature=share" target="_blank">Vecna: Ninho do Olho Sombrio(Sessão 1) - D&D 5e - One Shot YOUTUBE</a></p>
-      </p>
-  </div>
-</div>
+                <a href="https://youtube.com/live/--7Qmj5sWrk?feature=share" target="_blank" class="youtube-btn">ASSISTIR SESSÃO 1 NO YOUTUBE</a>
+            </div>
+        </div>
 
-<div id="vecna-oneshot-sessao2" class="sessao">
-  <h4 class="titulo-sessao">Sessão 2 – A Cripta dos Segredos Roubados</h4>
-  <div class="conteudo-sessao">
-    <p style="text-align: center;">
-    📍 Local: Neverwinter, Quatro semanas após os eventos em Neverneath.
-  </p>
-    <p>Após os eventos que os levaram às catacumbas de Neverwinter, os heróis se deparam com a primeira grande câmara do esconderijo do culto: uma cripta profanada, guardada por mortos-vivos e marcada por um santuário corrompido. <strong>O objetivo é claro:</strong> resgatar os segredos roubados por este culto e descobrir a verdade por trás da morte de Delvin, mas os aventureiros logo descobririam que as sombras do lugar ecoavam os conflitos dentro de seus próprios corações.
-    <br><br>
-    Ao adentrarem a cripta (N10), os heróis encontram-se diante de oito zumbis que vagam em silêncio, seus corpos em decomposição iluminados pelas tochas trêmulas. No fundo da sala, um santuário profanado de Oghma, deus do conhecimento, exibe apenas o relevo de um pergaminho
-    <br><br>
-    Tentando evitar o confronto direto, Theron conjura suas Mãos Mágicas para alcançar o pergaminho. Contudo, um dos mortos-vivos reage, golpeando a mão espectral e desfazendo-a. Persistente, após algumas tentativas, ele finalmente consegue segurar o objeto. O pergaminho revela o título: “Possíveis Aliados e Inimigos” escrito em infernal, seguido de uma lista de nomes — Mol’el, Kamar, Maltraxis, Chico Butico, Ervan Sounfallen, Korda Glinstone e outros. Mas um nome em especial se destaca no final, como uma ferida aberta na página:
-    <strong><em>Strahd von Zarovich.</em></strong>
-    <br><br>
-    Quando Theron compartilha o achado com seus companheiros, o eco de Kanye, Bruthus, aproxima-se de um dos zumbis. A mera presença desperta a fúria da criatura, que ataca sem hesitar — e assim, o combate tem início.
-    <br><br>
-    Após derrotarem os zumbis, os heróis se aproximam do santuário. Depois de limparem a sujeira, o clérigo canaliza sua energia divina, gastando um espaço de magia para purificar o local. Uma luz branca irradia do altar, mas é imediatamente confrontada por uma luz roxa e doentia que emana de um símbolo de olho no centro, iniciando uma batalha de energias de forças maiores.
-    <br><br>
-    Durante a disputa, a mão de Theron começa a brilhar com o mesmo símbolo do olho, uma manifestação de seu pacto secreto. Em um ato chocante de traição ou burrice, Erebor canaliza usa sua própria magia arcana para fortalecer a luz roxa, auxiliando a entidade sombria. Theron, tocado pelo conflito, tem uma visão de Neverwinter em chamas e vê Mol'el envolto por uma sombra sinistra. Após retornar a sí mesmo, Theron estende sua mão esquerda com o símbolo "estranho" e uma aura mágica roxa toma conta dele e vai em direção a o símbolo do olho gravado no chão.
-    <br><br>
-    Com a ajuda de Erebor e Theron, a luz roxa vence a branca, e o clérigo sente sua conexão divina enfraquecer, como se seu deus não pudesse mais alcançá-lo naquele lugar. A desconfiança se instala no grupo enquanto eles seguem para as profundezas, agora cientes de que pode haver um traidor entre eles.
-    <br><br>
-    Após o confronto e os acontecimentos pertubares que ocorreram no antigo altar de Oghma agora profanado pelo culto, os heróis seguem pelo corredor a leste da cripta — o mesmo por onde haviam passado Erebor, Deculain e Odisseu. A imponente porta dupla ainda permanece aberta, marcada pela profana magia que a destrancou quando Erebor depositou o olho ressecado de Delvin na cavidade vazia da escultura.
-    <br><br>
-    A escadaria diante deles mergulha nas trevas, cada degrau respirando um frio antinatural, como se o próprio ar quisesse repelir os vivos. A sensação de serem observados cresce a cada passo, até que, ao atingirem o fundo, uma força invisível toma conta da sala.
-    <br><br>
-    Um estalo seco ecoa no vazio, seguido por uma onda de energia necromântica que explode em verde doentio. O chão se desfaz em runas brilhantes, e em um instante de dor e vertigem, os aventureiros são tragados para longe uns dos outros.
-    <br><br>
-    Quando a luz cessa, cada um desperta ao lado de apenas um companheiro. Separados por uma magia cruel e calculada, agora formam três duplas distintas, cada qual aprisionada em uma sala diferente — um labirinto de sombras preparado para testar não apenas suas forças, mas também sua confiança
-    <br><br>
-    <ul>
-      <li><strong>A Biblioteca (N14):</strong> Kanye Quest e o clérigo Deculain adentram uma sala silenciosa, impregnada com o odor metálico de sangue seco e pergaminhos queimados. No centro, uma mesa coberta de papéis espalhados e frascos quebrados revela os segredos do líder do culto: <strong><em>Kamar</em></strong>
-      <br><br>
-      Deculain ergue um dos manuscritos, a voz embargada de horror ao ler:
-      <br>
-      <em>> “A alma não é apenas essência… é também chave. Com ela, podemos abrir as portas do que está oculto.”</em>
-      <br><br>
-      As páginas falam de rituais perversos, experimentos para arrancar segredos de espíritos atormentados, forçando-os a revelar memórias que deveriam ter morrido junto com seus donos. Cada palavra parecia ressoar como um sussurro de Vecna.
-      <br><br>
-      Enquanto isso, Kanye força a abertura de uma caixa metálica ornamentada com símbolos necromânticos. Ao destravá-la, uma explosão necrótica o atinge em cheio, queimando sua carne com energia pútrida. O guerreiro range os dentes, suportando a dor, e descobre no interior da caixa <strong>poções de cura, ironicamente guardadas em meio à morte.</strong>
-      <br><br>
-      Já Deculain revira uma escrivaninha parcialmente carbonizada. Entre cinzas, encontra um fragmento de pergaminho chamuscado, onde apenas algumas letras ainda resistiam:
-      <br>
-      <em>> “En..............e Zarovich Urgente.”</em>
-      <br><br>
-      Confuso, o clérigo mostra a Kanye. O guerreiro, com olhar aguçado, recompõe mentalmente as letras faltantes e lê em voz baixa, quase como se revelasse algo proibido:
-      <br>
-      <em>>“Encontre Zarovich. Urgente.”</em>
-      <br><br>
-      O nome ecoa no silêncio da cripta como um trovão abafado. <strong>Zarovich</strong>. Mas quem era esse? O que teria a ver com as catacumbas? E… estaria este nome ligado a algo ainda maior, algo oculto por trás de toda aquela rede de segredos e cadáveres?
-      <br><br>
-      A respiração dos dois se torna pesada. Eles trocam um olhar carregado de desconfiança e medo — não apenas pela revelação, mas pela sensação incômoda de que alguém, ou algo, estava ouvindo.
-      <br><br>
-      Sem mais a descobrir, e carregando o peso da descoberta, ambos se preparam. O corredor ao sul, pouco iluminado e sufocante, os aguarda. Seus passos ecoam nas pedras frias, levando-os cada vez mais fundo na garganta escura do Ninho do Olho Sombrio</li>
-      <br><br>
-      <li>
-      <strong>Os Alojamentos (N13):</strong> Theron Dareth e Mol’el Stars avançam pelas sombras e encontram sete cultistas adormecidos em seus leitos improvisados, o ar impregnado pelo odor de incenso queimado e carne ressecada. As paredes murmuram cânticos inaudíveis, como se a própria pedra guardasse segredos profanos.
-      <br><br>
-      Mol’el, com sua engenhosidade, ergue a mão e conjura Pirotecnia, fazendo com que uma fumaça densa e sufocante se espalhe pela sala, cobrindo seus movimentos. O silêncio é cortado apenas por um sussurro grave e perturbador: um velho cultista desperto, ajoelhado em oração, murmurava repetidamente o nome de Vecna, seguido de palavras que nem mesmo os vivos deveriam compreender.
-      <br><br>
-      Ao sentirem que a passagem estava livre, os dois heróis deslizam entre a névoa... mas passam perto demais. O velho ergue o rosto cadavérico e, com olhos esbranquiçados que brilham em verde doentio, grita com uma voz que ecoa como lâmina:
-      <br><br>
-      <em><strong>“Intrusos!”</strong></em>
-      <br><br>
-      Num só instante, os cultistas despertam em sobressalto. Os sete se erguem cambaleantes, e mais adiante outros já correm para reforçar. Formam uma barreira de corpos e fanatismo diante de Theron e Mol’el.
-      <br><br>
-      O velho, no entanto, ergue as mãos trêmulas e murmura, revelando sua fé distorcida:
-      <br>
-      <em>> “Vocês o chamam de deus-lich… nós o chamamos de O Sussurrado.  Ele está em toda parte… atrás dos olhos fechados, entre as palavras que não dizemos. Vecna nos escolheu. E um dia, tudo o que escondem será revelado… e isso o alimentará.”</em>
-      <br><br>
-      O peso daquelas palavras faz a sala estremecer. Mas Theron, com a voz carregada de ameaça, e Mol’el, com a frieza de um artífice sombrio, intimidam os cultistas. Um a um, os fanáticos abaixam as armas, rendendo-se ao medo.
-      <br><br>
-      Todos, exceto o velho.
-      <br><br>
-      Com um grito gutural, ele arranca uma adaga negra das vestes e avança sobre Theron, perfurando-lhe a pele com veneno necromântico que queima como gelo nas veias. Mol’el não hesita. Seu olhar gélido se fixa no velho, e num movimento calculado ele ativa seus dispositivos mortais. As engrenagens ecoam um zunido metálico antes de se fecharem sobre o corpo frágil do cultist. 
-      <br><br>
-      O impacto é brutal. Ossos quebram, a armadura se despedaça, e o corpo do velho é reduzido a um amontoado de carne e ferro retorcido. O silêncio volta à sala, restando apenas o cheiro metálico do sangue e os fragmentos espalhados pelo chão
-      <br><br>
-      Cercados pelo grupo, os cultistas tremem sob a penumbra sufocante da cripta. O cheiro de suor e medo se mistura ao incenso queimado. Um deles, com os olhos fundos e a voz entrecortada, não suporta a pressão do silêncio. Olhando de lado, como se esperasse que algo surgisse das sombras para puni-lo, ele começa a falar:
-      <br>
-      <em>>“Kamar… ele não é apenas nosso líder… Ele é o único que ouviu Vecna de verdade. Está na câmara de rituais… preparando o experimento final… Um feitiço capaz de arrancar os segredos da alma como se fossem dentes… e transformá-los em poder puro. Vocês não entendem… quanto mais profundo o segredo, mais forte o sussurro que o alimenta…”</em>
-      <br><br>
-      O cultista ofega, o terror tomando conta de seus olhos. Sua devoção parece vacilar, esmagada pela lembrança de algo ainda pior. A voz dele se reduz a um sussurro áspero, como se temesse que até as paredes pudessem escutar:
-      <br>
-      <em>>“Havia um homem… Delvin. Um espião. Ele descobriu demais. Kamar ordenou que fosse expulso como exemplo… mas ele não foi longe. Encontraram-no na superfície… e terminaram o serviço.”
-      <br><br>
-      O silêncio pesa. O cultista abaixa a cabeça, as palavras agora carregadas de uma mistura de culpa e reverência.
-      <br>
-      <em>>“Ninguém trai o Sussurrado… e vive para contar.”</em>
-      <br><br>Um arrepio gélido percorre a espinha dos heróis. As peças começam a se encaixar — o olho ressecado, o jovem fugindo pelas catacumbas, o corpo encontrado em Neverwinter. A verdade é mais terrível do que imaginavam: Delvin não apenas sabia demais… ele tinha visto demais.
-      </li>
-      <br><br>
-      <li><strong>O Santuário (N12):</strong> Erebor e Odisseu emergem em um santuário ancestral, o ar impregnado de mofo e de um silêncio pesado demais para ser natural. No centro da sala, uma escultura colossal se ergue: uma mão de pedra erguida, com um olho esculpido na palma, que parece observá-los com um brilho invisível.
-      <br><br>
-      Ambos hesitam diante da visão. Odisseu encara a estátua, desconfiado, enquanto Erebor, tomado por uma onda de lembranças, sente sua mente ser inundada por fragmentos de conhecimento: contos infantis proibidos, pergaminhos antigos, manuscritos perdidos e ecos de lendas arcanas.
-      <br><br>
-      Seu coração acelera quando todas as peças se encaixam. O mago ergue os olhos para o monumento e, com a voz pesada de quem confirma um medo antigo, revela:
-      <br>
-      <em>>“Este lugar… é dedicado a Vecna. O deus-lich. Senhor dos segredos, dos olhos que tudo veem… e dos sussurros que nunca deveriam ser ouvidos.”</em>
-      <br><br>
-      As paredes parecem tremer ao som de seu nome. Por um instante, o próprio ar gela, como se o santuário tivesse tomado consciência de sua revelação.
-      <br><br>
-      Odisseu solta um riso nervoso, mas a tensão em seu olhar denuncia que até ele, o ladino desacreditado, sente o peso da verdade. Erebor, firme, guarda para si a gravidade do que descobriu: ali, cada pedra, cada sombra, respirava a presença de Vecna.
-      <br><br>
-      Sem tempo para hesitação, os dois decidem seguir pela passagem à esquerda, os passos ecoando pelo santuário profano. O destino os conduz para o mesmo caminho onde Mol’el Stars e Theron Dareth já avançavam… como se fios invisíveis, puxados por olhos que jamais piscam, estivessem costurando o encontro.
-      <br><br>
-      Todos os caminhos levam à Câmara Ritualística (N15), onde os heróis finalmente se reencontram. Lá, eles testemunham o líder, Kamar, extraindo as almas de dois cultistas para criar duas entidades sombrias. O grupo lança um ataque surpresa, com Erebor iniciando com uma Bola de Fogo.
-</li>
-    </ul>
-    <br><br>
-    <h3>A Queda de Kamar — O Fim da Batalha</h3>
-    <p>No caos que se segue, Odysseu tenta se aproximar furtivamente de Kamar, mas é repelido por uma força invisível e cai inconsciente. Theron ataca o líder, mas descobre que ele está protegido por uma barreira mágica que reflete o dano, ferindo o próprio paladino.
-      <br><br>
-    O grupo percebe que a proteção de Kamar vem de quatro pilares rúnicos na sala e foca seus ataques para destruí-los. À medida que os pilares são quebrados, o teto da caverna começa a desabar, forçando os heróis a se esquivarem dos escombros enquanto lutam.
-      <br><br>
-    As defesas de Kamar estavam em frangalhos. O sangue escorria de seus lábios, seus olhos ainda ardiam em verde pútrido, e mesmo assim ele se mantinha de pé, sustentado apenas pela devoção doentia ao Sussurrado.
-      <br><br>
-    Nesse instante, Theron ergueu a mão, o símbolo de seu patrono queimando como brasa na pele. Uma torrente de poder ancestral rasgou os céus invisíveis da cripta, e um raio divino despencou em fúria, esmagando os cultistas remanescentes. Os gritos ecoaram e cessaram… restando apenas Kamar, sozinho, cambaleante, com os olhos arregalados de terror.
-      <br><br>
-    <strong>Foi então que Mol’el Stars decidiu agir.</strong>
-    <br>
-    Num ato que os bardos cantariam por eras, o pequeno gnomo deixou de ser pequeno. Suas runas arcanas explodiram em luz rubra, sua carne e ossos se expandindo em proporções titânicas. <strong>De 1,15m e 45kg</strong> , ele se tornou uma muralha viva de <strong>3 metros e mais de meio tonelada</strong>. <em>Sua armadura, embebida por engenharias arcanas, incendiou-se, transformando-o em um colosso flamejante.</em>
-    <br><br>
-    E no auge de sua insanidade ou heroísmo, ele abriu um vórtice reluzente.
-    <br>
-    O ar vibrou. A gravidade se dobrou. <em>Num clarão, o gigante gnomo surgiu no ponto mais alto da cripta, pairando por um segundo como a própria sentença de Kamar </em>
-    <br><br>
-    Com um rugido metálico que sacudiu as pedras, Mol’el despencou como um míssil vivo, uma estrela flamejante de carne e aço. O impacto foi ensurdecedor. O chão tremeu como se os alicerces da própria cripta desabassem.
-    <br><br>
-    O corpo de Kamar não resistiu: seus ossos se estilhaçaram, sua carne foi consumida em brasas, e parte dele virou apenas cinzas levadas pelo vento da magia.
-    <br><br>
-    <em>Silêncio.</em>
-    <br>
-    <em>Somente o fogo ainda crepitava sobre a armadura colossal de Mol’el Stars.</em>
-    <br><br>
-    <em>E assim, o líder do culto caiu.</em>
-    <br>
-    <em>Não por espada, nem por feitiço… mas pelo sacrifício insano de um gnomo que ousou se tornar meteoro.</em>
-    <br><br>
-    <em>O combate chegava ao fim, mas aquela visão jamais seria esquecida.</em>
-    <br>
-    Para sempre, os sussurros diriam:
-    <br>
-    <em><strong>>“E naquele dia, a estrela caiu sobre Kamar.”</strong></em>
-    </p>
-    <br><br>
-    <h3>A Primeira Aparição de Vecna</h3>
-    <p>
-      Os heróis correram até Mol’el. Ele havia voltado ao seu tamanho normal, com os ossos quebrados, mas vivo salvo pela proteção de sua armadura.
-      <br><br>
-      Antes que pudessem descansar, um sibilo rúnico percorreu a sala. As runas piscaram e se apagaram, e das esculturas sombrias uma fumaça pútrida se ergueu, formando o crânio emaciado de Vecna, com um único olho verde brilhante.
-      <br><br>
-     <strong>A voz de Vecna ecoou como faca em ossos:</strong>
-     <br>
-     <em>>“Boas notícias, Zalryr. Embora seus esforços tenham sido… decepcionantes, trouxeram-me algo mais valioso. Sim… pontos de interesse....Vocês.”</em>
-     <br><br>
-     <strong>A aparição percorreu o olhar de cada um dos heróis, penetrando suas almas.</strong>
-     <br>
-     <em>> “Podemos nos encontrar novamente… mas até lá, saibam: estou de olho em vocês.”</em>
-     <br><br>
-     A figura explodiu em sombras, lançando um grito sussurrado que se arrastou pelos túneis antes de desaparecer.
-    <br>
-    E cada herói sentiu, gravado em sua carne ou em sua mente, a marca de uma dádiva sombria — um eco de Vecna que nunca mais poderia ser ignorado (o Encantamento da Mão Rastejante se o resultado for um número ímpar, ou o Encantamento do Olho Místico se o resultado for um número par).
-    </p>
-    <br><br>
-    <h3>O Retorno à Superfície</h3>
-    <p>Exaustos, os heróis retornaram à superfície, trazendo prisioneiros, feridas e segredos.
-      <br><br>
-    No salão de Dagult Brasanunca, a tensão era palpável. O governante ouviu tudo em silêncio, até se levantar e fitá-los com uma seriedade quase paternal.
-    <br><br>
-    <strong>Dagult Brasanunca:</strong>
-    <br>
-    <em>>“Não imaginava que as raízes da corrupção chegavam tão fundo. Vecna… antigo demais para os livros, perigoso demais para ser esquecido. E agora… interessado em vocês.”</em>
-    <br><br>
-    <strong>Ele caminhou até a janela, olhando a cidade aparentemente em paz.</strong>
-    <br>
-    <em>> “Vocês não são mais aventureiros. São alvos.”</em>
-    <br><br>
-    Voltando-se a eles, entregou recompensas em ouro e, em seguida, e mostrou um símbolo de bronze em forma de olho fechado.
-    <br>
-    <em>> “Esta é a insígnia dos Agentes da Lâmina Escarlate. Se aceitarem, há mais missões esperando. Mais segredos a serem desenterrados. Mas saibam… a escolha é de vocês. Podem ir viver em paz. Ou podem ficar, e encarar o que está por vir.”</em>
-    </p>
-    </p>
-          <p style="text-align: center;"><strong>(Continua)</strong></p>
-          <br>
-          <p>Acesse o link para assistir os video da (Sessão 2 - Parte 1) da aventura!! <a href="https://youtube.com/live/SEKGve3GgSk?feature=share" target="_blank">Vecna: Ninho do Olho Sombrio(Sessão 2 - Parte 1) - D&D 5e - One Shot YOUTUBE</a></p>
-      
-          <p>Acesse o link para assistir os video da (Sessão 2 - Parte 2) da aventura!! <a href="https://youtube.com/live/xwyKI_HV_2U?feature=share" target="_blank">Vecna: Ninho do Olho Sombrio(Sessão 2 - Parte 2) - D&D 5e - One Shot YOUTUBE</a></p>
-      </p>
-  </div>
-</div>
+        <div class="sessao-box active">
+            <div class="sessao-trigger">
+                <h3>Sessão 2 – A Cripta dos Segredos Roubados</h3>
+                <span class="sessao-icon">👁</span>
+            </div>
+            <div class="sessao-content">
+                <p>📍 Local: Neverwinter, Quatro semanas após os eventos em Neverneath.</p>
+                <p>Após os eventos que os levaram às catacumbas de Neverwinter, os heróis se deparam com a primeira grande câmara do esconderijo do culto: uma cripta profanada, guardada por mortos-vivos e marcada por um santuário corrompido. <strong>O objetivo é claro:</strong> resgatar os segredos roubados por este culto e descobrir a verdade por trás da morte de Delvin, mas os aventureiros logo descobririam que as sombras do lugar ecoavam os conflitos dentro de seus próprios corações.</p>
 
-<div id="vecna-oneshot-epilogo" class="sessao">
-    <h4 class="titulo-sessao">Epílogo</h4>
-    <div class="conteudo-sessao">
-    <h1>Epílogo: Onde as Sombras Têm Nomes</h1>
-    <p>
-    A quietude no Quartel-General dos Heróis é uma mentira. É um silêncio tenso, pesado, que se acumula nos cantos escuros da nova fortaleza. Lá dentro, as velas tremulam em uníssono, suas chamas dançando contra uma brisa que não existe, como se respondessem a uma respiração invisível que percorre os corredores. A vitória nas catacumbas não trouxe paz, apenas a certeza de que a escuridão que enfrentaram era apenas um dedo da mão monstruosa que agora se estendia sobre Neverwinter.
-    <br><br>
-    Cada herói carrega seu próprio fragmento dessa escuridão. Para <strong>Erebor</strong>, o tormento é físico; seu olho, agora curado, não vê apenas o mundo, mas sente o abismo. A marca em sua pele queima, não com dor, mas com uma consciência profana — a sensação inequívoca de um olho ancestral que o observa de volta de dentro de sua própria carne.
-    <br><br>
-    Para <strong>Shifu</strong>, é um sussurro do passado. Sob seu travesseiro, um bilhete sem remetente, selado com o símbolo de uma harpa e uma lua crescente — um emblema que ele conhece bem demais, que sussurra promessas e ameaças de segredos enterrados na prisão Fim da Farra.
-    <br><br>
-    A fé de <strong>Deculain</strong> é profanada. Em meio aos salmos sagrados de Lathander, páginas heréticas foram inseridas, como um veneno diluído em água benta. As palavras de luz agora se misturam a uma doutrina de sombras, um sacrilégio que zomba de sua devoção.
-    <br><br>
-    <strong>Mol’el</strong> tornou-se um portal. Sozinho, diante de uma parede fria, um sorriso gélido toca seus lábios enquanto ele sussurra em uma língua morta que se contorce em sua boca, uma melodia gutural que ele jura não conhecer, mas que seu novo mestre conhece intimamente.
-    <br><br>
-    As dúvidas corroem a alma de <strong>Theron</strong>. A marca em sua mão pulsa com um poder que ele não compreende, um símbolo de um pacto cujos termos nunca foram claros. Ele olha para ela e questiona o caminho que trilha: é um campeão da luz ou um peão de algo que se esconde por trás dela?
-    <br><br>
-    Enquanto isso, a ação é o único refúgio. <strong>Kanye Quest</strong> treina sem descanso, seu corpo e seu eco movendo-se em uma dança de combate furiosa, forjando-se em uma arma para a guerra que ele sente se aproximando. <strong>Odysseu</strong> se perde em mapas e cifras, caçando a promessa de um deus traiçoeiro: a Mão Putrificada, uma chave para um lar que talvez não exista mais. E <strong>Mako</strong>, tocado pelo silêncio do outro lado, busca no sono uma paz que não encontra, seu espírito distante, ainda vagando na fronteira entre a vida e a morte.
-    <br><br>
-    Então, rompendo o santuário de cada mente, um fio de gelo percorre a consciência de todos, simultaneamente. Uma voz, antiga e fria como a morte de uma estrela, surge no epicentro de seus seres.
-    <br>
-    <em><strong>> “Até onde você iria… para manter seus segredos?”</strong></em>
-    <br><br>
-    <em>Antes que o eco mental pudesse se dissipar, o mundo físico responde. Do lado de fora, a noite é estilhaçada por um rugido que não pertence a nenhuma criatura conhecida. É um som que abala os alicerces da fortaleza, que racha as vidraças e apaga as velas. Um som de algo ancestral, faminto e imenso, que acaba de despertar.</em></p>
-    <p style="text-align: center;"><strong>(Continua)</strong></p>
-    </div>
-</div>
+                <p>Ao adentrarem a cripta (N10), os heróis encontram-se diante de oito zumbis que vagam em silêncio, seus corpos em decomposição iluminados pelas tochas trêmulas. No fundo da sala, um santuário profanado de Oghma, deus do conhecimento, exibe apenas o relevo de um pergaminho</p>
 
-<div id="vecna-oneshot-imagens" class="sessao">
-    <h4 class="titulo-sessao">Imagens</h4>
-    <div class="conteudo-sessao">
-    <h1>Imagens relacionadas a Aventura</h1>
-  <p>
-    <div class="galeria">
-  <a href="#img1"><img src="Imagens/capaaventuravecna.jfif" alt="Capa" class="thumb"></a>
-  <a href="#img2"><img src="Imagens/mapaneverwinter.jfif" alt="Mapa" class="thumb"></a>
-  <a href="#img3"><img src="Imagens/Pontos de Interesse da cidade (EM PORTUGUÊS).jfif" alt="pontos-interesse" class="thumb"></a>
-</div>
+                <p>Tentando evitar o confronto direto, Theron conjura suas Mãos Mágicas para alcançar o pergaminho. Contudo, um dos mortos-vivos reage, golpeando a mão espectral e desfazendo-a. Persistente, após algumas tentativas, ele finalmente consegue segurar o objeto. O pergaminho revela o título: “Possíveis Aliados e Inimigos” escrito em infernal, seguido de uma lista de nomes — Mol’el, Kamar, Maltraxis, Chico Butico, Ervan Sounfallen, Korda Glinstone e outros. Mas um nome em especial se destaca no final, como uma ferida aberta na página: <strong class="destaque-vermelho">Strahd von Zarovich.</strong></p>
 
-<div id="img1" class="modal" onclick="location.href='#'">
-  <img src="Imagens/capaaventuravecna.jfif" alt="Capa Grande">
-</div>
+                <p>Quando Theron compartilha o achado com seus companheiros, o eco de Kanye, Bruthus, aproxima-se de um dos zumbis. A mera presença desperta a fúria da criatura, que ataca sem hesitar — e assim, o combate tem início.</p>
 
-<div id="img2" class="modal" onclick="location.href='#'">
-  <img src="Imagens/mapaneverwinter.jfif" alt="Mapa Grande">
-</div>
+                <p>Após derrotarem os zumbis, os heróis se aproximam do santuário. Depois de limparem a sujeira, o clérigo canaliza sua energia divina, gastando um espaço de magia para purificar o local. Uma luz branca irradia do altar, mas é imediatamente confrontada por uma luz roxa e doentia que emana de um símbolo de olho no centro, iniciando uma batalha de energias de forças maiores.</p>
 
-<div id="img3" class="modal" onclick="location.href='#'">
-  <img src="Imagens/Pontos de Interesse da cidade (EM PORTUGUÊS).jfif" alt="Pontos-interesse-grande">
-</div>
-  </p>
-  </div>
-</div>
+                <p>Durante a disputa, a mão de Theron começa a brilhar com o mesmo símbolo do olho, uma manifestação de seu pacto secreto. Em um ato chocante de traição ou burrice, Erebor canaliza usa sua própria magia arcana para fortalecer a luz roxa, auxiliando a entidade sombria. Theron, tocado pelo conflito, tem uma visão de Neverwinter em chamas e vê Mol'el envolto por uma sombra sinistra. Após retornar a sí mesmo, Theron estende sua mão esquerda com o símbolo "estranho" e uma aura mágica roxa toma conta dele e vai em direção a o símbolo do olho gravado no chão.</p>
+
+                <p>Com a ajuda de Erebor e Theron, a luz roxa vence a branca, e o clérigo sente sua conexão divina enfraquecer, como se seu deus não pudesse mais alcançá-lo naquele lugar. A desconfiança se instala no grupo enquanto eles seguem para as profundezas, agora cientes de que pode haver um traidor entre eles.</p>
+
+                <p>Após o confronto e os acontecimentos pertubares que ocorreram no antigo altar de Oghma agora profanado pelo culto, os heróis seguem pelo corredor a leste da cripta — o mesmo por onde haviam passado Erebor, Deculain e Odisseu. A imponente porta dupla ainda permanece aberta, marcada pela profana magia que a destrancou quando Erebor depositou o olho ressecado de Delvin na cavidade vazia da escultura.</p>
+
+                <p>A escadaria diante deles mergulha nas trevas, cada degrau respirando um frio antinatural, como se o próprio ar quisesse repelir os vivos. A sensação de serem observados cresce a cada passo, até que, ao atingirem o fundo, uma força invisível toma conta da sala.</p>
+
+                <p>Um estalo seco ecoa no vazio, seguido por uma onda de energia necromântica que explode em verde doentio. O chão se desfaz em runas brilhantes, e em um instante de dor e vertigem, os aventureiros são tragados para longe uns dos outros.</p>
+
+                <p>Quando a luz cessa, cada um desperta ao lado de apenas um companheiro. Separados por uma magia cruel e calculada, agora formam três duplas distintas, cada qual aprisionada em uma sala diferente — um labirinto de sombras preparado para testar não apenas suas forças, mas também sua confiança</p>
+
+                <p><strong>A Biblioteca (N14):</strong> Kanye Quest e o clérigo Deculain adentram uma sala silenciosa, impregnada com o odor metálico de sangue seco e pergaminhos queimados. No centro, uma mesa coberta de papéis espalhados e frascos quebrados revela os segredos do líder do culto: <strong>Kamar</strong></p>
+
+                <div class="nota-papel">“A alma não é apenas essência… é também chave. Com ela, podemos abrir as portas do que está oculto.”</div>
+
+                <p>As páginas falam de rituais perversos, experimentos para arrancar segredos de espíritos atormentados, forçando-os a revelar memórias que deveriam ter morrido junto com seus donos. Cada palavra parecia ressoar como um sussurro de Vecna. Enquanto isso, Kanye força a abertura de uma caixa metálica ornamentada com símbolos necromânticos. Ao destravá-la, uma explosão necrótica o atinge em cheio, queimando sua carne com energia pútrida. O guerreiro range os dentes, suportando a dor, e descobre no interior da caixa poções de cura, ironicamente guardadas em meio à morte.</p>
+
+                <p>Já Deculain revira uma escrivaninha parcialmente carbonizada. Entre cinzas, encontra um fragmento de pergaminho chamuscado, onde apenas algumas letras ainda resistiam:</p>
+                <div class="nota-papel">“En..............e Zarovich Urgente.”</div>
+
+                <p>Confuso, o clérigo mostra a Kanye. O guerreiro, com olhar aguçado, recompõe mentalmente as letras faltantes e lê em voz baixa, quase como se revelasse algo proibido:</p>
+                <div class="nota-papel">“Encontre Zarovich. Urgente.”</div>
+
+                <p>O nome ecoa no silêncio da cripta como um trovão abafado. Zarovich. Mas quem era esse? O que teria a ver com as catacumbas? E… estaria este nome ligado a algo ainda maior, algo oculto por trás de toda aquela rede de segredos e cadáveres?</p>
+                <p>A respiração dos dois se torna pesada. Eles trocam um olhar carregado de desconfiança e medo — não apenas pela revelação, mas pela sensação incômoda de que alguém, ou algo, estava ouvindo.</p>
+                <p>Sem mais a descobrir, e carregando o peso da descoberta, ambos se preparam. O corredor ao sul, pouco iluminado e sufocante, os aguarda. Seus passos ecoam nas pedras frias, levando-os cada vez mais fundo na garganta escura do Ninho do Olho Sombrio</p>
+
+                <p><strong>Os Alojamentos (N13):</strong> Theron Dareth e Mol’el Stars avançam pelas sombras e encontram sete cultistas adormecidos em seus leitos improvisados, o ar impregnado pelo odor de incenso queimado e carne ressecada. As paredes murmuram cânticos inaudíveis, como se a própria pedra guardasse segredos profanos.</p>
+                <p>Mol’el, com sua engenhosidade, ergue a mão e conjura Pirotecnia, fazendo com que uma fumaça densa e sufocante se espalhe pela sala, cobrindo seus movimentos. O silêncio é cortado apenas por um sussurro grave e perturbador: um velho cultista desperto, ajoelhado em oração, murmurava repetidamente o nome de Vecna, seguido de palavras que nem mesmo os vivos deveriam compreender.</p>
+                <p>Ao sentirem que a passagem estava livre, os dois heróis deslizam entre a névoa... mas passam perto demais. O velho ergue o rosto cadavérico e, com olhos esbranquiçados que brilham em verde doentio, grita com uma voz que ecoa como lâmina:</p>
+                
+                <h4 style="text-align: center;">“Intrusos!”</h4>
+
+                <p>Num só instante, os cultistas despertam em sobressalto. Os sete se erguem cambaleantes, e mais adiante outros já correm para reforçar. Formam uma barreira de corpos e fanatismo diante de Theron e Mol’el.</p>
+                <p>O velho, no entanto, ergue as mãos trêmulas e murmura, revelando sua fé distorcida:</p>
+                <p><em>> “Vocês o chamam de deus-lich… nós o chamamos de O Sussurrado. Ele está em toda parte… atrás dos olhos fechados, entre as palavras que não dizemos. Vecna nos escolheu. E um dia, tudo o que escondem será revelado… e isso o alimentará.”</em></p>
+                <p>O peso daquelas palavras faz a sala estremecer. Mas Theron, com a voz carregada de ameaça, e Mol’el, com a frieza de um artífice sombrio, intimidam os cultistas. Um a um, os fanáticos abaixam as armas, rendendo-se ao medo.</p>
+                <p>Todos, exceto o velho.</p>
+                <p>Com um grito gutural, ele arranca uma adaga negra das vestes e avança sobre Theron, perfurando-lhe a pele com veneno necromântico que queima como gelo nas veias. Mol’el não hesita. Seu olhar gélido se fixa no velho, e num movimento calculado ele ativa seus dispositivos mortais. As engrenagens ecoam um zunido metálico antes de se fecharem sobre o corpo frágil do cultist.</p>
+                <p>O impacto é brutal. Ossos quebram, a armadura se despedaça, e o corpo do velho é reduzido a um amontoado de carne e ferro retorcido. O silêncio volta à sala, restando apenas o cheiro metálico do sangue e os fragmentos espalhados pelo chão</p>
+                <p>Cercados pelo grupo, os cultistas tremem sob a penumbra sufocante da cripta. O cheiro de suor e medo se mistura ao incenso queimado. Um deles, com os olhos fundos e a voz entrecortada, não suporta a pressão do silêncio. Olhando de lado, como se esperasse que algo surgisse das sombras para puni-lo, ele começa a falar:</p>
+                <p><em>>“Kamar… ele não é apenas nosso líder… Ele é o único que ouviu Vecna de verdade. Está na câmara de rituais… preparando o experimento final… Um feitiço capaz de arrancar os segredos da alma como se fossem dentes… e transformá-los em poder puro. Vocês não entendem… quanto mais profundo o segredo, mais forte o sussurro que o alimenta…”</em></p>
+                <p>O cultista ofega, o terror tomando conta de seus olhos. Sua devoção parece vacilar, esmagada pela lembrança de algo ainda pior. A voz dele se reduz a um sussurro áspero, como se temesse que até as paredes pudessem escutar:</p>
+                <p><em>>“Havia um homem… Delvin. Um espião. Ele descobriu demais. Kamar ordenou que fosse expulso como exemplo… mas ele não foi longe. Encontraram-no na superfície… e terminaram o serviço.”</em></p>
+                <p>O silêncio pesa. O cultista abaixa a cabeça, as palavras agora carregadas de uma mistura de culpa e reverência.</p>
+                <p><em>>“Ninguém trai o Sussurrado… e vive para contar.”</em></p>
+                <p>Um arrepio gélido percorre a espinha dos heróis. As peças começam a se encaixar — o olho ressecado, o jovem fugindo pelas catacumbas, o corpo encontrado em Neverwinter. A verdade é mais terrível do que imaginavam: Delvin não apenas sabia demais… ele tinha visto demais.</p>
+
+                <p><strong>O Santuário (N12):</strong> Erebor e Odisseu emergem em um santuário ancestral, o ar impregnado de mofo e de um silêncio pesado demais para ser natural. No centro da sala, uma escultura colossal se ergue: uma mão de pedra erguida, com um olho esculpido na palma, que parece observá-los com um brilho invisível.</p>
+                <p>Ambos hesitam diante da visão. Odisseu encara a estátua, desconfiado, enquanto Erebor, tomado por uma onda de lembranças, sente sua mente ser inundada por fragmentos de conhecimento: contos infantis proibidos, pergaminhos antigos, manuscritos perdidos e ecos de lendas arcanas.</p>
+                <p>Seu coração acelera quando todas as peças se encaixam. O mago ergue os olhos para o monumento e, com a voz pesada de quem confirma um medo antigo, revela:</p>
+                <p><em>>“Este lugar… é dedicado a Vecna. O deus-lich. Senhor dos segredos, dos olhos que tudo veem… e dos sussurros que nunca deveriam ser ouvidos.”</em></p>
+                <p>As paredes parecem tremer ao som de seu nome. Por um instante, o próprio ar gela, como se o santuário tivesse tomado consciência de sua revelação. Odisseu solta um riso nervoso, mas a tensão em seu olhar denuncia que até ele, o ladino desacreditado, sente o peso da verdade. Erebor, firme, guarda para si a gravidade do que descobriu: ali, cada pedra, cada sombra, respirava a presença de Vecna.</p>
+                <p>Sem tempo para hesitação, os dois decidem seguir pela passagem à esquerda, os passos ecoando pelo santuário profano. O destino os conduz para o mesmo caminho onde Mol’el Stars e Theron Dareth já avançavam… como se fios invisíveis, puxados por olhos que jamais piscam, estivessem costurando o encontro.</p>
+                <p>Todos os caminhos levam à Câmara Ritualística (N15), onde os heróis finalmente se reencontram. Lá, eles testemunham o líder, Kamar, extraindo as almas de dois cultistas para criar duas entidades sombrias. O grupo lança um ataque surpresa, com Erebor iniciando com uma Bola de Fogo.</p>
+
+                <h4>A Queda de Kamar — O Fim da Batalha</h4>
+                <p>No caos que se segue, Odysseu tenta se aproximar furtivamente de Kamar, mas é repelido por uma força invisível e cai inconsciente. Theron ataca o líder, mas descobre que ele está protegido por uma barreira mágica que reflete o dano, ferindo o próprio paladino.</p>
+                <p>O grupo percebe que a proteção de Kamar vem de quatro pilares rúnicos na sala e foca seus ataques para destruí-los. À medida que os pilares são quebrados, o teto da caverna começa a desabar, forçando os heróis a se esquivarem dos escombros enquanto lutam.</p>
+                <p>As defesas de Kamar estavam em frangalhos. O sangue escorria de seus lábios, seus olhos ainda ardiam em verde pútrido, e mesmo assim ele se mantinha de pé, sustentado apenas pela devoção doentia ao Sussurrado.</p>
+                <p>Nesse instante, Theron ergueu a mão, o símbolo de seu patrono queimando como brasa na pele. Uma torrente de poder ancestral rasgou os céus invisíveis da cripta, e um raio divino despencou em fúria, esmagando os cultistas remanescentes. Os gritos ecoaram e cessaram… restando apenas Kamar, sozinho, cambaleante, com os olhos arregalados de terror.</p>
+                <p><strong>Foi então que Mol’el Stars decidiu agir.</strong></p>
+                <p>Num ato que os bardos cantariam por eras, o pequeno gnomo deixou de ser pequeno. Suas runas arcanas explodiram em luz rubra, sua carne e ossos se expandindo em proporções titânicas. <strong>De 1,15m e 45kg</strong> , ele se tornou uma muralha viva de <strong>3 metros e mais de meio tonelada</strong>. <em>Sua armadura, embebida por engenharias arcanas, incendiou-se, transformando-o em um colosso flamejante.</em></p>
+                <p>E no auge de sua insanidade ou heroísmo, ele abriu um vórtice reluzente. O ar vibrou. A gravidade se dobrou. <em>Num clarão, o gigante gnomo surgiu no ponto mais alto da cripta, pairando por um segundo como a própria sentença de Kamar</em></p>
+                <p>Com um rugido metálico que sacudiu as pedras, Mol’el despencou como um míssil vivo, uma estrela flamejante de carne e aço. O impacto foi ensurdecedor. O chão tremeu como se os alicerces da própria cripta desabassem.</p>
+                <p>O corpo de Kamar não resistiu: seus ossos se estilhaçaram, sua carne foi consumida em brasas, e parte dele virou apenas cinzas levadas pelo vento da magia.</p>
+                <p><em>Silêncio. Somente o fogo ainda crepitava sobre a armadura colossal de Mol’el Stars.</em></p>
+                <p><em>E assim, o líder do culto caiu. Não por espada, nem por feitiço… mas pelo sacrifício insano de um gnomo que ousou se tornar meteoro.</em></p>
+                <p><em>O combate chegava ao fim, mas aquela visão jamais seria esquecida.</em><br>
+                Para sempre, os sussurros diriam:</p>
+                <div class="dialogo-vecna">“E naquele dia, a estrela caiu sobre Kamar.”</div>
+
+                <h4>A Primeira Aparição de Vecna</h4>
+                <p>Os heróis correram até Mol’el. Ele havia voltado ao seu tamanho normal, com os ossos quebrados, mas vivo salvo pela proteção de sua armadura.</p>
+                <p>Antes que pudessem descansar, um sibilo rúnico percorreu a sala. As runas piscaram e se apagaram, e das esculturas sombrias uma fumaça pútrida se ergueu, formando o crânio emaciado de Vecna, com um único olho verde brilhante.</p>
+                <p><strong>A voz de Vecna ecoou como faca em ossos:</strong></p>
+                <p><em>>“Boas notícias, Zalryr. Embora seus esforços tenham sido… decepcionantes, trouxeram-me algo mais valioso. Sim… pontos de interesse....Vocês.”</em></p>
+                <p><strong>A aparição percorreu o olhar de cada um dos heróis, penetrando suas almas.</strong></p>
+                <p><em>> “Podemos nos encontrar novamente… mas até lá, saibam: estou de olho em vocês.”</em></p>
+                <p>A figura explodiu em sombras, lançando um grito sussurrado que se arrastou pelos túneis antes de desaparecer. E cada herói sentiu, gravado em sua carne ou em sua mente, a marca de uma dádiva sombria — um eco de Vecna que nunca mais poderia ser ignorado (o Encantamento da Mão Rastejante se o resultado for um número ímpar, ou o Encantamento do Olho Místico se o resultado for um número par).</p>
+
+                <h4>O Retorno à Superfície</h4>
+                <p>Exaustos, os heróis retornaram à superfície, trazendo prisioneiros, feridas e segredos. No salão de Dagult Brasanunca, a tensão era palpável. O governante ouviu tudo em silêncio, até se levantar e fitá-los com uma seriedade quase paternal.</p>
+                <p><strong>Dagult Brasanunca:</strong><br><em>>“Não imaginava que as raízes da corrupção chegavam tão fundo. Vecna… antigo demais para os livros, perigoso demais para ser esquecido. E agora… interessado em vocês.”</em></p>
+                <p><strong>Ele caminhou até a janela, olhando a cidade aparentemente em paz.</strong><br><em>> “Vocês não são mais aventureiros. São alvos.”</em></p>
+                <p>Voltando-se a eles, entregou recompensas em ouro e, em seguida, e mostrou um símbolo de bronze em forma de olho fechado.<br><em>> “Esta é a insígnia dos Agentes da Lâmina Escarlate. Se aceitarem, há mais missões esperando. Mais segredos a serem desenterrados. Mas saibam… a escolha é de vocês. Podem ir viver em paz. Ou podem ficar, e encarar o que está por vir.”</em></p>
+                <p style="text-align: center;"><strong>(Continua)</strong></p>
+
+                <a href="https://youtube.com/live/SEKGve3GgSk?feature=share" target="_blank" class="youtube-btn">ASSISTIR PARTE 1 NO YOUTUBE</a>
+                <a href="https://youtube.com/live/xwyKI_HV_2U?feature=share" target="_blank" class="youtube-btn">ASSISTIR PARTE 2 NO YOUTUBE</a>
+            </div>
+        </div>
+
+        <div class="sessao-box">
+            <div class="sessao-trigger">
+                <h3>Epílogo</h3>
+                <span class="sessao-icon">👁</span>
+            </div>
+            <div class="sessao-content">
+                <h1>Epílogo: Onde as Sombras Têm Nomes</h1>
+                <p>A quietude no Quartel-General dos Heróis é uma mentira. É um silêncio tenso, pesado, que se acumula nos cantos escuros da nova fortaleza. Lá dentro, as velas tremulam em uníssono, suas chamas dançando contra uma brisa que não existe, como se respondessem a uma respiração invisível que percorre os corredores. A vitória nas catacumbas não trouxe paz, apenas a certeza de que a escuridão que enfrentaram era apenas um dedo da mão monstruosa que agora se estendia sobre Neverwinter.</p>
+                <p>Cada herói carrega seu próprio fragmento dessa escuridão. Para <strong>Erebor</strong>, o tormento é físico; seu olho, agora curado, não vê apenas o mundo, mas sente o abismo. A marca em sua pele queima, não com dor, mas com uma consciência profana — a sensação inequívoca de um olho ancestral que o observa de volta de dentro de sua própria carne.</p>
+                <p>Para <strong>Shifu</strong>, é um sussurro do passado. Sob seu travesseiro, um bilhete sem remetente, selado com o símbolo de uma harpa e uma lua crescente — um emblema que ele conhece bem demais, que sussurra promessas e ameaças de segredos enterrados na prisão Fim da Farra.</p>
+                <p>A fé de <strong>Deculain</strong> é profanada. Em meio aos salmos sagrados de Lathander, páginas heréticas foram inseridas, como um veneno diluído em água benta. As palavras de luz agora se misturam a uma doutrina de sombras, um sacrilégio que zomba de sua devoção.</p>
+                <p><strong>Mol’el</strong> tornou-se um portal. Sozinho, diante de uma parede fria, um sorriso gélido toca seus lábios enquanto ele sussurra em uma língua morta que se contorce em sua boca, uma melodia gutural que ele jura não conhecer, mas que seu novo mestre conhece intimamente.</p>
+                <p>As dúvidas corroem a alma de <strong>Theron</strong>. A marca em sua mão pulsa com um poder que ele não compreende, um símbolo de um pacto cujos termos nunca foram claros. Ele olha para ela e questiona o caminho que trilha: é um campeão da luz ou um peão de algo que se esconde por trás dela?</p>
+                <p>Enquanto isso, a ação é o único refúgio. <strong>Kanye Quest</strong> treina sem descanso, seu corpo e seu eco movendo-se em uma dança de combate furiosa, forjando-se em uma arma para a guerra que ele sente se aproximando. <strong>Odysseu</strong> se perde em mapas e cifras, caçando a promessa de um deus traiçoeiro: a Mão Putrificada, uma chave para um lar que talvez não exista mais. E <strong>Mako</strong>, tocado pelo silêncio do outro lado, busca no sono uma paz que não encontra, seu espírito distante, ainda vagando na fronteira entre a vida e a morte.</p>
+                <p>Então, rompendo o santuário de cada mente, um fio de gelo percorre a consciência de todos, simultaneamente. Uma voz, antiga e fria como a morte de uma estrela, surge no epicentro de seus seres.</p>
+                <div class="dialogo-vecna">“Até onde você iria… para manter seus segredos?”</div>
+                <p>Antes que o eco mental pudesse se dissipar, o mundo físico responde. Do lado de fora, a noite é estilhaçada por um rugido que não pertence a nenhuma criatura conhecida. É um som que abala os alicerces da fortaleza, que racha as vidraças e apaga as velas. Um som de algo ancestral, faminto e imenso, que acaba de despertar.</p>
+                <p style="text-align: center;"><strong>(Continua)</strong></p>
+            </div>
+        </div>
+
+        <div class="sessao-box">
+            <div class="sessao-trigger">
+                <h3>Imagens</h3>
+                <span class="sessao-icon">👁</span>
+            </div>
+            <div class="sessao-content">
+                <h1>Imagens relacionadas a Aventura</h1>
+                <div class="grid-imagens">
+                    <a href="#img1"><img src="Imagens/capaaventuravecna.jfif" alt="Capa"></a>
+                    <a href="#img2"><img src="Imagens/mapaneverwinter.jfif" alt="Mapa"></a>
+                    <a href="#img3"><img src="Imagens/Pontos de Interesse da cidade (EM PORTUGUÊS).jfif" alt="pontos-interesse"></a>
+                </div>
+
+                <div id="img1" class="modal" onclick="location.href='#'">
+                    <img src="Imagens/capaaventuravecna.jfif" alt="Capa Grande">
+                </div>
+                <div id="img2" class="modal" onclick="location.href='#'">
+                    <img src="Imagens/mapaneverwinter.jfif" alt="Mapa Grande">
+                </div>
+                <div id="img3" class="modal" onclick="location.href='#'">
+                    <img src="Imagens/Pontos de Interesse da cidade (EM PORTUGUÊS).jfif" alt="Pontos-interesse-grande">
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            "O Olho viu tudo. E não vai esquecer." <br>
+            © 2025 Porront's RPG's
+        </footer>
 
       </div>
     </main>
+  </div>
 
-    <script>
-    const campanhas = document.querySelectorAll('.menu-campanha');
-    const conteudos = document.querySelectorAll('.conteudo-campanha');
-
-    campanhas.forEach(menu => {
-      menu.querySelector('h3').addEventListener('click', () => {
-        const campanhaId = menu.getAttribute('data-campanha');
-        conteudos.forEach(sec => {
-          sec.style.display = sec.id === campanhaId ? 'block' : 'none';
+  <script>
+    // Lógica para Expandir/Minimizar
+    document.querySelectorAll('.sessao-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            trigger.parentElement.classList.toggle('active');
         });
-      });
     });
   </script>
-  <script src="script.js"></script>
 </body>
 </html>
