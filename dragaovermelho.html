@@ -3,9 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Campanhas RPG</title>
+  <title>O Conto do Dragão Vermelho | Crônicas de Neverwinter</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="logopag.png" type="image/x-icon">
+  <link rel="shortcut icon" href="Imagens/logopag.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400&family=Grenze+Gotisch:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+        --dragon-red: #8b0000;
+        --gold-ink: #b8860b;
+        --parchment: #fdf5e6;
+        --leather-brown: #3d2b1f;
+    }
+
+    main#conto-dragao-page {
+        background-color: #1a1a1a !important;
+        background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+        color: #2c1e14;
+        font-family: 'Grenze Gotisch', serif;
+        padding: 40px 20px;
+    }
+
+    .grimoire-container {
+        max-width: 950px;
+        margin: 0 auto;
+        background: var(--parchment);
+        border: 20px solid transparent;
+        border-image: url('https://www.transparenttextures.com/patterns/exclusive-paper.png') 30 stretch;
+        padding: 50px;
+        box-shadow: 0 0 60px #000;
+        position: relative;
+    }
+
+    /* Cabeçalho */
+    .adventure-header {
+        text-align: center;
+        border-bottom: 3px double var(--dragon-red);
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+    }
+
+    .adventure-header h1 {
+        font-family: 'Almendra', serif;
+        font-size: 3.2rem;
+        color: var(--dragon-red);
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    /* Seções de Texto Integral */
+    .chronicle-part {
+        margin-bottom: 50px;
+        line-height: 1.7;
+        font-size: 1.2rem;
+    }
+
+    .chronicle-part h2 {
+        font-family: 'Almendra', serif;
+        color: var(--gold-ink);
+        border-bottom: 1px solid var(--dragon-red);
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+    }
+
+    .chronicle-part p {
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+
+    .highlight-red {
+        color: var(--dragon-red);
+        font-weight: bold;
+    }
+
+    /* Caixa de Diálogos */
+    .dialogue-box {
+        font-style: italic;
+        background: rgba(184, 134, 11, 0.08);
+        padding: 15px 25px;
+        border-left: 5px solid var(--dragon-red);
+        margin: 20px 0;
+        color: #4a3728;
+    }
+
+    /* Lista de Heróis */
+    .party-scroll {
+        background: var(--leather-brown);
+        color: var(--parchment);
+        padding: 25px;
+        border-radius: 5px;
+        margin-bottom: 40px;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    }
+
+    .party-scroll h3 { color: var(--gold-ink); margin-top: 0; border-bottom: 1px solid var(--gold-ink); }
+    .party-scroll ul { list-style: "⚔️ "; padding-left: 20px; }
+
+    .img-adventure {
+        width: 100%;
+        max-width: 700px;
+        display: block;
+        margin: 30px auto;
+        border: 10px solid #222;
+        filter: sepia(0.2);
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -15,132 +118,81 @@
   <div class="layout">
     <aside>
       <h2>Campanhas</h2>
-      <div class="menu-campanha" data-campanha="curse-strahd">
-        <a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a>
+      <div class="menu-campanha"><a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a></div>
+      <div class="menu-campanha" style="border-left: 5px solid var(--dragon-red);">
+        <a href="dragaovermelho.html"><h3>🐉 O Conto do Dragão</h3></a>
       </div>
-      <div class="menu-campanha" data-campanha="O-Conto-do-Dragão-Vermelho">
-        <a href="dragaovermelho.html"><h3>O Conto do dragão Vermelho</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="prisioneira-13">
-        <a href="prisioneira13.html"><h3>Prisioneira 13</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="Sombras-de-Neverneath">
-        <a href="sombrasneverneath.html"><h3>Sombras de NeverNeath</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="colina-do-medo">
-        <a href="colinadomedo.html"><h3>A Colina do Medo</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="oneshot-vecna">
-        <a href="oneshotvecna.html"><h3>Vecna: Ninho do Olho Sombrio (ONESHOT)</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="doenca-congelante">
-        <a href="doenca-congelante.html"><h3>Doença Congelante</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="principe-caido">
-        <a href="oprincipecaido.html"><h3>O Principe Caíado</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="verao-sangrento">
-        <a href="veraosangrento.html"><h3>Verão Sangrento</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="personagens">
-        <a href="personagens.html"><h3>Personagens</h3></a>
-      </div>
-      
-      <br>
-      <h2>Em Breve:</h2>
-      <div class="menu-campanha" data-campanha="dragoes-dailhadatempestade">
-        <a href="dragoesilhadatempestade.html"><h3>Dragões da Ilha da Tempestade</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="vecna-campanha">
-        <a href="vecnacampnha.html"><h3>Vecna: Véspera da Ruína</h3></a>
-      </div>
-      
+      <div class="menu-campanha"><a href="prisioneira13.html"><h3>Prisioneira 13</h3></a></div>
+      <div class="menu-campanha"><a href="index.html"><h3>Início</h3></a></div>
     </aside>
 
-    <main>
-    <div id="O-Conto-do-Dragão-Vermelho" class="conteudo-campanha">
-  <h1>O Conto do Dragão Vermelho</h1>
-  <h2 class="subtitulo-campanha">(Sistema de RPG: <em><strong>D&D</strong></em>)</h2>
-  <h4 style="text-align: right;"><Strong>DM (Dungeon Master): <em>Peu Porronto</em></Strong></h4>
-  <p>Após meses desbravando os perigos de Neverwinter , suas habilidades chamaram a atenção de ninguém menos que Dagult Brasanunca , o influente Lorde Protetor da cidade. Ele os contratou para uma missão incomum: localizar uma equipe de caçadores de recompensa conhecida como Hard Way , que fugiu com algo de grande valor para ele. Sua instrução era clara — tragam-nos de volta vivos e sem ferimentos.</p>
-  <h2>Personagens</h2>
-  <ul>
-    <li>Victor - <strong>Mestre Chan Shifu, um Monge Humano</strong></li>
-    <li>Thigas<strong> - Mol'el Stars, um Gnomo da Floresta Artificer</strong></li>
-    <li>Guilherme<strong> - Thorin Morgran, Clérigo da Luz Anão da Colina</strong></li>
-    <li>Vini<strong> - Olivando Erebor, Mago Humano</strong></li>
-  </ul>
-  <div id="O-Conto-do-Dragão-Vermelho-sessao1" class="sessao">
-    <h4 class="titulo-sessao">Sessão Única - O Conto do Dragão Vermelho</h4>
-    <div class="conteudo-sessao">
-    <p>Após meses navegando pelos perigos de Neverwinter, cinco heróis, cada um com sua própria história e habilidades, chamaram a atenção de Dagult Brasanunca, o influente Lorde Protetor da cidade. Mith Varloc, o feroz bárbaro meio-orc; Mol’el Stars, o engenhoso artífice gnomo; Thorin Morgran, o clérigo anão da luz; Mestre Chan Chifu, o disciplinado monge humano; e Erebor, o mago élfico sagaz, foram convocados para uma missão singular. O objetivo: localizar a equipe de caçadores de recompensas conhecida como Hard Way, que havia fugido com algo de grande valor para o Lorde. A ordem era clara — trazê-los de volta vivos e ilesos.
-      <br>
-      <br>
-      <br>
-      <strong>Uma Jornada Misteriosa</strong>
-      <br>
-      Após semanas de rastreamento, os heróis descobriram que o grupo Hard Way fora visto pela última vez na misteriosa Pousada Inn Plain Sight, conhecida tanto por sua localização remota quanto por sua clientela peculiar. Ao amanhecer, eles partiram rumo à estalagem, sem saber o que os aguardava. O destino, porém, parecia entrelaçar suas vidas, pois até então eram completos estranhos.
-      <br>
-      <br>
-      A chegada à pousada revelou um ambiente repleto de segredos. Merry Rumwell, o estalajadeiro, recebeu o grupo, mas sua presença emanava desconfiança. Posteriormente, ele se revelou como Ervan Soulfallen, um feiticeiro traiçoeiro. Durante a investigação, os heróis enfrentaram mímicos no andar superior e descobriram tesouros escondidos, mas Ervan escapou usando um portal dimensional.
-      <br>
-      <br>
-      <br>
-      <strong>Segredos na Floresta</strong>
-      <br>
-      Explorando a área externa da pousada, o grupo se dividiu. Enquanto Mith investigava uma árvore peculiar, os outros enfrentavam um urso-coruja em perseguição a aranhas gigantes. Após resolverem a situação, encontraram dois miconídeos, Mico e Lídio, que lhes forneceram informações cruciais. Eles revelaram a traição de Ervan, a captura do draconato Alax Jadescales, e a existência de uma porta secreta atrás da árvore.
-      <br>
-      <br>
-      Com uma chave recuperada do esconderijo das aranhas, os heróis abriram a porta e desceram até as masmorras. Lá, enfrentaram um cubo gelatinoso e três pudins negros. Durante a busca, encontraram o crânio de um membro do grupo Hard Way e, usando um pergaminho de Falar com os Mortos, descobriram a trama de Ervan: o feiticeiro contratara o grupo para roubar o ovo do dragão Cinderhowl e, após o roubo bem-sucedido, traiu e assassinou os aventureiros.
-      <br>
-      <br>
-      <br>
-      <strong>Revelações e Encontros</strong>
-      <br>
-      Após libertarem Alax, que revelou que sua pantera deslocadora, Pouncy, havia sido transformada em um observador, os heróis continuaram sua exploração. No porão, encontraram os esqueletos animados dos outros membros do Hard Way, que pediram descanso eterno em troca de informações valiosas e itens mágicos. Seguindo para a torre, recuperaram Pouncy e reverteram sua transformação.
-      <br>
-      <br>
-      No topo da torre, encontraram o Orbe da Draconidade, um artefato mágico capaz de convocar dragões. Quando o monge tocou o orbe, uma visão aterrorizante se manifestou: Cinderhowl, o dragão vermelho, estava a caminho. Ervan tentou deter os heróis, mas escapou novamente por um portal.
-      <br><br><br>
-      <strong>O Rugir do Dragão</strong>
-      <br>
-      Ao alcançar o último andar, os heróis se depararam com o ovo de Cinderhowl cercado por velas. Nesse momento, o rugido de Cinderhowl ecoou pelo ar. O dragão adulto atacou a torre, causando caos. Durante o embate, o clérigo foi arremessado para o prado e ficou inconsciente, enquanto os outros se esforçavam para escapar.
-      <br>
-      <br>
-      Quando Cinderhowl finalmente pousou, os heróis, liderados por Erebor, convenceram o dragão de que não eram responsáveis pelo roubo. O dragão revelou um rancor profundo contra Dagult Brasanunca, mas aceitou temporariamente a explicação dos heróis. Antes de partir com seu ovo, Cinderhowl deixou um aviso sombrio sobre seu possível retorno a Neverwinter.
-      <br>
-      <br>
-      Ervan tentou aproveitar a distração para atacar, mas foi derrotado pelo grupo e, em um ato final, queimado por Cinderhowl. No entanto, o dragão partiu sem levar o Orbe da Draconidade, que ficou sob a posse dos heróis.
-      <br><br><br>
-      <strong>O Confronto Final</strong>
-      <br>
-      Retornando a Neverwinter com Ervan como prisioneiro, os heróis apresentaram sua versão dos acontecimentos a Dagult Brasanunca. Quando a natureza do Orbe foi revelada, recusaram-se a entregá-lo, temendo seu uso. A tensão culminou em um confronto, e o Lorde ordenou a prisão dos heróis
-      <br>
-      <br>
-      Dias após sua captura, um portal se abriu na cela dos heróis, acompanhado de uma voz misteriosa: "Ei, vocês aí." Assim, um novo capítulo de sua jornada se anunciava.
-      <br><br><br>
-      <strong>O Fim de um Começo</strong>
-      <br>
-      Os heróis não apenas sobreviveram aos desafios, mas deixaram suas marcas em uma história ainda a ser completamente revelada. O futuro, cheio de mistérios, aguarda aqueles dispostos a encarar seus perigos.
-    </p>
-  </div>
-</div>
+    <main id="conto-dragao-page">
+      <div class="grimoire-container">
+        
+        <div class="adventure-header">
+            <h1>O Conto do Dragão Vermelho</h1>
+            <p>SISTEMA: <strong>D&D</strong> | MESTRE: <strong>PEU PORRONTO</strong></p>
+        </div>
+
+        <section class="party-scroll">
+            <h3>OS HERÓIS CONVOCADOS</h3>
+            <ul>
+                <li><strong>Mith Varloc</strong> - Feroz bárbaro meio-orc </li>
+                <li><strong>Mol’el Stars</strong> - Engenhoso artífice gnomo </li>
+                <li><strong>Thorin Morgran</strong> - Clérigo anão da luz </li>
+                <li><strong>Mestre Chan Chifu</strong> - Disciplinado monge humano </li>
+                <li><strong>Erebor</strong> - Mago élfico sagaz </li>
+            </ul>
+        </section>
+
+        <div class="chronicle-part">
+            <p>Após meses navegando pelos perigos de Neverwinter, cinco heróis, cada um com sua própria história e habilidades, chamaram a atenção de Dagult Brasanunca, o influente Lorde Protetor da cidade. Foram convocados para uma missão singular: localizar a equipe de caçadores de recompensas conhecida como Hard Way, que havia fugido com algo de grande valor para o Lorde. A ordem era clara — trazê-los de volta vivos e ilesos.</p>
+        </div>
+
+        <div class="chronicle-part">
+            <h2>Uma Jornada Misteriosa</h2>
+            <p>Após semanas de rastreamento, os heróis descobriram que o grupo Hard Way fora visto pela última vez na misteriosa Pousada Inn Plain Sight, conhecida tanto por sua localização remota quanto por sua clientela peculiar. Ao amanhecer, eles partiram rumo à estalagem, sem saber o que os aguardava. O destino, porém, parecia entrelaçar suas vidas, pois até então eram completos estranhos.</p>
+            <p>A chegada à pousada revelou um ambiente repleto de segredos. Merry Rumwell, o estalajadeiro, recebeu o grupo, mas sua presença emanava desconfiança. Posteriormente, ele se revelou como Ervan Soulfallen, um feiticeiro traiçoeiro. Durante a investigação, os heróis enfrentaram mímicos no andar superior e descobriram tesouros escondidos, mas Ervan escapou usando um portal dimensional.</p>
+        </div>
+
+        <div class="chronicle-part">
+            <h2>Segredos na Floresta</h2>
+            <p>Explorando a área externa da pousada, o grupo se dividiu. Enquanto Mith investigava uma árvore peculiar, os outros enfrentavam um urso-coruja em perseguição a aranhas gigantes. Após resolverem a situação, encontraram dois miconídeos, Mico e Lídio, que lhes forneceram informações cruciais. Eles revelaram a traição de Ervan, a captura do draconato Alax Jadescales, e a existência de uma porta secreta atrás da árvore.</p>
+            <p>Com uma chave recuperada do esconderijo das aranhas, os heróis abriram a porta e desceram até as masmorras. Lá, enfrentaram um cubo gelatinoso e três pudins negros. Durante a busca, encontraram o crânio de um membro do grupo Hard Way e, usando um pergaminho de Falar com os Mortos, descobriram a trama de Ervan: o feiticeiro contratara o grupo para roubar o ovo do dragão Cinderhowl e, após o roubo bem-sucedido, traiu e assassinou os aventureiros.</p>
+        </div>
+
+        <div class="chronicle-part">
+            <h2>Revelações e Encontros</h2>
+            <p>Após libertarem Alax, que revelou que sua pantera deslocadora, Pouncy, havia sido transformada em um observador, os heróis continuaram sua exploração. No porão, encontraram os esqueletos animados dos outros membros do Hard Way, que pediram descanso eterno em troca de informações valiosas e itens mágicos. Seguindo para a torre, recuperaram Pouncy e reverteram sua transformação.</p>
+            <p>No topo da torre, encontraram o Orbe da Draconidade, um artefato mágico capaz de convocar dragões. Quando o monge tocou o orbe, uma visão aterrorizante se manifestou: Cinderhowl, o dragão vermelho, estava a caminho. Ervan tentou deter os heróis, mas escapou novamente por um portal.</p>
+        </div>
+
+        <div class="chronicle-part">
+            <h2>O Rugir do Dragão</h2>
+            <p>Ao alcançar o último andar, os heróis se depararam com o ovo de Cinderhowl cercado por velas. Nesse momento, o rugido de Cinderhowl ecoou pelo ar. O dragão adulto atacou a torre, causando caos. Durante o embate, o clérigo foi arremessado para o prado e ficou inconsciente, enquanto os outros se esforçavam para escapar.</p>
+            <p>Quando Cinderhowl finalmente pousou, os heróis, liderados por Erebor, convenceram o dragão de que não eram responsáveis pelo roubo. O dragão revelou um rancor profundo contra Dagult Brasanunca, mas aceitou temporariamente a explicação dos heróis. Antes de partir com seu ovo, Cinderhowl deixou um aviso sombrio sobre seu possível retorno a Neverwinter.</p>
+            <p>Ervan tentou aproveitar a distração para atacar, mas foi derrotado pelo grupo e, em um ato final, queimado por Cinderhowl. No entanto, o dragão partiu sem levar o Orbe da Draconidade, que ficou sob a posse dos heróis.</p>
+        </div>
+
+        <div class="chronicle-part">
+            <h2>O Confronto Final</h2>
+            <p>Retornando a Neverwinter com Ervan como prisioneiro, os heróis apresentaram sua versão dos acontecimentos a Dagult Brasanunca. Quando a natureza do Orbe foi revelada, recusaram-se a entregá-lo, temendo seu uso. A tensão culminou em um confronto, e o Lorde ordenou a prisão dos heróis.</p>
+            <div class="dialogue-box">
+                "Ei, vocês aí." 
+            </div>
+            <p>Dias após sua captura, um portal se abriu na cela dos heróis, acompanhado de uma voz misteriosa: "Ei, vocês aí." Assim, um novo capítulo de sua jornada se anunciava.</p>
+        </div>
+
+        <div class="chronicle-part">
+            <h2>O Fim de um Começo</h2>
+            <p>Os heróis não apenas sobreviveram aos desafios, mas deixaram suas marcas em uma história ainda a ser completamente revelada. O futuro, cheio de mistérios, aguarda aqueles dispostos a encarar seus perigos.</p>
+        </div>
+
+        <footer style="margin-top: 50px; text-align: center; border-top: 2px solid var(--gold-ink); padding-top: 20px; font-size: 0.9rem; color: #555; font-style: italic;">
+            "O rugido antigo desperta. A balança do mundo irá ruir."
+        </footer>
       </div>
     </main>
-
-    <script>
-    const campanhas = document.querySelectorAll('.menu-campanha');
-    const conteudos = document.querySelectorAll('.conteudo-campanha');
-
-    campanhas.forEach(menu => {
-      menu.querySelector('h3').addEventListener('click', () => {
-        const campanhaId = menu.getAttribute('data-campanha');
-        conteudos.forEach(sec => {
-          sec.style.display = sec.id === campanhaId ? 'block' : 'none';
-        });
-      });
-    });
-  </script>
-  <script src="script.js"></script>
+  </div>
 </body>
 </html>
