@@ -3,9 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Campanhas RPG</title>
+  <title>Sombras de NeverNeath | Registro de Campanha</title>
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="Imagens/logopag.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- TEMA: ABISMO ETÉREO E MISTICISMO --- */
+    :root {
+        --cor-portal: #4b0082;
+        --cor-ouro-velho: #b8860b;
+        --fundo-pergaminho: #fdf5e6;
+        --texto-escuro: #1a1a1a;
+    }
+
+    main#neverneath-page {
+        background-color: #0d0d0d !important;
+        background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+        color: var(--texto-escuro);
+        font-family: 'Spectral', serif;
+        padding: 40px 20px;
+    }
+
+    .container-arcano {
+        max-width: 950px;
+        margin: 0 auto;
+        background: var(--fundo-pergaminho);
+        border: 10px solid #3d2b1f;
+        border-image: url('https://www.transparenttextures.com/patterns/exclusive-paper.png') 30 stretch;
+        padding: 50px;
+        box-shadow: 0 0 60px rgba(75, 0, 130, 0.5);
+        position: relative;
+    }
+
+    .header-neverneath {
+        text-align: center;
+        border-bottom: 3px double var(--cor-portal);
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+    }
+
+    .header-neverneath h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        color: var(--cor-portal);
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    /* --- FERRAMENTA DE MINIMIZAR (ACCORDION) --- */
+    .capitulo-box {
+        margin-bottom: 30px;
+        border: 1px solid rgba(75, 0, 130, 0.2);
+    }
+
+    .capitulo-header {
+        background: rgba(75, 0, 130, 0.05);
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    .capitulo-header:hover {
+        background: rgba(75, 0, 130, 0.1);
+    }
+
+    .capitulo-header h2 {
+        font-family: 'Almendra', serif;
+        font-size: 1.8rem;
+        color: var(--cor-portal);
+        margin: 0;
+    }
+
+    .capitulo-corpo {
+        display: none; /* Inicia minimizado */
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        line-height: 1.8;
+        font-size: 1.15rem;
+        text-align: justify;
+    }
+
+    .capitulo-box.aberto .capitulo-corpo {
+        display: block;
+    }
+
+    .seta-toggle::after { content: "▼"; font-size: 0.8rem; color: var(--cor-ouro-velho); }
+    .capitulo-box.aberto .seta-toggle::after { content: "▲"; }
+
+    /* Estilo de Conteúdo */
+    .box-dialogo {
+        background: rgba(184, 134, 11, 0.1);
+        border-left: 4px solid var(--cor-ouro-velho);
+        padding: 15px 25px;
+        margin: 20px 0;
+        font-style: italic;
+    }
+
+    .sessao-titulo {
+        color: var(--cor-portal);
+        font-family: 'Almendra', serif;
+        border-bottom: 1px solid var(--cor-ouro-velho);
+        margin-top: 30px;
+        display: inline-block;
+    }
+
+    .lista-personagens {
+        background: #2c1e14;
+        color: var(--fundo-pergaminho);
+        padding: 25px;
+        border-radius: 5px;
+        margin-bottom: 40px;
+    }
+
+    .lista-personagens h3 { color: var(--cor-ouro-velho); margin-top: 0; }
+
+    footer {
+        margin-top: 50px;
+        text-align: center;
+        border-top: 1px solid var(--cor-portal);
+        padding-top: 20px;
+        font-family: 'Almendra', serif;
+        color: var(--cor-ouro-velho);
+    }
+
+    .link-youtube {
+        color: var(--cor-portal);
+        font-weight: bold;
+        text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -57,254 +187,118 @@
       
     </aside>
 
-    <main>
-    <div id="Sombras-de-Neverneath" class="conteudo-campanha">
-  <h1>Sombras de NeverNeath</h1>
-  <h2 class="subtitulo-campanha">(Sistema de RPG: <em><strong>D&D</strong></em>)</h2>
-  <h4 style="text-align: right;"><Strong>DM (Dungeon Master): <em>Peu Porronto</em></Strong></h4>
-  <p><strong>Após a ousada infiltração em Fim da Farra</strong> e o conflito entre aliados, o nome de vocês ecoa silenciosamente pelos corredores de Neverwinter. Dagult Brasanunca, reconhecendo o valor — e o perigo — que acompanham suas escolhas, os convoca novamente.
-  Nas profundezas do Castelo de Never, atrás de runas seladas e corredores esquecidos, repousa algo antigo: um portal ancestral. Poucos sabem o que realmente existe do outro lado. Alguns o chamam de Neverneath. Nenhum relato sobrevive. Nenhuma certeza permanece. <br><br>
-  Apenas um chamado. <br><br>
-  Enquanto os preparativos são feitos, uma ausência permanece: <em>Mol’el Stars ainda não foi visto desde os eventos em Fim da Farra...</em><br><br>Agora, cabe a vocês atravessar o véu. <br>
-E descobrir o que a história tentou enterrar. <br><br> O ar vibra com magia antiga. <br>Os portões se abrem. <br>E o verdadeiro teste começa agora.
-</p>
+    <main id="neverneath-page">
+      <div class="container-arcano">
+        
+        <div class="header-neverneath">
+            <h1>Sombras de NeverNeath</h1>
+            <p>(Sistema de RPG: <strong>D&D</strong>) | DM: <strong>Peu Porronto</strong></p>
+        </div>
 
-  <h2>Personagens</h2>
-  <ul>
-    <li>Victor - <strong>Mestre Chan Shifu, um Monge Humano</strong></li>
-    <li>Thigas<strong> - Mol'el Stars, um Gnomo da Floresta Artificer</strong></li>
-    <li>Guilherme<strong> - Thorin Morgran, Clérigo da Luz Anão da Colina</strong></li>
-    <li>Vini<strong> - Olivando Erebor, Mago Humano</strong></li>
-    <li>Thigas<strong> - Thoric BrightWill, O Bruxo Escarlate Humano</strong></li>
-    <li>Biel<strong> - Mako, Guerreiro Humano</strong></li>
-  </ul>
+        <section style="margin-bottom: 40px;">
+            <p>Após a ousada infiltração em Fim da Farra e o conflito entre aliados, o nome de vocês ecoa silenciosamente pelos corredores de Neverwinter. Dagult Brasanunca, reconhecendo o valor — e o perigo — que acompanham suas escolhas, os convoca novamente. Nas profundezas do Castelo de Never, atrás de runas seladas e corredores esquecidos, repousa algo antigo: um portal ancestral. Poucos sabem o que realmente existe do outro lado. Alguns o chamam de Neverneath. Nenhum relato sobrevive. Nenhuma certeza permanece.</p>
+            <p>Apenas um chamado.</p>
+            <p>Enquanto os preparativos são feitos, uma ausência permanece: <strong>Mol’el Stars</strong> ainda não foi visto desde os eventos em Fim da Farra...</p>
+            <p>Agora, cabe a vocês atravessar o véu. E descobrir o que a história tentou enterrar.</p>
+            <p>O ar vibra com magia antiga. Os portões se abrem. E o verdadeiro teste começa agora.</p>
+        </section>
 
-  <div id="Sombras-de-Neverneath-sessao1" class="sessao">
-    <h4 class="titulo-sessao">Sessão Única</h4>
-    <div class="conteudo-sessao">
-    <h1>🌑 Sombras de Neverneath</h1>
-  <p>
-    <strong>📍 Cela em Neverwinter – noite silenciosa</strong><br><br>
+        <section class="lista-personagens">
+            <h3>Personagens</h3>
+            <ul style="list-style: '✦ '; padding-left: 20px;">
+                <li>Victor - <strong>Mestre Chan Shifu, um Monge Humano</strong></li>
+                <li>Thigas - <strong>Mol'el Stars, um Gnomo da Floresta Artificer</strong></li>
+                <li>Guilherme - <strong>Thorin Morgran, Clérigo da Luz Anão da Colina</strong></li>
+                <li>Vini - <strong>Olivando Erebor, Mago Humano</strong></li>
+                <li>Thigas - <strong>Thoric BrightWill, O Bruxo Escarlate Humano</strong></li>
+                <li>Biel - <strong>Mako, Guerreiro Humano</strong></li>
+            </ul>
+        </section>
 
-    Enquanto os heróis ainda se recuperavam das tensões de suas últimas missões e aguardavam encarcerados, uma fenda de luz se abriu na cela, revelando um portal pulsante, feito de energia branca envolta por sombras vivas.<br><br>
+        <div class="capitulo-box aberto">
+            <div class="capitulo-header">
+                <h2>Sessão Única - Sombras de Neverneath</h2>
+                <span class="seta-toggle"></span>
+            </div>
+            <div class="capitulo-corpo">
+                <h3 class="sessao-titulo">🌑 Sombras de Neverneath</h3>
+                <p><em>📍 Cela em Neverwinter – noite silenciosa</em></p>
+                <p>Enquanto os heróis ainda se recuperavam das tensões de suas últimas missões e aguardavam encarcerados, uma fenda de luz se abriu na cela, revelando um portal pulsante, feito de energia branca envolta por sombras vivas.</p>
+                
+                <div class="box-dialogo">
+                    <strong>Voz Fina:</strong> Ei, vocês aí? Mas que diabos... onde é que vocês estão?<br><br>
+                    <strong>Ao saber que estavam presos:</strong> “Uma cela?! Ah não, isso complica tudo…”<br><br>
+                    <strong>Voz Grossa:</strong> “Não temos tempo pra isso.”<br><br>
+                    <strong>Voz Fina:</strong> “Vocês estão perto da entrada de NeverWinter?... Meu nome é...”<br>
+                    (O portal se fecha abruptamente antes da resposta)
+                </div>
 
-    <strong>Voz Fina:</strong><br>
-    <em>Ei, vocês aí? Mas que diabos... onde é que vocês estão?</em><br><br>
+                <p>Uma sensação de urgência se instala. Algo — ou alguém — está à procura deles.</p>
 
-    Ao saber que estavam presos:<br>
-    <em>“Uma cela?! Ah não, isso complica tudo…”</em><br><br>
+                <h3 class="sessao-titulo">🤝 Reunião dos Heróis e Preparativos</h3>
+                <p>Dias depois, Dagult Brasanunca convoca os heróis. Um portal foi descoberto nas profundezas do castelo de Neverwinter, emanando magia antiga e instável. Ele os informa que o caminho até Neverneath exige três fragmentos arcanos, dispersos por setores esquecidos dos subterrâneos.</p>
+                <p>Antes da partida, Erebor e Thorin são enviados à Casa do Conhecimento para estudar pistas sobre o local e descobrem fragmentos de mapas, enigmas de engenharia e até mesmo registros duvidosos ligando Dagult ao Culto do Dragão.</p>
+                <p>Enquanto isso, Shifu e Mol’el Stars já haviam partido em uma missão anterior à prisão Fim da Farra (ver: Prisioneira 13). Após os eventos lá, apenas Shifu retornou. Mol’el desapareceu.</p>
+                
+                <div class="box-dialogo">
+                    <strong>Dagult:</strong> "Thorin... um surto mágico em Elturel exige sua presença. Sua fé será melhor usada lá."
+                </div>
 
-    <strong>Voz Grossa:</strong><br>
-    <em>“Não temos tempo pra isso.”</em><br><br>
+                <p>Para substituí-los, é convocado Thoric BrightWill, o Bruxo Escarlate. De passado nebuloso, ele aceita a missão em troca de ouro e parte com os heróis para os subterrâneos.</p>
 
-    <strong>Voz Fina:</strong><br>
-    <em>“Vocês estão perto da entrada de NeverWinter?... Meu nome é...”</em><br>
-    (O portal se fecha abruptamente antes da resposta)<br><br>
+                <h3 class="sessao-titulo">🔍 A Busca pelos Fragmentos</h3>
+                <p><strong>🧊 Fragmento 1 – Espelhos do Simulacro:</strong> Nas ruínas de um antigo laboratório arcano, os heróis enfrentam um Simulacro de Mago, feito de neve e magia. O ser atacava de forma brutal, invocando ilusões e magias congelantes. Após intenso combate, eles perceberam que destruir os espelhos arcanos que o cercavam enfraquecia sua existência. Um a um, os espelhos ruíram, até que o simulacro implodiu em fragmentos de gelo encantado, deixando para trás o primeiro fragmento.</p>
+                <p><strong>📚 Fragmento 2 – A Biblioteca Voadora:</strong> Na cripta de uma antiga torre de pesquisa arcana, os heróis encontraram uma biblioteca flutuante onde livros voavam em círculos como corvos encantados. Erebor, concentrado, identificou o tomo que irradiava energia mágica. Com precisão cirúrgica, lançou um raio de fogo, derrubando o tomo correto no momento exato e revelando o segundo fragmento entre suas páginas queimadas.</p>
+                <p><strong>🍄 Fragmento 3 – O Jardim dos Micônides:</strong> Em um jardim subterrâneo tomado por flora viva, os heróis encontraram o Rei Micônide e seu gigantesco guarda-costas de 3 metros, Carlo. Erebor tentou, por longos minutos, convencer o rei a deixá-los levar Carlo para ajudar na missão — com floreios mágicos e diplomacia. Mas o rei negou, alegando que “a floresta tem seus próprios medos”. Ainda assim, tocando uma flor sagrada no altar do jardim, o último fragmento foi revelado.</p>
 
-    Uma sensação de urgência se instala. Algo — ou alguém — está à procura deles.
-  </p>
+                <h3 class="sessao-titulo">🌀 O Despertar de Neverneath</h3>
+                <p>Com os três fragmentos reunidos, o portal para Neverneath se ativou. Uma luz dourada intensa explodiu no salão, e uma voz ancestral sussurrou: <em>“Vocês passaram pelos testes iniciais, mas o verdadeiro julgamento ainda os aguarda...”</em></p>
 
-  <hr>
+                <h3 class="sessao-titulo">🧩 A Entrada no Labirinto Vivo</h3>
+                <p>Neverneath é um espaço entre planos, onde o tempo se dobra e as paredes se movem. Um labirinto de lembranças e arrependimentos. Lá, os heróis encontram Mako, um antigo herói que fora sugado para Neverneath junto com mineradores de Neverwinter anos atrás. Ele revelou que o tempo flui de forma distorcida ali, e que o mal despertado parecia se enraizar no lugar como uma praga viva.</p>
+                <p>Pelo caminho, os heróis enfrentam espectros, sombras e armadilhas ilusórias, encontrando fragmentos de lembranças corrompidas: “O cetro corrompe tudo o que toca.”; “Purifiquem o altar...”; “Estátuas animadas guardam o santuário final...”</p>
 
-  <h2>🤝 Reunião dos Heróis e Preparativos</h2>
-  <p>
-    Dias depois, Dagult Brasanunca convoca os heróis. Um portal foi descoberto nas profundezas do castelo de Neverwinter, emanando magia antiga e instável. Ele os informa que o caminho até Neverneath exige três fragmentos arcanos, dispersos por setores esquecidos dos subterrâneos.<br><br>
+                <h3 class="sessao-titulo">🏛️ A Câmara do Cetro e o Sacrifício</h3>
+                <p>No coração do labirinto, os heróis encontram o Cetro do Guardião, repousando sobre um altar profanado. Erebor, com Passo Nebuloso, alcançou o artefato... mas ao tocá-lo, teve uma visão apocalíptica: Faerûn em ruínas, dragões em fúria, magias negras devorando cidades. O cetro necrosou seu braço e cegou seu olho esquerdo.</p>
+                <p>Com a ajuda de Thoric, iniciou o ritual de purificação. Enquanto isso, Mako e Shifu enfrentavam dezenas de espectros. Durante o combate, Mako foi morto — mas Shifu, em um ato desesperado, usou um pergaminho de Revivificar, trazendo seu aliado de volta à vida. Erebor e Thoric terminaram o ritual... e então o altar começou a colapsar. Runas piscavam. Raios arcanos explodiam. Erebor caiu inconsciente. Mako e Thoric o carregaram. Shifu tomou o cetro. A saída estava prestes a ruir...</p>
 
-    Antes da partida, Erebor e Thorin são enviados à Casa do Conhecimento para estudar pistas sobre o local e descobrem fragmentos de mapas, enigmas de engenharia e até mesmo registros duvidosos ligando Dagult ao Culto do Dragão.<br><br>
+                <h3 class="sessao-titulo">💥 O Retorno de Mol’el Stars</h3>
+                <p>Quando tudo parecia perdido… O portal de Neverwinter se abriu. E dele, saltou Mol’el Stars. Silencioso. Determinado. E diferente. Ele usou seu escudo para redirecionar o feixe de energia, salvando o grupo. Sem explicar, apenas os puxou de volta pelo portal.</p>
 
-    Enquanto isso, Shifu e Mol’el Stars já haviam partido em uma missão anterior à <strong><em>prisão Fim da Farra</em></strong> (ver: Prisioneira 13). Após os eventos lá, apenas Shifu retornou. Mol’el desapareceu.<br><br>
+                <h3 class="sessao-titulo">💀 A Presença que Observava</h3>
+                <p>Antes de partirem, uma figura encapuzada surgiu na câmara: “Vocês libertaram ecos que dormiam por eras.”; “O cetro era só um prego... num caixão que jamais deveria ser tocado.”; “E agora... ele sabe de vocês.” Um símbolo de olho em chamas brilhava em seu peito. Antes que algo mais pudesse ser dito, a figura desapareceu por um portal púrpura.</p>
 
-    <strong>Dagult:</strong><br>
-    <em>"Thorin... um surto mágico em Elturel exige sua presença. Sua fé será melhor usada lá."</em><br><br>
+                <h3 class="sessao-titulo">🏛️ Epílogo: Retorno ao Castelo de Neverwinter</h3>
+                <p>Dagult Brasanunca recebeu os heróis em seu salão. A magia rastreadora foi removida. As acusações retiradas. A cidadania honrada foi concedida. Recompensas: Mansão/QG em Neverwinter, +200 PO, posses devolvidas e insígnias de honra. Thoric partiu em silêncio, deixando apenas um Anel escarlate.</p>
 
-    Para substituí-los, é convocado Thoric BrightWill, o Bruxo Escarlate. De passado nebuloso, ele aceita a missão em troca de ouro e parte com os heróis para os subterrâneos.
-  </p>
+                <h3 class="sessao-titulo">✨ Epílogo — As Sombras Ainda Sussurram</h3>
+                <p>As portas de Neverneath se fecharam. A missão foi cumprida. A cidade, protegida. Mas no silêncio após o triunfo… algo ainda pulsa. Um formigamento percorre a pele dos heróis. Como se… nem tudo o que estava lá dentro quisesse permanecer. Ou pior: como se algo quisesse sair. Talvez o cetro fosse apenas um foco. Um farol. Ou um selo. Talvez fosse algo mais.</p>
+                <p>Mol’el Stars surgiu no momento exato — um lampejo de bravura. Mas havia algo diferente nele. Em seu olhar... Em suas pausas... Em sua ausência de cicatrizes. Ele voltou. Mas será que voltou inteiro? Mako, o guerreiro de um tempo perdido, retornou ao mundo real. Sua lâmina ainda é firme. Mas seu lugar no mundo? Isso, nem ele sabe mais. Shifu resgatou mais do que aliados — resgatou a si mesmo. Mas os espectros que enfrenta agora não são de sombras, mas de memórias. Erebor deixou Neverneath com mais poder… mas também com um preço. Seu braço traz marcas e um de seus olhos nunca mais verá a luz da mesma forma. Thoric partiu sem explicações. Aqueles que fazem pactos nunca estão realmente longe. Na mansão de honra, os heróis descansam. Mas no fundo... todos sabem: A paz é breve. A escuridão apenas espera. Alguém… ou algo… os viu em Neverneath. E agora, os sussurros crescerão.</p>
 
-  <hr>
+                <div class="box-dialogo" style="text-align: center;">
+                    “Há lugares que não foram feitos para serem encontrados.<br>Mas uma vez abertos… nunca se fecham por completo.”
+                </div>
 
-  <h2>🔍 A Busca pelos Fragmentos</h2>
+                <p style="text-align: center;"><strong>(Continua)</strong></p>
+                <p style="text-align: center;">Acesse o link para assistir os vídeo da sessão da aventura!! <br> 
+                <a href="https://www.youtube.com/playlist?list=PLZwmSeOAKSCpvFFTgFEYNwIWoTAmjjYwN" target="_blank" class="link-youtube">Sombras de NeverNeath - YOUTUBE</a></p>
+            </div>
+        </div>
 
-  <p><strong>🧊 Fragmento 1 – Espelhos do Simulacro</strong><br>
-    Nas ruínas de um antigo laboratório arcano, os heróis enfrentam um Simulacro de Mago, feito de neve e magia. O ser atacava de forma brutal, invocando ilusões e magias congelantes. Após intenso combate, eles perceberam que destruir os espelhos arcanos que o cercavam enfraquecia sua existência. Um a um, os espelhos ruíram, até que o simulacro implodiu em fragmentos de gelo encantado, deixando para trás o primeiro fragmento.
-  </p>
-
-  <p><strong>📚 Fragmento 2 – A Biblioteca Voadora</strong><br>
-    Na cripta de uma antiga torre de pesquisa arcana, os heróis encontraram uma biblioteca flutuante onde livros voavam em círculos como corvos encantados. Erebor, concentrado, identificou o tomo que irradiava energia mágica. Com precisão cirúrgica, lançou um raio de fogo, derrubando o tomo correto no momento exato e revelando o segundo fragmento entre suas páginas queimadas.
-  </p>
-
-  <p><strong>🍄 Fragmento 3 – O Jardim dos Micônides</strong><br>
-    Em um jardim subterrâneo tomado por flora viva, os heróis encontraram o Rei Micônide e seu gigantesco guarda-costas de 3 metros, Carlo. Erebor tentou, por longos minutos, convencer o rei a deixá-los levar Carlo para ajudar na missão — com floreios mágicos e diplomacia. Mas o rei negou, alegando que “a floresta tem seus próprios medos”. Ainda assim, tocando uma flor sagrada no altar do jardim, o último fragmento foi revelado.
-  </p>
-
-  <hr>
-
-  <h2>🌀 O Despertar de Neverneath</h2>
-  <p>
-    Com os três fragmentos reunidos, o portal para Neverneath se ativou. Uma luz dourada intensa explodiu no salão, e uma voz ancestral sussurrou:<br>
-    <em>“Vocês passaram pelos testes iniciais, mas o verdadeiro julgamento ainda os aguarda...”</em>
-  </p>
-
-  <h2>🧩 A Entrada no Labirinto Vivo</h2>
-  <p>
-    Neverneath é um espaço entre planos, onde o tempo se dobra e as paredes se movem. Um labirinto de lembranças e arrependimentos.<br><br>
-
-    Lá, os heróis encontram Mako, um antigo herói que fora sugado para Neverneath junto com mineradores de Neverwinter anos atrás. Ele revelou que o tempo flui de forma distorcida ali, e que o mal despertado parecia se enraizar no lugar como uma praga viva.<br><br>
-
-    Pelo caminho, os heróis enfrentam espectros, sombras e armadilhas ilusórias, encontrando fragmentos de lembranças corrompidas:<br>
-    <em>“O cetro corrompe tudo o que toca.”</em><br>
-    <em>“Purifiquem o altar...”</em><br>
-    <em>“Estátuas animadas guardam o santuário final...”</em>
-  </p>
-
-  <hr>
-
-  <h2>🏛️ A Câmara do Cetro e o Sacrifício</h2>
-  <p>
-    No coração do labirinto, os heróis encontram o Cetro do Guardião, repousando sobre um altar profanado.<br><br>
-
-    Erebor, com <strong>Passo Nebuloso</strong>, alcançou o artefato... mas ao tocá-lo, teve uma visão apocalíptica: Faerûn em ruínas, dragões em fúria, magias negras devorando cidades. O cetro necrosou seu braço e cegou seu olho esquerdo.<br><br>
-
-    Com a ajuda de Thoric, iniciou o ritual de purificação. Enquanto isso, Mako e Shifu enfrentavam dezenas de espectros. Durante o combate, Mako foi morto — mas Shifu, em um ato desesperado, usou um pergaminho de <strong>Revivificar</strong>, trazendo seu aliado de volta à vida.<br><br>
-
-    Erebor e Thoric terminaram o ritual... e então o altar começou a colapsar. Runas piscavam. Raios arcanos explodiam.<br><br>
-
-    Erebor caiu inconsciente. Mako e Thoric o carregaram. Shifu tomou o cetro.<br>
-    A saída estava prestes a ruir...
-  </p>
-
-  <hr>
-
-  <h2>💥 O Retorno de Mol’el Stars</h2>
-  <p>
-    Quando tudo parecia perdido…<br>
-    O portal de Neverwinter se abriu.<br><br>
-
-    E dele, saltou Mol’el Stars. <br>
-    Silencioso. Determinado. E diferente.<br><br>
-
-    <em>Ele usou seu escudo para redirecionar o feixe de energia, salvando o grupo.</em><br>
-    <em>Sem explicar, apenas os puxou de volta pelo portal.</em>
-  </p>
-
-  <h2>💀 A Presença que Observava</h2>
-  <p>
-    Antes de partirem, uma figura encapuzada surgiu na câmara.<br><br>
-    <em>“Vocês libertaram ecos que dormiam por eras.”</em><br>
-    <em>“O cetro era só um prego... num caixão que jamais deveria ser tocado.”</em><br>
-    <em>“E agora... ele sabe de vocês.”</em><br><br>
-
-    Um símbolo de olho em chamas brilhava em seu peito.<br>
-    Antes que algo mais pudesse ser dito, a figura desapareceu por um portal púrpura.
-  </p>
-
-  <hr>
-
-  <h2>🏛️ Epílogo: Retorno ao Castelo de Neverwinter</h2>
-  <p>
-    Dagult Brasanunca recebeu os heróis em seu salão.<br>
-    A magia rastreadora foi removida. As acusações retiradas.<br>
-    A cidadania honrada foi concedida.<br><br>
-
-    <strong>Recompensas:</strong><br>
-    • Uma Mansão/QG em Neverwinter<br>
-    • +200 PO<br>
-    • Todas as posses devolvidas<br>
-    • Insígnias de honra da cidade<br><br>
-
-    <strong>Despedida de Thoric:</strong><br>
-    • 200 PO<br>
-    • Um Anel escarlate com a insígnia de Neverwinter gravada em runas <em>élficas</em> — uma lembrança, e talvez, uma chave para futuras portas.<br>
-    • Deixou o grupo em carruagem real, destino incerto.
-  </p>
-
-  <hr>
-
-  <h2>✨ Epílogo — As Sombras Ainda Sussurram</h2>
-  <p>
-    As portas de Neverneath se fecharam.<br>
-    A missão foi cumprida. A cidade, protegida.<br><br>
-
-    Mas no silêncio após o triunfo…<br>
-    algo ainda pulsa.<br><br>
-
-    Um formigamento percorre a pele dos heróis.<br>
-    Como se… nem tudo o que estava lá dentro quisesse permanecer.<br>
-    Ou pior:<br>
-    como se algo quisesse sair.<br><br>
-
-    Talvez o cetro fosse apenas um foco.<br>
-    Um farol.<br>
-    Ou um selo.<br><br>
-
-    Talvez fosse algo mais.<br><br>
-
-    <strong>Mol’el Stars</strong> surgiu no momento exato — um lampejo de bravura.<br>
-    Mas havia algo diferente nele.<br>
-    Em seu olhar...<br>
-    Em suas pausas...<br>
-    Em sua ausência de cicatrizes.<br>
-    Ele voltou.<br>
-    Mas será que voltou inteiro?<br><br>
-
-    <strong>Mako</strong>, o guerreiro de um tempo perdido, retornou ao mundo real após décadas preso entre ecos e espectros.<br>
-    Sua lâmina ainda é firme.<br>
-    Mas seu lugar no mundo?<br>
-    Isso, nem ele sabe mais.<br><br>
-
-    <strong>Shifu</strong>, o monge dos punhos firmes e coração abalado, resgatou mais do que aliados —<br>
-    resgatou a si mesmo.<br>
-    Mas os espectros que enfrenta agora não são de sombras,<br>
-    mas de memórias.<br><br>
-
-    <strong>Erebor</strong>, jovem mago e aprendiz, deixou Neverneath com mais poder do que entrou…<br>
-    mas também com um preço.<br>
-    Seu braço traz as marcas daquilo que tocou.<br>
-    E um de seus olhos…<br>
-    nunca mais verá a luz da mesma forma.<br><br>
-
-    <strong>Thoric</strong>, o Bruxo Escarlate, partiu em silêncio.<br>
-    Sem promessas.<br>
-    Sem explicações.<br>
-    Mas aqueles que fazem pactos nunca estão realmente longe.<br><br>
-
-    Na mansão de pedra e honra, ofertada por Neverwinter, os heróis descansam.<br>
-    Mas no fundo... todos sabem:<br><br>
-
-    A paz que conquistaram é breve.<br>
-    A escuridão nunca se apaga — apenas espera.<br><br>
-
-    Alguém… ou algo…<br>
-    os viu em Neverneath.<br><br>
-
-    E agora, os sussurros crescerão.<br><br>
-
-    <em>“Há lugares que não foram feitos para serem encontrados.<br>
-    Mas uma vez abertos… nunca se fecham por completo.”</em>
-  </p>
-  <br>
-        <br>
-          <p style="text-align: center;"><strong>(Continua)</strong></p>
-          <br>
-          <p>Acesse o link para assistir os video da sessão da aventura!! <a href="https://www.youtube.com/playlist?list=PLZwmSeOAKSCpvFFTgFEYNwIWoTAmjjYwN" target="_blank">Sombras de NeverNeath - RPG de Mesa D&D 5⁰edição YOUTUBE</a></p>
-      </p>
-  </div>
-</div>
+        <footer>
+            "A escuridão nunca se apaga — apenas espera."
+        </footer>
       </div>
     </main>
+  </div>
 
-    <script>
-    const campanhas = document.querySelectorAll('.menu-campanha');
-    const conteudos = document.querySelectorAll('.conteudo-campanha');
-
-    campanhas.forEach(menu => {
-      menu.querySelector('h3').addEventListener('click', () => {
-        const campanhaId = menu.getAttribute('data-campanha');
-        conteudos.forEach(sec => {
-          sec.style.display = sec.id === campanhaId ? 'block' : 'none';
+  <script>
+    // Lógica para Expandir/Minimizar Capítulos
+    document.querySelectorAll('.capitulo-header').forEach(header => {
+        header.addEventListener('click', () => {
+            header.parentElement.classList.toggle('aberto');
         });
-      });
     });
   </script>
-  <script src="script.js"></script>
 </body>
 </html>
