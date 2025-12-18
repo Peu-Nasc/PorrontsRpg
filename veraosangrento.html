@@ -206,6 +206,91 @@
     .badge-morto { background: rgb(241, 15, 15); color: black; }
     .badge-sumido { background: gold; color: black; animation: blink-alerta 1s infinite; }
     .badge-vivo { background: green; color: white; }
+
+    @media (max-width: 768px) {
+        
+        /* 1. Ajuste da Estrutura Principal */
+        .layout {
+            display: flex;
+            flex-direction: column; /* Empilha o menu em cima do conteúdo */
+        }
+
+        aside {
+            width: 100%; /* Menu ocupa largura total */
+            border-right: none;
+            border-bottom: 3px solid var(--cor-sangue);
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+
+        main#verao-sangrento-page {
+            padding: 10px; /* Reduz o espaçamento lateral da página */
+        }
+
+        /* 2. Container Principal */
+        .container-slasher {
+            padding: 15px; /* Menos padding interno */
+            width: 100%;
+            box-sizing: border-box;
+            border-width: 2px; /* Borda mais delicada no mobile */
+        }
+
+        /* 3. Cabeçalho e Título (O maior problema) */
+        .titulo-principal {
+            font-size: 2.2rem; /* Reduz de 4rem para caber na tela */
+            line-height: 1.1;
+            word-wrap: break-word; /* Quebra a palavra se for muito longa */
+        }
+
+        .header-retro {
+            padding: 20px 0;
+        }
+
+        /* O Selo do Mestre estava com position: absolute, o que joga ele pra fora da tela no mobile */
+        .selo-mestre {
+            position: relative; 
+            top: auto;
+            right: auto;
+            display: inline-block;
+            margin-bottom: 15px;
+            transform: rotate(0deg); /* Remove a rotação para ficar mais legível */
+        }
+
+        .subtitulo-linha {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        /* 4. Ajuste dos Textos e Citações */
+        .arquivo-morto {
+            padding: 15px;
+        }
+
+        .citacao-suspense {
+            font-size: 1rem; /* Fonte menor */
+            margin: 20px 0;
+        }
+
+        /* 5. Tabela (Status) */
+        /* Tabelas costumam quebrar layout. Isso permite scroll horizontal se necessário */
+        .status-table {
+            display: block;
+            width: 100%;
+            overflow-x: auto; 
+            white-space: nowrap;
+        }
+
+        /* 6. VHS e Anexos */
+        .vhs-label {
+            flex-direction: column; /* Data fica embaixo do título */
+            align-items: flex-start;
+            gap: 5px;
+        }
+        
+        .grid-anexos {
+            grid-template-columns: 1fr; /* Um anexo por linha */
+        }
+    }
   </style>
 </head>
 <body>
