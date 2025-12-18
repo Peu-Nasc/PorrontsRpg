@@ -207,90 +207,126 @@
     .badge-sumido { background: gold; color: black; animation: blink-alerta 1s infinite; }
     .badge-vivo { background: green; color: white; }
 
-    @media (max-width: 768px) {
-        
-        /* 1. Ajuste da Estrutura Principal */
-        .layout {
-            display: flex;
-            flex-direction: column; /* Empilha o menu em cima do conteúdo */
-        }
+    @media screen and (max-width: 900px) {
 
-        aside {
-            width: 100%; /* Menu ocupa largura total */
-            border-right: none;
-            border-bottom: 3px solid var(--cor-sangue);
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-        }
-
-        main#verao-sangrento-page {
-            padding: 10px; /* Reduz o espaçamento lateral da página */
-        }
-
-        /* 2. Container Principal */
-        .container-slasher {
-            padding: 15px; /* Menos padding interno */
-            width: 100%;
-            box-sizing: border-box;
-            border-width: 2px; /* Borda mais delicada no mobile */
-        }
-
-        /* 3. Cabeçalho e Título (O maior problema) */
-        .titulo-principal {
-            font-size: 2.2rem; /* Reduz de 4rem para caber na tela */
-            line-height: 1.1;
-            word-wrap: break-word; /* Quebra a palavra se for muito longa */
-        }
-
-        .header-retro {
-            padding: 20px 0;
-        }
-
-        /* O Selo do Mestre estava com position: absolute, o que joga ele pra fora da tela no mobile */
-        .selo-mestre {
-            position: relative; 
-            top: auto;
-            right: auto;
-            display: inline-block;
-            margin-bottom: 15px;
-            transform: rotate(0deg); /* Remove a rotação para ficar mais legível */
-        }
-
-        .subtitulo-linha {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        /* 4. Ajuste dos Textos e Citações */
-        .arquivo-morto {
-            padding: 15px;
-        }
-
-        .citacao-suspense {
-            font-size: 1rem; /* Fonte menor */
-            margin: 20px 0;
-        }
-
-        /* 5. Tabela (Status) */
-        /* Tabelas costumam quebrar layout. Isso permite scroll horizontal se necessário */
-        .status-table {
-            display: block;
-            width: 100%;
-            overflow-x: auto; 
-            white-space: nowrap;
-        }
-
-        /* 6. VHS e Anexos */
-        .vhs-label {
-            flex-direction: column; /* Data fica embaixo do título */
-            align-items: flex-start;
-            gap: 5px;
-        }
-        
-        .grid-anexos {
-            grid-template-columns: 1fr; /* Um anexo por linha */
-        }
+    /* 1. RESET DE ESTRUTURA (Segurança para não vazar tela) */
+    html, body {
+        overflow-x: hidden; /* Impede rolagem lateral fantasma */
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
+
+    /* 2. LAYOUT GERAL: DESFAZ A BARRA LATERAL */
+    .layout {
+        display: flex !important;
+        flex-direction: column; /* Empilha Menu em cima, Conteúdo embaixo */
+    }
+
+    /* 3. MENU (ASIDE): Transforma lista longa em GRADE de botões */
+    aside {
+        width: 100% !important;
+        padding: 15px;
+        box-sizing: border-box;
+        border-right: none !important;
+        border-bottom: 2px solid var(--cor-sangue);
+        background: #111; /* Fundo escuro para destacar o menu */
+    }
+
+    /* Faz os links das campanhas ficarem lado a lado (2 por linha) para economizar espaço */
+    .menu-campanha {
+        display: inline-block;
+        width: 48%; /* Quase metade da tela */
+        margin: 1%;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
+
+    .menu-campanha h3 {
+        font-size: 0.9rem; /* Texto menor no menu */
+        padding: 10px;
+        background: #222;
+        border: 1px solid #444;
+        text-align: center;
+    }
+
+    /* 4. CONTEÚDO PRINCIPAL (MAIN) */
+    main#verao-sangrento-page {
+        width: 100% !important;
+        padding: 15px !important; /* Espaçamento interno seguro */
+        box-sizing: border-box;
+        margin: 0 !important;
+    }
+
+    .container-slasher {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 15px !important;
+        margin: 0 !important;
+        box-sizing: border-box;
+        border-width: 2px !important; /* Borda mais fina */
+    }
+
+    /* 5. CABEÇALHO E TÍTULO (Onde costuma quebrar) */
+    .header-retro {
+        padding: 20px 10px;
+    }
+
+    .titulo-principal {
+        font-size: 13vw !important; /* Tamanho dinâmico: 13% da largura da tela */
+        line-height: 1;
+        word-wrap: break-word; /* Quebra palavra se precisar */
+    }
+
+    .subtitulo-linha {
+        font-size: 0.8rem;
+        display: block; /* Quebra linha */
+        margin-top: 10px;
+    }
+
+    /* O Selo "Mestre" sai do canto e vira um bloco centralizado */
+    .selo-mestre {
+        position: static !important; /* Tira o position absolute */
+        display: inline-block;
+        margin-bottom: 15px;
+        transform: rotate(0deg) !important;
+        font-size: 0.8rem;
+    }
+
+    /* 6. IMAGENS E MÍDIA */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        margin: 0 auto; /* Centraliza imagens */
+    }
+
+    /* 7. FITAS VHS E TABELAS */
+    .vhs-label {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 0.9rem;
+    }
+    
+    .vhs-date {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 5px;
+    }
+
+    /* Tabela com scroll se estourar a tela */
+    .status-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap; /* Não quebra linha dentro da célula */
+    }
+    
+    /* Grid de anexos vira coluna única */
+    .grid-anexos {
+        grid-template-columns: 1fr !important;
+    }
+}
   </style>
 </head>
 <body>
