@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Academia da Pedra Velada | Porront's RPG's</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="Imagens/logopag.png" type="image/x-icon">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- TEMA: ILUSÃO E REFLEXO DESPEDAÇADO --- */
+    :root {
+        --illusion-purple: #6a0dad;
+        --shard-blue: #a8d0e6;
+        --void-dark: #09090b;
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(168, 208, 230, 0.3);
+        --text-main: #e0e0e0;
+        --vecna-green: #39ff14; /* Para o Epílogo */
+        --sacrifice-red: #8b0000;
+    }
+
+    body {
+        background-color: var(--void-dark);
+        color: var(--text-main);
+        font-family: 'Cormorant Garamond', serif;
+        margin: 0;
+    }
+
+    main#pedra-velada-page {
+        background-image: 
+            linear-gradient(to bottom, rgba(10, 10, 20, 0.9), rgba(0, 0, 0, 1)),
+            url('https://www.transparenttextures.com/patterns/shattered-island.png');
+        padding: 40px 20px;
+        min-height: 100vh;
+    }
+
+    /* Container Principal com Efeito de Vidro */
+    .shattered-container {
+        max-width: 950px;
+        margin: 0 auto;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 0 30px rgba(106, 13, 173, 0.2);
+        padding: 50px;
+        position: relative;
+        backdrop-filter: blur(10px);
+        border-radius: 4px;
+    }
+
+    /* Efeito de Rachadura na Borda */
+    .shattered-container::before {
+        content: "";
+        position: absolute;
+        top: -2px; left: -2px; right: -2px; bottom: -2px;
+        background: linear-gradient(45deg, transparent, var(--illusion-purple), transparent);
+        z-index: -1;
+        opacity: 0.5;
+    }
+
+    /* Cabeçalho */
+    .header-illusion {
+        text-align: center;
+        margin-bottom: 50px;
+        border-bottom: 1px solid var(--glass-border);
+        padding-bottom: 20px;
+    }
+
+    .header-illusion h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 3.5rem;
+        color: var(--shard-blue);
+        text-shadow: 0 0 10px var(--illusion-purple);
+        margin: 0;
+        letter-spacing: 2px;
+    }
+
+    .header-illusion h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        color: #aaa;
+        font-size: 1.2rem;
+        margin-top: 5px;
+    }
+
+    /* Introdução */
+    .intro-box {
+        background: rgba(106, 13, 173, 0.1);
+        border-left: 4px solid var(--illusion-purple);
+        padding: 20px;
+        margin-bottom: 40px;
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+
+    /* Personagens */
+    .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+
+    .hero-card {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--glass-border);
+        padding: 15px;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .hero-card:hover {
+        border-color: var(--illusion-purple);
+        box-shadow: 0 0 15px rgba(106, 13, 173, 0.3);
+    }
+
+    .hero-card strong { color: var(--shard-blue); font-family: 'Cinzel', serif; }
+
+    /* --- SISTEMA DE CAPÍTULOS (ACCORDION) --- */
+    .act-wrapper {
+        margin-bottom: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .act-trigger {
+        background: linear-gradient(90deg, rgba(20, 20, 30, 0.9), rgba(40, 40, 60, 0.9));
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        border-left: 5px solid #444;
+    }
+
+    .act-trigger:hover {
+        background: rgba(40, 40, 60, 1);
+        border-left-color: var(--shard-blue);
+    }
+
+    .act-trigger h3 {
+        font-family: 'Cinzel', serif;
+        margin: 0;
+        color: #fff;
+        font-size: 1.4rem;
+    }
+
+    .act-content {
+        display: none;
+        padding: 30px;
+        background: rgba(0, 0, 0, 0.3);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        line-height: 1.8;
+        font-size: 1.15rem;
+        text-align: justify;
+    }
+
+    .act-wrapper.active .act-content { display: block; }
+    .act-wrapper.active .act-trigger { border-left-color: var(--illusion-purple); }
+    
+    .icon-shard::after { content: "▼"; font-size: 0.8rem; color: var(--shard-blue); transition: 0.3s; }
+    .act-wrapper.active .icon-shard::after { transform: rotate(180deg); }
+
+    /* Estilos Especiais de Texto */
+    .destaque-sacrificio {
+        background: rgba(139, 0, 0, 0.1);
+        border: 1px solid var(--sacrifice-red);
+        padding: 15px;
+        margin: 20px 0;
+        color: #ffcccc;
+        font-style: italic;
+    }
+
+    .epilogo-vecna {
+        border: 1px solid var(--vecna-green);
+        background: rgba(0, 20, 0, 0.6);
+        padding: 20px;
+        margin-top: 20px;
+        color: #ccffcc;
+    }
+
+    .voz-sussurrada {
+        color: var(--vecna-green);
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        display: block;
+        margin: 10px 0;
+        text-shadow: 0 0 5px var(--vecna-green);
+    }
+
+    footer {
+        margin-top: 60px;
+        text-align: center;
+        border-top: 1px solid var(--glass-border);
+        padding-top: 20px;
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Porront's RPG's</div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <h2>Campanhas</h2>
+      <div class="menu-campanha" data-campanha="curse-strahd">
+        <a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="O-Conto-do-Dragão-Vermelho">
+        <a href="dragaovermelho.html"><h3>O Conto do dragão Vermelho</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="prisioneira-13">
+        <a href="prisioneira13.html"><h3>Prisioneira 13</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="Sombras-de-Neverneath">
+        <a href="sombrasneverneath.html"><h3>Sombras de NeverNeath</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="colina-do-medo">
+        <a href="colinadomedo.html"><h3>A Colina do Medo</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="oneshot-vecna">
+        <a href="oneshotvecna.html"><h3>Vecna: Ninho do Olho Sombrio (ONESHOT)</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="doenca-congelante">
+        <a href="doenca-congelante.html"><h3>Doença Congelante</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="principe-caido">
+        <a href="oprincipecaido.html"><h3>O Principe Caíado</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="verao-sangrento">
+        <a href="veraosangrento.html"><h3>Verão Sangrento</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="verao-sangrento">
+        <a href="academiapedravelada.html"><h3>Verão Sangrento</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="personagens">
+        <a href="personagens.html"><h3>Personagens</h3></a>
+      </div>
+      
+      <br>
+      <h2>Em Breve:</h2>
+      <div class="menu-campanha" data-campanha="dragoes-dailhadatempestade">
+        <a href="dragoesilhadatempestade.html"><h3>Dragões da Ilha da Tempestade</h3></a>
+      </div>
+      <div class="menu-campanha" data-campanha="vecna-campanha">
+        <a href="vecnacampnha.html"><h3>Vecna: Véspera da Ruína</h3></a>
+      </div>
+      
+    </aside>
+
+    <main id="pedra-velada-page">
+      <div class="shattered-container">
+        
+        <div class="header-illusion">
+            <h1>A Academia da Pedra Velada</h1>
+            <h2>Um conto de ilusões, sacrifícios e segredos quebrados</h2>
+        </div>
+
+        <div class="intro-box">
+            <p><strong>A aventura começa</strong> quando o trio de heróis é contratado por <em>Lyra Vance</em>, uma mulher desesperada. Seu sobrinho, Timoth, está sendo apagado da realidade. Provas de sua existência, como suas cartas, literalmente se dissolvem em fumaça diante dos olhos do grupo.</p>
+            <p>A investigação leva o grupo a um penhasco desolado, onde a perícia arcana de Porronto é crucial para detectar e atravessar a poderosa ilusão que esconde a <strong>"Academia da Pedra Velada"</strong>.</p>
+        </div>
+
+        <div class="hero-grid">
+            <div class="hero-card"><strong>Porronto Potter</strong><br>Gnomo Mago</div>
+            <div class="hero-card"><strong>Vaerion</strong><br>Elfo Ladino</div>
+            <div class="hero-card"><strong>Bilesziutu</strong><br>Guerreiro Tiefling</div>
+        </div>
+
+        <div class="act-wrapper">
+            <div class="act-trigger">
+                <h3>Ato I: A Fachada Perfeita</h3>
+                <span class="icon-shard"></span>
+            </div>
+            <div class="act-content">
+                <p>Dentro da academia, o grupo é recebido por uma fachada idílica. No entanto, a intuição (ou intimidação) de <strong>Bilesziutu</strong> rapidamente percebe o comportamento letárgico e vazio dos estudantes e a tensão do zelador, Grom.</p>
+                <p>Enquanto isso, as habilidades de <strong>Vaerion</strong> são postas à prova quando ele se infiltra na biblioteca restrita, desarmando armadilhas e lidando com um guardião mágico. Ele rouba o <em>"Livro da Colheita"</em>, um registro macabro que revela a verdade: a academia é uma fazenda para colher o potencial de crianças.</p>
+            </div>
+        </div>
+
+        <div class="act-wrapper">
+            <div class="act-trigger">
+                <h3>Ato II: O Sanatório Psíquico</h3>
+                <span class="icon-shard"></span>
+            </div>
+            <div class="act-content">
+                <p>Seguindo uma pista de Grom, o trio descobre a verdadeira academia abaixo da ilusão: um laboratório frio e metálico. Eles encontram Timoth e outras crianças em cápsulas, suas mentes sendo drenadas.</p>
+                <p>Eles são confrontados pelo administrador, <strong>Senescal Krell</strong>. Krell tenta neutralizar Porronto com contrafeitiços e prender Bilesziutu com magia, enquanto Vaerion se esquiva pelas sombras. Durante a luta, Krell ativa um portal para um semiplano sombrio, tentando banir os heróis e seu "tributo".</p>
+            </div>
+        </div>
+
+        <div class="act-wrapper active">
+            <div class="act-trigger">
+                <h3>Ato III: O Sacrifício no Reflexo Despedaçado</h3>
+                <span class="icon-shard"></span>
+            </div>
+            <div class="act-content">
+                <p>O grupo cai no covil do <strong>Coven da Memória Partida</strong>, um reino de pesadelo feito de vidro quebrado, patrulhado por Bodaks mortais e observado por um olho gigante e podre no céu. O clímax ocorre em uma catedral em ruínas, onde três Bruxas da Noite estão sacrificando a essência de Timoth em um altar para destruir segredos e alimentar um artefato sombrio.</p>
+                <p>A batalha final começa. O Coven, para proteger seu ritual, invoca uma horda de 12 Espectros (Wraiths).</p>
+
+                <div class="destaque-sacrificio">
+                    <p>Vendo a ameaça esmagadora, <strong>Bilesziutu</strong> toma sua decisão final. Ele se posiciona entre os mortos-vivos e seus amigos, um baluarte solitário contra a maré de sombras. Ele ordena que Porronto e Vaerion salvem a criança.</p>
+                    <p>Enquanto Vaerion corre para libertar Timoth do altar e Porronto canaliza toda a sua magia para quebrar o Coven e destruir o artefato, Bilesziutu luta com fúria heroica. No entanto, os números são impossíveis. O guerreiro tiefling é cercado, e os toques drenantes dos Espectros o destroem, ceifando sua vida em um ato final de sacrifício que compra o tempo crucial para seus companheiros.</p>
+                </div>
+
+                <p>Os companheiros assistem, horrorizados, enquanto os Espectros começam a destroçar o corpo caído de Bilesziutu. No auge do desespero, <strong>Porronto Potter</strong> libera sua magia final, destruindo o cristal-artefato. A explosão arcana faz o altar ruir, esmagando a bruxa restante e matando-a. O poder liberado dissipa quase que por completo a horda de Espectros.</p>
+                <p>Um portal se abre, rasgando o tecido daquele semi-plano e levando de volta ao laboratório. Contudo, ele está fraco e visivelmente prestes a se fechar.</p>
+                <p>Porronto agarra o corpo de Bilesziutu e o inconsciente Timoth, atravessando o portal no último instante. <strong>Vaerion</strong>, no entanto, lembra-se das outras crianças que esconderam sob sua capa, fora da catedral. Ele corre de volta, desviando dos destroços do semi-plano que desmorona ao seu redor.</p>
+                <p>Ele encontra as duas crianças e, sabendo que não há tempo, decide carregálas de uma só vez, mesmo que isso custe sua velocidade. Ele corre de volta ao portal, mas ao alcançá-lo, algo agarra seu pé. Um dos Espectros restantes, que sobreviveu à purga, o segura firme. Incapaz de se soltar, Vaerion toma uma decisão – heroica ou tola. Ele joga as duas crianças inconscientes através da fenda bruxuleante. No exato momento em que elas atravessam, o portal se fecha.</p>
+            </div>
+        </div>
+
+        <div class="act-wrapper">
+            <div class="act-trigger">
+                <h3>Conclusão: O Preço do Retorno</h3>
+                <span class="icon-shard"></span>
+            </div>
+            <div class="act-content">
+                <p>Do outro lado, Porronto Potter se vê de volta ao laboratório frio, com Timoth, as duas crianças salvas e o corpo de seu amigo guerreiro. Vaerion, o elfo ladino, fica para trás, preso no Reflexo Despedaçado, puxando sua rapieira para enfrentar seu destino final contra os horrores restantes.</p>
+                <p>De volta ao laboratório frio, Porronto Potter está de joelhos. Ele tenta desesperadamente salvar seu amigo guerreiro, mas Bilesziutu está morto. A comoção traz Lyra Vance, a tia de Timoth, e os pais das outras crianças resgatadas.</p>
+                <p>A cena é de choro e alívio. Lyra abraça Timoth, e os outros pais agradecem ao pequeno gnomo, lamentando a perda de seu companheiro e ajudando a carregar o corpo para ser enterrado.</p>
+                <p>Mais tarde, Porronto organiza um funeral fantástico para Bilesziutu, honrando seu sacrifício com palavras bonitas antes de seguir viagem, agora sozinho.</p>
+            </div>
+        </div>
+
+        <div class="act-wrapper">
+            <div class="act-trigger">
+                <h3 style="color: var(--vecna-green);">Epílogo: Uma Página Virada</h3>
+                <span class="icon-shard"></span>
+            </div>
+            <div class="act-content">
+                <p><strong>Parte 1 - O prisioneiro:</strong> Longe dali, Vaerion não está morto. Ele está vivo, preso no Reflexo Despedaçado. O semi-plano está desmoronando, mas o elfo ladino está sozinho na escuridão, enfrentando os Espectros restantes. Após a luta, ele examina o "Livro da Colheita" (Ledger) que roubou. Sob seus olhos, a tinta Qualith que ele não conseguia ler começa a se reorganizar. As palavras se transformam em um único símbolo: o sigilo de uma Mão Esquerda com um olho gravado em sua palma.</p>
+
+                <div class="epilogo-vecna">
+                    <p><strong>Parte 2 - Uma nova ameaça:</strong> Naquela noite, Porronto tenta descansar. O sono não vem. Ele medita, tentando limpar sua mente do zumbido psíquico deixado por Krell. No silêncio, uma nova voz entra. É antiga, seca como poeira e ossos, e ecoa com o poder de mil segredos roubados.</p>
+                    
+                    <span class="voz-sussurrada">"Eles Me prometeram o esquecimento de Meus rivais. Eles falharam."</span>
+                    <span class="voz-sussurrada">"Eles Me ofereceram potencial. Eram apenas crianças."</span>
+                    <span class="voz-sussurrada">"Você... você interferiu. Você interrompeu um tributo. Você roubou um sacrifício."</span>
+                    
+                    <p><em>(Uma pausa, a voz se torna curiosa, quase faminta.)</em></p>
+                    
+                    <span class="voz-sussurrada">"Mas... ao fazer isso, você Me mostrou um segredo novo. O segredo da falha deles. O segredo de vocês."</span>
+                    <span class="voz-sussurrada">"Vocês não são mais desconhecidos. Vocês estão no Meu livro. E eu... virei a página."</span>
+                </div>
+
+                <p>Porronto acorda suando frio. A aventura termina. Eles não apenas ganharam a atenção de um deus; eles interferiram em um de seus contratos e se tornaram um segredo que o Deus dos Segredos agora conhece pessoalmente.</p>
+            </div>
+        </div>
+
+        <footer>
+            "Segredos quebrados cortam mais fundo que vidro." <br>
+            Registro da Academia da Pedra Velada
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Lógica para Expandir/Minimizar Atos
+    document.querySelectorAll('.act-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            trigger.parentElement.classList.toggle('active');
+        });
+    });
+  </script>
+</body>
+</html>
