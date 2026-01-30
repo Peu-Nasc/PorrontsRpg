@@ -1,48 +1,247 @@
-<header>
-    <div class="logo">Porront's RPG's</div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vecna: Véspera da Ruína | Porront's RPG</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="shortcut icon" href="Imagens/logopag.png" type="image/x-icon">
+  <link rel="stylesheet" href="styleVECNA.css">
+</head>
+<body>
+
+  <div class="bg-cosmic"></div>
+
+  <header>
+    <div class="header-content">
+      <div class="logo-container">
+        <h1 class="logo">Porront's RPG</h1>
+        <span class="sub-logo">Crônicas do Fura Coco</span>
+      </div>
+      <div class="header-status">
+        <span class="status-dot"></span> Campanha Ativa
+      </div>
+    </div>
   </header>
 
   <div class="layout">
+    
     <aside>
-      <h2>Campanhas</h2>
-      <div class="menu-campanha" data-campanha="curse-strahd">
-        <a href="curseofstrahd.html"><h3>Curse of Strahd</h3></a>
+      <div class="sidebar-header">
+        <h2>Grimório de Campanhas</h2>
       </div>
-      <div class="menu-campanha" data-campanha="O-Conto-do-Dragão-Vermelho">
-        <a href="dragaovermelho.html"><h3>O Conto do dragão Vermelho</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="prisioneira-13">
-        <a href="prisioneira13.html"><h3>Prisioneira 13</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="Sombras-de-Neverneath">
-        <a href="sombrasneverneath.html"><h3>Sombras de NeverNeath</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="colina-do-medo">
-        <a href="colinadomedo.html"><h3>A Colina do Medo</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="oneshot-vecna">
-        <a href="oneshotvecna.html"><h3>Vecna: Ninho do Olho Sombrio (ONESHOT)</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="doenca-congelante">
-        <a href="doenca-congelante.html"><h3>Doença Congelante</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="principe-caido">
-        <a href="oprincipecaido.html"><h3>O Principe Caíado</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="verao-sangrento">
-        <a href="veraosangrento.html"><h3>Verão Sangrento</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="personagens">
-        <a href="personagens.html"><h3>Personagens</h3></a>
-      </div>
-      
-      <br>
-      <h2>Em Breve:</h2>
-      <div class="menu-campanha" data-campanha="dragoes-dailhadatempestade">
-        <a href="dragoesilhadatempestade.html"><h3>Dragões da Ilha da Tempestade</h3></a>
-      </div>
-      <div class="menu-campanha" data-campanha="vecna-campanha">
-        <a href="vecnacampnha.html"><h3>Vecna: Véspera da Ruína</h3></a>
-      </div>
-      
+      <nav>
+        <div class="nav-group">
+          <h3>Em Andamento</h3>
+          <a href="vecna.html" class="menu-item active glitch-effect" data-text="Vecna: Véspera da Ruína">
+            Vecna: Véspera da Ruína
+          </a>
+          <a href="dragoesilhadatempestade.html" class="menu-item">Dragões da Ilha da Tempestade</a>
+        </div>
+
+        <div class="nav-group">
+          <h3>Arquivos Antigos</h3>
+          <a href="curseofstrahd.html" class="menu-item">Curse of Strahd</a>
+          <a href="dragaovermelho.html" class="menu-item">O Conto do Dragão Vermelho</a>
+          <a href="prisioneira13.html" class="menu-item">Prisioneira 13</a>
+          <a href="sombrasneverneath.html" class="menu-item">Sombras de NeverNeath</a>
+          <a href="colinadomedo.html" class="menu-item">A Colina do Medo</a>
+          <a href="oneshotvecna.html" class="menu-item">Vecna: Ninho do Olho</a>
+        </div>
+        
+        <div class="menu-divisor"></div>
+        <a href="personagens.html" class="menu-item special-item">Galeria de Lendas</a>
+      </nav>
     </aside>
+
+    <main>
+      
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="campaign-title">Vecna: <br><span class="text-gradient">Véspera da Ruína</span></h1>
+          <div class="campaign-meta">
+            <span class="tag system">D&D 5E</span>
+            <span class="tag level">Nível 10-20</span>
+            <span class="tag dm">DM: Vini (O Narrador do Caos)</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="narrativa-box">
+        <p>"Ajeitem suas cadeiras e preparem seus corações, pois o que vou lhes contar não é apenas um registro de uma sessão de RPG, é a <strong>Crônica do Início do Fim</strong>, narrada sobre as cinzas de uma realidade que quase foi esquecida."</p>
+      </div>
+
+      <section class="characters-section">
+        <h2 class="section-title">A Companhia "Fura Coco"</h2>
+        <div class="character-grid">
+          <div class="char-card">
+            <div class="char-role">Clérigo</div>
+            <h3>Salamenelson</h3>
+            <p>O pilar moral e sócio-proprietário do <em>"Santo Coco Graal"</em>.</p>
+          </div>
+          <div class="char-card">
+            <div class="char-role">Artífice</div>
+            <h3>Mol'el Stars</h3>
+            <p>Engenheiro Gnomo. Criador da infame <em>"Catapulta de Talheres"</em> e perigo público.</p>
+          </div>
+          <div class="char-card">
+            <div class="char-role">Ladino Arcano</div>
+            <h3>Odysseu Yeager</h3>
+            <p>Diretor Técnico da <em>"A Presa & O Gatilho"</em>. Especialista em contratos e "químicos".</p>
+          </div>
+          <div class="char-card">
+            <div class="char-role">Ranger/Ladino</div>
+            <h3>Crow Shadowmare</h3>
+            <p>O Sócio Investidor. Mestre em furtividade (tão bom que o grupo esquece que ele existe).</p>
+          </div>
+          <div class="char-card">
+            <div class="char-role">Bardo Sátiro</div>
+            <h3>Fumaça</h3>
+            <p>A celebridade local e alma artística do grupo.</p>
+          </div>
+          <div class="char-card">
+            <div class="char-role">Druida Leão</div>
+            <h3>Simbar</h3>
+            <p>Força da natureza com faro apurado para negociações questionáveis.</p>
+          </div>
+          <div class="char-card">
+            <div class="char-role">Paladino</div>
+            <h3>Theron Dareth</h3>
+            <p>A lâmina da justiça e guardião da moral (quando possível).</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="sessao active"> <div class="sessao-header">
+          <div class="sessao-title-group">
+            <span class="sessao-number">Sessão 01</span>
+            <h3>O Dia em que a Realidade Piscou</h3>
+          </div>
+          <span class="icon-toggle"></span>
+        </div>
+        
+        <div class="sessao-content">
+          <div class="sessao-inner">
+            
+            <article class="chronicle">
+              
+              <div class="act-block">
+                <h4>I. A Paz Armada de Neverwinter</h4>
+                <p>
+                  Dois anos se passaram. O "Fura Coco" deixou de ser um bando de aventureiros para se tornar uma instituição. 
+                  Enquanto a chuva caía lá fora, dentro do QG a atmosfera era de triunfo. 
+                  <strong>Salamenelson</strong> e <strong>Theron</strong> administram o <em>"Santo Coco Graal"</em> na Zona A (Rua da Redenção, Lote 07), 
+                  oficialmente um "Santuário Ecumênico", mas com um porão suspeito de "Vinho Sacramental".
+                  Já <strong>Odysseu</strong> e <strong>Crow</strong>, na Zona Portuária, contam os lucros da <em>"A Presa & O Gatilho"</em>, 
+                  ignorando as multas por descarte de químicos no esgoto.
+                </p>
+                <p><em>"Vocês não são apenas aventureiros; vocês são a mobília de luxo dessa cidade."</em></p>
+              </div>
+
+              <div class="act-block">
+                <h4>II. O Glitch: "O Universo está sendo Reescrito"</h4>
+                <p>
+                  A celebração morreu com um som de <em>vidro moído</em> dentro dos ouvidos. O cheiro de ozônio inundou a sala.
+                  <strong>Thorin Morgran</strong> surgiu, mas não estava lá. Ele "glitchava", alternando entre carne e estática dourada.
+                </p>
+                <blockquote class="glitch-quote">
+                  "Eles acharam o Segredo! Nós estávamos errados... Se eu sumir, vocês têm que lembrar! Se me esquecerem, eu nunca existi!" 
+                  <br><span class="quote-author">— Thorin, segundos antes de ser deletado em pixels de areia.</span>
+                </blockquote>
+                <p>
+                  O teste de Sabedoria foi o verdadeiro combate. A memória de Thorin tentou fugir, como se o universo estivesse se auto-corrigindo para apagar o erro. 
+                  Apenas a teimosia dos heróis manteve a lembrança viva.
+                </p>
+              </div>
+
+              <div class="act-block">
+                <h4>III. O Caos em Neverdeath</h4>
+                <p>
+                  Convocados por <strong>Lorde Neverember</strong> (após negociarem isenção fiscal, claro), o grupo entrou nas catacumbas buscando os nobres desaparecidos: 
+                  <strong>Eldon, Sarcelle, Umberto e Indrina</strong>. O que se seguiu foi puro caos tático:
+                </p>
+                <ul class="highlights-list">
+                  <li><strong>O Corvo e a Harpa:</strong> Crow tentou saquear uma Harpa Dourada protegida por uma grade mágica. Resultado? Falha crítica, 14 de dano de dardos na cara e a humilhação de ter que quebrar a grade na força bruta.</li>
+                  <li><strong>A Catapulta de Talheres:</strong> Mol'el, provando que sanidade é opcional para Artífices, encantou a baixela de jantar dos cultistas, transformando garfos e facas em projéteis letais a 300km/h.</li>
+                  <li><strong>A Diplomacia do Sapo:</strong> Em um dos momentos mais surreais, Simbar encontrou um Sapo Gigante engolindo um bracelete. Em vez de abrir o bicho, o Druida <em>negociou</em> um suborno, pagando moedas de ouro para o anfíbio vomitar o item.</li>
+                </ul>
+              </div>
+
+              <div class="act-block">
+                <h4>IV. Segredos, Relógios e Água</h4>
+                <p>
+                  Nas profundezas, o inimigo não era o Necromante esperado, mas um <strong>Marid (Gênio)</strong> insano, consertando relógios quebrados e murmurando sobre o "Tempo Falho".
+                  Ao tentar revelar o nome do vilão, o Marid foi punido pela realidade: seus ossos estalaram e ele colapsou em água e gore.
+                </p>
+                <p>
+                  <strong>Os Segredos Revelados:</strong>
+                  <br>✦ <em>Indrina (A Atriz):</em> Revelou que Lorde Neverember pode ser um impostor.
+                  <br>✦ <em>O Livro Banido:</em> Mol'el tocou em um tomo proibido e foi banido temporariamente para outra dimensão (e voltou xingando).
+                  <br>✦ <em>O Massacre Silencioso:</em> No confronto final contra os cultistas e o Nothic, o grupo lançou <strong>Silêncio</strong>, impedindo qualquer monólogo ou magia verbal do vilão, transformando a luta em um massacre unilateral.
+                </p>
+              </div>
+
+              <div class="act-block special-ending">
+                <h4>V. A Queda para o Multiverso</h4>
+                <p>
+                  Ao tentarem voltar para casa pelo portal, o chão não chegou. A gravidade inverteu. 
+                  Eles não caíram em Neverwinter, mas aterrissaram suavemente em tapetes grossos, com cheiro de livros velhos e magia antiga.
+                </p>
+                <p>
+                  Eles estavam em <strong>Sigil, a Cidade das Portas</strong>. Diante deles, três figuras lendárias observavam com curiosidade:
+                </p>
+                <div class="wizards-trio">
+                  <div class="wizard-card">
+                    <strong>A Senhora de Prata</strong>
+                    <span>Alustriel Silverhand</span>
+                  </div>
+                  <div class="wizard-card">
+                    <strong>A Bruxa do Caos</strong>
+                    <span>Tasha</span>
+                  </div>
+                  <div class="wizard-card">
+                    <strong>O Mago Paranoico</strong>
+                    <span>Mordenkainen</span>
+                  </div>
+                </div>
+                <p class="cliffhanger">
+                  <em>"Parece que os peões chegaram,"</em> disse Mordenkainen, fechando seu grimório. E assim, o destino do Fura Coco deixou a Costa da Espada para entrar na guerra pelo Multiverso.
+                </p>
+              </div>
+
+              <div class="video-cta">
+                <a href="https://youtube.com/live/XZ-gMZHFtuQ?feature=share" target="_blank" class="btn-video">
+                  <span class="play-icon">▶</span> Assistir ao Episódio Completo
+                </a>
+              </div>
+
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="sessao">
+        <div class="sessao-header">
+          <div class="sessao-title-group">
+            <span class="sessao-number">Sessão 02</span>
+            <h3>A Chegada em Sigil</h3>
+          </div>
+          <span class="icon-toggle"></span>
+        </div>
+        <div class="sessao-content">
+          <div class="sessao-inner">
+            <p class="placeholder-text">Os dados ainda estão rolando... Em breve.</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="scriptVecna.js"></script>
+</body>
+</html>
