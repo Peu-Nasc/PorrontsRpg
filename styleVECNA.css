@@ -565,19 +565,18 @@ main {
 }
 
 /* =========================================
-   RESPONSIVE (Mobile)
+   MOBILE MENU (POPUP GRIMOIRE) & RESPONSIVE
    ========================================= */
-@media (max-width: 900px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
 
-  aside {
-    height: auto;
-    position: relative;
-    top: 0;
-    border-right: none;
-    border-bottom: 1px solid var(--glass-border);
+/* Esconde os botões de controle e overlay no Desktop por padrão */
+.menu-toggle, .close-btn, .menu-overlay {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  /* Layout Básico */
+  .layout {
+    display: block; /* Remove o grid lado a lado */
   }
 
   main {
@@ -588,6 +587,94 @@ main {
     font-size: 3rem;
   }
 
+  /* --- MENU MOBILE (POPUP) --- */
+
+  /* 1. Botão Hamburger (Topo) */
+  .menu-toggle {
+    display: block;
+    background: transparent;
+    border: 1px solid var(--vecna-gold);
+    color: var(--vecna-gold);
+    font-family: var(--font-title);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 15px; /* Espaço para o logo */
+    transition: all 0.3s ease;
+  }
+
+  .menu-toggle:hover {
+    background: var(--vecna-gold);
+    color: var(--void-black);
+    box-shadow: 0 0 10px var(--vecna-gold);
+  }
+
+  /* 2. O Overlay (Fundo escuro atrás do menu) */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 199; /* Atrás do menu, na frente de tudo */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .menu-overlay.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* 3. Transformando o ASIDE em Popup Lateral */
+  aside {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Começa escondido na esquerda */
+    width: 85%;
+    max-width: 320px;
+    height: 100vh;
+    z-index: 200; /* Acima do Header (100) */
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(15px);
+    border-right: 1px solid var(--vecna-gold);
+    border-bottom: none; /* Remove borda inferior antiga */
+    box-shadow: 10px 0 30px rgba(0,0,0,0.8);
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding-top: 60px; /* Espaço para o botão de fechar */
+  }
+
+  /* Classe que o JS vai adicionar para mostrar o menu */
+  aside.active {
+    left: 0;
+  }
+
+  /* 4. Botão de Fechar (X) dentro do menu */
+  .close-btn {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+  }
+
+  .close-btn:hover {
+    color: var(--blood-red);
+    text-shadow: 0 0 10px var(--blood-red);
+  }
+
+  /* Ajustes gerais de texto para mobile */
   .sessao-header {
     padding: 1rem;
   }

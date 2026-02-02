@@ -1,49 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
-  // Controle do Acordeão (Sessões)
-  const headers = document.querySelectorAll('.sessao-header');
+    // 1. Lógica do Accordion (Sessões)
+    const sessions = document.querySelectorAll('.sessao');
 
-  headers.forEach(header => {
-    header.addEventListener('click', () => {
-      const sessao = header.parentElement;
-      const content = sessao.querySelector('.sessao-content');
+    sessions.forEach(session => {
+        const header = session.querySelector('.sessao-header');
+        const content = session.querySelector('.sessao-content');
 
-      // Alterna classe active
-      sessao.classList.toggle('active');
+        // Se a sessão já começar com a classe 'active' no HTML, defina a altura máxima
+        if (session.classList.contains('active')) {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
 
-      // Animação de Altura
-      if (sessao.classList.contains('active')) {
-        content.style.maxHeight = content.scrollHeight + "px";
-      } else {
-        content.style.maxHeight = null;
-      }
+        header.addEventListener('click', () => {
+            // Fecha todas as outras sessões (efeito sanfona exclusivo)
+            sessions.forEach(otherSession => {
+                if (otherSession !== session) {
+                    otherSession.classList.remove('active');
+                    otherSession.querySelector('.sessao-content').style.maxHeight = null;
+                }
+            });
+
+            // Alterna a sessão atual
+            session.classList.toggle('active');
+
+            if (session.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        });
     });
-  });
 
-  // Inicialização: Se houver sessão já aberta (active), define a altura
-  const activeSession = document.querySelector('.sessao.active .sessao-content');
-  if (activeSession) {
-    activeSession.style.maxHeight = activeSession.scrollHeight + "px";
-  }
+    // 2. Lógica do Menu Mobile (Popup)
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebar = document.getElementById('sidebarGrimorio');
+    const overlay = document.getElementById('menuOverlay');
 
-  // Efeito Glitch no Menu (Visual)
-  const glitchLinks = document.querySelectorAll('.glitch-effect');
-  glitchLinks.forEach(link => {
-    link.addEventListener('mouseover', () => {
-      const originalText = link.getAttribute('data-text');
-      let iterations = 0;
-      const interval = setInterval(() => {
-        link.innerText = link.innerText.split('')
-          .map((letter, index) => {
-            if(index < iterations) return originalText[index];
-            return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%'[Math.floor(Math.random() * 26)];
-          })
-          .join('');
-        
-        if(iterations >= originalText.length) clearInterval(interval);
-        iterations += 1 / 3;
-      }, 30);
-    });
-  });
+    function openSidebar() {
+        if(sidebar && overlay) {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Impede a rolagem do fundo
+        }
+    }
 
+    function closeSidebar() {
+        if(sidebar && overlay) {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // Libera a rolagem do fundo
+        }
+    }
+
+    // Adiciona os eventos se os elementos existirem
+    if (menuToggle) menuToggle.addEventListener('click', openSidebar);
+    if (closeMenu) closeMenu.addEventListener('click', closeSidebar);
+    if (overlay) overlay.addEventListener('click', closeSidebar);
+
+    // Fechar menu ao clicar em um link interno (Melhora usabilidade)
+    if(sidebar) {
+        const menuLinks = sidebar.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+    }
 });
