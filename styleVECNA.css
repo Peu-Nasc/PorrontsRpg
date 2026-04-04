@@ -38,6 +38,38 @@ body {
   overflow-x: hidden;
 }
 
+.chronicle figure {
+            margin: 2rem auto; /* Centraliza e dá espaçamento */
+            text-align: center; /* Centraliza a imagem se ela for menor que o container */
+            max-width: 100%;
+        }
+
+        .chronicle img {
+            max-width: 100%; /* impede que a imagem vaze para fora no mobile */
+            height: auto; /* Mantém a proporção */
+            border-radius: 8px; /* Opcional: cantos arredondados para combinar com o estilo */
+            border: 1px solid rgba(255, 215, 0, 0.2); /* Opcional: borda fina dourada sutil */
+            
+            /* Ajuste para Desktop (telas maiores que 768px) */
+            @media (min-width: 769px) {
+                max-height: 70vh; /* impede que a imagem ocupe a tela vertical inteira no PC */
+            }
+
+            /* Ajuste para Celular (telas menores que 768px) */
+            @media (max-width: 768px) {
+                max-height: 50vh; /* Limita a altura no celular para não ficar gigante */
+            }
+        }
+        
+        /* Opcional: estilo para legenda da imagem */
+        .chronicle figcaption {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+            font-family: var(--font-body);
+        }
+
 /* Scrollbar customization for a sleek look */
 ::-webkit-scrollbar {
   width: 8px;
