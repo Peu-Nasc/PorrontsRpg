@@ -3,98 +3,262 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Porronts Rpg's | Portal das Campanhas | RPG de Mesa</title>
+  <title>Porront's RPG | Crônicas Épicas de Aventura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Orbitron:wght@400;700;900&family=Audiowide&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="stylehomepage.css">
   <link rel="shortcut icon" href="logopag.png" type="image/x-icon">
 </head>
 <body>
+  <!-- Fundo animado -->
+  <div class="stars"></div>
+  <div class="cosmic-bg"></div>
+
   <header>
-    <div class="logo">Porronts Rpg's</div>
+    <div class="header-content">
+      <div class="logo-wrapper">
+        <h1 class="logo">Porront's RPG</h1>
+        <span class="tagline">Crônicas de Legenda</span>
+      </div>
+      <nav class="header-nav" id="headerNav">
+        <a href="#ativas" class="nav-link active">Campanhas</a>
+        <a href="#personagens" class="nav-link">Heróis</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <div class="introducao">
-      <h1>Escolha Seu Destino</h1>
-      <p>Bem-vindo ao grimório digital de aventuras lendárias.<br>
-      Aqui estão registradas as campanhas ancestrais narradas pelos mestres dos reinos esquecidos.<br>
-      Intrigas, batalhas épicas, horrores cósmicos e laços eternos o aguardam.<br>
-      🧙‍♂️ Que os dados estejam ao seu favor!</p>
-    </div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2 class="hero-title">Escolha Seu Destino</h2>
+        <p class="hero-subtitle">Aventuras épicas aguardam aqueles corajosos o suficiente para enfrentar o desconhecido</p>
+        <div class="cta-buttons">
+          <button class="btn-primary" onclick="document.getElementById('ativas').scrollIntoView({behavior: 'smooth'})">Explorar Aventuras</button>
+          <button class="btn-secondary" onclick="document.getElementById('personagens').scrollIntoView({behavior: 'smooth'})">Conhecer Heróis</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="glow-orb"></div>
+        <div class="glow-orb orb-2"></div>
+      </div>
+    </section>
 
-    <div class="grid-campanhas">
+    <!-- CAMPANHAS ATIVAS -->
+    <section id="ativas" class="campanhas-section">
+      <div class="section-header">
+        <h2 class="section-title">⚔️ Campanhas em Progresso</h2>
+        <p class="section-subtitle">Histórias vivas, heróis em ação</p>
+      </div>
+      
+      <div class="grid-campanhas ativas">
+        <a href="vecnacampnha.html" class="campanha premium active-badge">
+          <div class="campanha-image">
+            <img src="Imagens/campanhavecna.jpg" alt="Vecna">
+            <span class="badge">Ativa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Vecna: Véspera da Ruína</h3>
+            <p class="campaign-tag">D&D 5E • Sistema Clássico</p>
+            <p class="campaign-text">A conclusão de tudo. Nem todos voltarão para casa. O fim se aproxima...</p>
+          </div>
+          <div class="campaign-footer">
+            <span>🎭 DM: Peu Porronto</span>
+          </div>
+        </a>
 
-  <a href="curseofstrahd.html" class="campanha">
-    <img src="Imagens/capacampanhastrahd.jpg" alt="Curse of Strahd">
-    <h2>🦇 Curse of Strahd</h2>
-    <p>Enfrente o lorde vampiro em terras amaldiçoadas e sombrias.</p>
-  </a>
+        <a href="Narro-STARWARS.html" class="campanha premium active-badge">
+          <div class="campanha-image">
+            <img src="Imagens/CAPA NARRO.jpg" alt="Narro">
+            <span class="badge">Ativa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Narro: História Nunca Contada</h3>
+            <p class="campaign-tag">Star Wars • Narrativa Cósmica</p>
+            <p class="campaign-text">Numa galáxia distante, heróis desconhecidos mudam o destino do universo...</p>
+          </div>
+          <div class="campaign-footer">
+            <span>⚡ DM: Peu Porronto</span>
+          </div>
+        </a>
+      </div>
+    </section>
 
-  <a href="dragaovermelho.html" class="campanha">
-    <img src="Imagens/capaocontododragaovermelho.jpg" alt="O Conto do Dragão Vermelho">
-    <h2>🐉 O Conto do Dragão Vermelho</h2>
-    <p>O rugido antigo desperta. A balança do mundo irá ruir.</p>
-  </a>
+    <!-- CAMPANHAS COMPLETADAS -->
+    <section id="completadas" class="campanhas-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Jornadas Completadas</h2>
+        <p class="section-subtitle">Legados eternos, histórias encerradas</p>
+      </div>
+      
+      <div class="grid-campanhas completed">
+        <a href="curseofstrahd.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capacampanhastrahd.jpg" alt="Curse of Strahd">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Curse of Strahd</h3>
+            <p class="campaign-tag">D&D 5E • Horror Gótico</p>
+            <p class="campaign-text">Enfrente o vampiro Strahd em Ravenloft</p>
+          </div>
+        </a>
 
-  <a href="prisioneira13.html" class="campanha">
-    <img src="Imagens/capap13.jpg" alt="Prisioneira 13">
-    <h2>🔒 Prisioneira 13</h2>
-    <p>Um segredo trancado a sete chaves. Confiança é uma armadilha?</p>
-  </a>
+        <a href="dragaovermelho.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capaocontododragaovermelho.jpg" alt="Dragão Vermelho">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>O Conto do Dragão Vermelho</h3>
+            <p class="campaign-tag">D&D 5E • Fantasia Épica</p>
+            <p class="campaign-text">O rugido antigo desperta a balança</p>
+          </div>
+        </a>
 
-  <a href="sombrasneverneath.html" class="campanha">
-    <img src="Imagens/capasombrasdeneverneath.jpg" alt="Sombras de Neverneath">
-    <h2>🌑 Sombras de Neverneath</h2>
-    <p>Uma cidade afundada em trevas. Um grupo ousa trazer a luz.</p>
-  </a>
+        <a href="prisioneira13.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capap13.jpg" alt="Prisioneira 13">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Prisioneira 13</h3>
+            <p class="campaign-tag">D&D 5E • Mistério</p>
+            <p class="campaign-text">Um segredo trancado a sete chaves</p>
+          </div>
+        </a>
 
-  <a href="colinadomedo.html" class="campanha">
-    <img src="Imagens/acolinadomedo.jpg" alt="A Colina do Medo">
-    <h2>🌒 A Colina do Medo</h2>
-    <p>Desvende terrores esquecidos num mundo desolado.</p>
-  </a>
+        <a href="sombrasneverneath.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capasombrasdeneverneath.jpg" alt="Sombras de NeverNeath">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Sombras de NeverNeath</h3>
+            <p class="campaign-tag">D&D 5E • Exploração</p>
+            <p class="campaign-text">Cidade afundada em trevas eternas</p>
+          </div>
+        </a>
 
-  <a href="oneshotvecna.html" class="campanha">
-    <img src="Imagens/capaoneshotvecna.jpg" alt="Vecna: Ninho do Olho Sombrio">
-    <h2>👁️‍🗨️ Vecna: Ninho do Olho Sombrio</h2>
-    <p>Um prelúdio sombrio sobre sacrifícios, loucura e poder profano.</p>
-  </a>
+        <a href="colinadomedo.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/acolinadomedo.jpg" alt="Colina do Medo">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>A Colina do Medo</h3>
+            <p class="campaign-tag">D&D 5E • Horror Cósmico</p>
+            <p class="campaign-text">Terrores esquecidos aguardam</p>
+          </div>
+        </a>
 
-  <a href="doenca-congelante.html" class="campanha">
-    <img src="Imagens/capadoenca-congelante.jpg" alt="Doença Congelante">
-    <h2>❄️ Doença Congelante</h2>
-    <p>Uma aflição antinatural que transforma vítimas em estátuas de gelo.</p>
-  </a>
+        <a href="oneshotvecna.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capaoneshotvecna.jpg" alt="Vecna Oneshot">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Vecna: Ninho do Olho Sombrio</h3>
+            <p class="campaign-tag">D&D 5E • One-Shot</p>
+            <p class="campaign-text">Prelúdio de poder profano</p>
+          </div>
+        </a>
 
-  <a href="oprincipecaido.html" class="campanha">
-    <img src="Imagens/capaprincipecaido.png" alt="O Príncipe Caído">
-    <h2>👑 O Príncipe Caído</h2>
-    <p>Um reino mergulha na escuridão. Apenas um príncipe exilado pode restaurar a esperança perdida.</p>
-  </a>
-  
-  <a href="vecnacampnha.html" class="campanha">
-    <img src="Imagens/campanhavecna.jpg" alt="Vecna: Véspera da Ruína">
-    <h2>☠️ Vecna: Véspera da Ruína</h2>
-    <p>Quando o tempo se dobra, o fim se aproxima. Nada será como antes. A Véspera da Ruína Chegou!</p>
-  </a>
+        <a href="doenca-congelante.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capadoenca-congelante.jpg" alt="Doença Congelante">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Doença Congelante</h3>
+            <p class="campaign-tag">D&D 5E • Investigação</p>
+            <p class="campaign-text">Aflição que congela a alma</p>
+          </div>
+        </a>
 
-  <a href="dragoesilhadatempestade.html" class="campanha">
-    <img src="Imagens/capailhadatempestade.jpg" alt="Dragões da Ilha da Tempestade">
-    <h2>🌩️ Dragões da Ilha da Tempestade (EM BREVE)</h2>
-    <p>Uma ilha esquecida pelo tempo. Dragões antigos despertam.</p>
-  </a>
+        <a href="oprincipecaido.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capaprincipecaido.png" alt="Príncipe Caído">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>O Príncipe Caído</h3>
+            <p class="campaign-tag">D&D 5E • Redenção</p>
+            <p class="campaign-text">Um reino salvo por um exilado</p>
+          </div>
+        </a>
 
-  <a href="personagens.html" class="campanha">
-    <img src="Imagens/capapersonagens.jpeg" alt="Personagens">
-    <h2>🎭 Personagens</h2>
-    <p>Conheça os heróis, vilões e lendas vivas de todas as campanhas.</p>
-  </a>
+        <a href="veraosangrento.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capaveraosangrento.jpg" alt="Verão Sangrento">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Verão Sangrento</h3>
+            <p class="campaign-tag">D&D 5E • Conflito</p>
+            <p class="campaign-text">Quando o sangue tinge o verão</p>
+          </div>
+        </a>
 
-</div>
+        <a href="academiapedravelada.html" class="campanha">
+          <div class="campanha-image">
+            <img src="Imagens/capaacademia.jpg" alt="Academia">
+            <span class="badge complete">Completa</span>
+          </div>
+          <div class="campanha-content">
+            <h3>Academia da Pedra Velada</h3>
+            <p class="campaign-tag">D&D 5E • Magia</p>
+            <p class="campaign-text">Segredos ancestrais revelados</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- PERSONAGENS -->
+    <section id="personagens" class="personagens-section">
+      <div class="section-header">
+        <h2 class="section-title">🎭 Galeria de Lendas</h2>
+        <p class="section-subtitle">Heróis, vilões e seres que moldaram estas histórias</p>
+      </div>
+      <a href="personagens.html" class="cta-personagens">
+        <span>Ver Compêndio Completo</span>
+        <span class="arrow">→</span>
+      </a>
+    </section>
 
   </main>
 
   <footer>
-    © 2025 Porront's RPG | Que as brumas guiem seus dados e o destino seja épico.
+    <div class="footer-content">
+      <p>© 2025 Porront's RPG | Sagase da Mesa</p>
+      <p class="footer-tagline">Onde imaginação se torna realidade e os dados definem o destino</p>
+    </div>
   </footer>
+
+  <script>
+    // Animação suave de links de navegação
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (document.querySelector(href)) {
+          e.preventDefault();
+        }
+      });
+    });
+
+    // Destaque nav ao scroll
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      if (window.scrollY < window.innerHeight) {
+        document.querySelector('.nav-link:nth-child(1)').classList.add('active');
+      } else if (window.scrollY < window.innerHeight * 2) {
+        document.querySelector('.nav-link:nth-child(2)').classList.add('active');
+      }
+    });
+  </script>
 </body>
 </html>
