@@ -349,6 +349,37 @@ img, video {
     padding: 0.5rem;
   }
 
+  .sidebar-button {
+    display: block;
+  }
+
+  .sidebar-overlay {
+    display: block;
+  }
+
+  aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: min(90vw, 280px);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 30;
+    margin: 0;
+    border-right: 4px solid #a67c52;
+    background-color: #2d1f14;
+  }
+
+  .sidebar-toggle:checked ~ .layout aside {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle:checked ~ .sidebar-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .layout {
     flex-direction: column;
     padding: 0;
