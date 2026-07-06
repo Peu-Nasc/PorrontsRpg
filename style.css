@@ -267,6 +267,38 @@ img, video {
   display: block;
 }
 
+.sidebar-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-button {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 30;
+  background: #2d1f14;
+  border: 1px solid #a67c52;
+  color: #f0e6d2;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  font-family: 'Uncial Antiqua', cursive;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 20;
+}
 
 
 @media (max-width: 768px) {
