@@ -349,7 +349,8 @@ blockquote {
 
   .sidebar {
     position: fixed;
-    inset: 0 auto auto 100%;
+    top: 0;
+    right: 0;
     width: min(90vw, 320px);
     max-width: 320px;
     height: 100vh;
