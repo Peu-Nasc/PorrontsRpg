@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Última Música | Porront's RPG</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Oswald:wght@300;400;500;700&family=VT323&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style-a-ultima-musica.css">
+</head>
+<body>
+
+  <div class="bg-vhs"></div>
+  <div class="snow"></div>
+  <div class="scanlines"></div>
+
+  <header>
+    <div class="header-content">
+      <button id="menuToggle" class="menu-toggle">☰ Arquivos</button>
+      <div class="logo-container">
+        <h1 class="logo">A Última Música</h1>
+        <span class="sub-logo">FOUND FOOTAGE • JULHO DE 1986</span>
+      </div>
+      <div class="header-status">
+        <span class="status-dot"></span> FITA RECUPERADA
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    
+    <aside id="sidebarGrimorio">
+      <button id="closeMenu" class="close-btn">&times;</button>
+      <nav>
+        <div class="nav-group">
+          <h3>FITAS RECUPERADAS</h3>
+          <a class="menu-item active" href="#">Fita #01 - O Início do Show</a>
+          <a class="menu-item" href="#">Fita #02 - Título da Sessão 2</a>
+        </div>
+        
+        <div class="menu-divisor"></div>
+        
+        <div class="nav-group">
+          <h3>NAVEGAÇÃO</h3>
+          <a href="#intro" class="menu-item">Introdução</a>
+          <a href="#fita01" class="menu-item">Fita #01</a>
+          <a href="#fita02" class="menu-item">Fita #02</a>
+        </div>
+        
+        <div class="menu-divisor"></div>
+        
+        <div class="nav-group">
+          <h3>COMPÊNDIO</h3>
+          <a href="#" class="menu-item special-item">Galeria de Personagens</a>
+        </div>
+      </nav>
+    </aside>
+
+    <div id="menuOverlay" class="menu-overlay"></div>
+
+    <main>
+      
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="campaign-title">A ÚLTIMA <span class="text-gradient">MÚSICA</span></h1>
+          <div class="campaign-meta">
+            <span class="tag">Found Footage</span>
+            <span class="tag">1986</span>
+            <span class="tag">Terror</span>
+            <span class="tag">DM: Vinicius Moura</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="intro" class="narrativa-box">
+        <p>Uma viagem entre amigos. Um festival. Uma montanha coberta de neve. Câmeras VHS. Fitas recuperadas. Pessoas desaparecidas. E uma gravação que jamais deveria ter sido encontrada.</p>
+      </section>
+
+      <section class="episodes-container">
+        
+        <!-- ================= FITA 01 ================= -->
+        <article class="episode" id="fita01">
+          <!-- Poster da Fita 1 -->
+          <img src="image_049f5e.jpg" class="episode-poster" alt="Fita 01">
+          
+          <div class="episode-header">
+            <span class="icon-toggle">▼</span>
+            <span class="episode-number">FITA #01</span>
+            <h2 class="episode-title">O Início do Show</h2>
+            
+            <div class="tape-data">
+              <div><strong>Status</strong><span>Recuperada</span></div>
+              <div><strong>Cinegrafista</strong><span>Ethan</span></div>
+              <div><strong>Mídia</strong><span>VHS</span></div>
+              <div><strong>Data</strong><span>Julho de 1986</span></div>
+            </div>
+          </div>
+          
+          <div class="episode-content">
+            
+            <div class="vhs-player">
+              <div class="player-header">
+                <span class="rec">● REC</span>
+                <span>PLAYBACK</span>
+                <span>00:00:00</span>
+              </div>
+              
+              <div class="player-screen">
+                <div class="play-tag">[ PLAY ]</div>
+                <div class="vhs-intro">TELA PRETA. RUÍDO ESTÁTICO. A IMAGEM SURGE COM FALHAS DE RASTREAMENTO. TIMECODE: JULHO DE 1986.</div>
+                
+                <div class="vhs-log">
+                  <h3>LOG DE GRAVAÇÃO</h3>
+                  <div class="log-meta">
+                    <strong>FITA:</strong> #01<br>
+                    <strong>TÍTULO:</strong> O Início do Show<br>
+                    <strong>CINEGRAFISTA:</strong> Ethan<br>
+                    <strong>STATUS:</strong> Recuperada / Evidência
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="timeline">
+              
+              <h3 class="timeline-title">A Estrada e a Montanha</h3>
+              
+              <div class="log-entry">
+                <span class="timestamp">00:01:23</span>
+                <p><strong>A Estrada:</strong> A gravação começa trêmula dentro de uma van em movimento. O grupo está rindo e cantando alto. A câmera filma a placa da estrada indicando os últimos 2km da viagem.</p>
+              </div>
+
+              <div class="log-entry glitch">
+                <span class="timestamp">00:15:42</span>
+                <p><strong>A Pane:</strong> [ÁUDIO ESTOURA] Um barulho alto vindo do motor assusta a todos. A van engasga e para. Ethan desce com a câmera, focando em Shelby e Robissão encarando o capô esfumaçado. Ethan larga a câmera na mureta (o ângulo fica fixo) e tenta consertar o pistão com ferramentas. Um estalo elétrico ocorre; ele piora a situação, causando uma pane total.</p>
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">00:32:10</span>
+                <p><strong>A Cabra na Árvore:</strong> A câmera foca no mato. Jhonatan, Daniel e Jay-Z estão esticando as pernas. Jhonatan aponta para as árvores. O zoom da câmera tenta focar: há uma cabra, mas ela está inexplicavelmente no <strong>alto</strong> de uma árvore, apenas olhando para baixo.</p>
+                <img src="image_4b1467.jpg" alt="Cabra na árvore" class="vhs-image">
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">00:45:05</span>
+                <p><strong>Chegada e Festa:</strong> [CORTE DE CÂMERA] O grupo empurra a van suando pelos últimos metros até o estacionamento na base da montanha. O pôr do sol ilumina uma cena de festa: jovens com caixas de som e cerveja em cima de seus carros. O grupo descarrega as malas, deixando na van apenas a caixa de ferramentas e o galão reserva de gasolina. Eles se juntam para uma foto em grupo (a câmera é apoiada no capô).</p>
+              </div>
+
+              <div class="log-entry glitch">
+                <span class="timestamp">00:58:30</span>
+                <p><strong>Olhos Brilhantes:</strong> Ethan faz um take panorâmico da festa. Ao focar no limite da floresta, a lente captura algo perturbador: dentro de um arbusto, uma cabra completamente estática encara a lente mesmo a centena de metros de distância. O detalhe bizarro: o ao lado do animal reflete um brilho irreal no vídeo de dois feixes vermelhos mais a dentro na mata. Alisson grita no fundo, chamando Ethan para o casebre do teleférico.</p>
+                <img src="Imagens/cabra-com-luzvermelhanofundo.jpg" alt="Cabra na árvore" class="vhs-image">
+              </div>
+
+              <h3 class="timeline-title">O Teleférico e a Montanha</h3>
+
+              <div class="log-entry">
+                <span class="timestamp">01:12:45</span>
+                <p><strong>O Guarda:</strong> Dentro da velha estação, o guarda opera o maquinário rústico das três cabines. Robissão exibe arrogantemente seu ingresso VIP. O guarda se irrita, dizendo rispidamente que o check-in é feito no hotel.</p>
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">01:15:20</span>
+                <p><strong>O Outro Grupo:</strong> Cinco novos jovens entram em quadro: um cara forte de mullet e jaqueta de futebol americano (Scott), um gordinho de boné e blusa do Iron Maiden (Pope), uma gótica baixinha de muletas (Ed), uma garota alta de couro (Lopez) e uma garota maquiada de cabelo curto (Lilly). Robissão fita a garota de muletas de forma invasiva. Scott entra na frente: "Não fiquem no meu caminho". O clima pesa.</p>
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">01:28:10</span>
+                <p><strong>A Noite da Loucura:</strong> Na espera, a câmera flagra Daniel secando Alisson descaradamente. Jay-Z e Daniel analisam um mapa de 1978 no mural. Jhonatan aponta para um recorte de jornal antigo: um incidente na montanha chamado "A Noite da Loucura". Ethan pergunta ao guarda sobre isso, que desvia o olhar: "Sou novo aqui, não sei de nada".</p>
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">01:45:00</span>
+                <p><strong>A Subida:</strong> O grupo se divide. A câmera vai com Ethan, Jay-Z, Robissão e Shelby no segundo teleférico. Robissão dorme babando. Shelby olha o horizonte. Jay-Z balança a cabeça ouvindo seu Walkman. Ethan, por trás da lente, bate no fone de Jay-Z para provocá-lo: "Por que você mudou e ficou tão otário, Jay-Z?". [SILÊNCIO CONSTRANGEDOR]. Jay-Z fecha a cara e o resto da subida é gravada em um silêncio tenso.</p>
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">02:10:30</span>
+                <p><strong>A Torre de Vigia:</strong> Desembarque. A construção tem uma cela e uma sala de vigia. Ethan bisbilhota a mesa do guarda e foca a lente em anotações recentes sobre "animais nas proximidades" e "algo estranho na floresta". O guarda aparece de repente: "Isso não faz parte do tour. Fiquem longe de mim e longe de problemas!".</p>
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">02:25:15</span>
+                <p><strong>Gletchers Belvedere:</strong> A câmera registra uma trilha de neve entre pinheiros. Eles encontram Roger, o zelador, limpando o caminho. Ele não responde a ninguém, joga a pá no carrinho com ódio e sai andando. A voz de Ethan soa atrás da câmera: "Fica frio, cara".</p>
+              </div>
+
+              <h3 class="timeline-title">O Hotel e a Preparação</h3>
+
+              <div class="log-entry">
+                <span class="timestamp">02:40:00</span>
+                <p><strong>Recepção:</strong> Chegada ao hotel. Ethan cruza com o outro grupo e pede desculpas por Robissão; Pope (o de camisa do Iron Maiden) sorri e aceita. Na recepção, as mãos de todos são carimbadas com a entrada VIP. A recepcionista informa que o amigo deles, Mike, já chegou ontem e pegou a chave principal. Ela menciona o gerente Fredway e o funcionário Lucas, e indica a "casa do centro histórico" para dúvidas sobre 1978.</p>
+                <img src="Imagens/hotalbelvedere.jpg" alt="Hotel Belvedere" class="vhs-image">
+              </div>
+
+              <div class="log-entry glitch">
+                <span class="timestamp">03:15:20</span>
+                <p><strong>O Casebre Histórico:</strong> [IMAGEM ESCURA, ILUMINAÇÃO PRECÁRIA] Ethan e Daniel andam por 10 minutos na neve. O casebre está trancado. Ethan encosta a lente na janela suja: recortes, livros e bancadas. De repente, a câmera foca em uma figura humana no escuro. Ethan solta um grito agudo, a câmera cai na neve. Quando ele a levanta, o zoom revela ser apenas a estátua de um indígena com arco.</p>
+                <img src="Imagens/estatuaindiomuseo.jpg" alt="" class="vhs-image">
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">04:30:45</span>
+                <p><strong>Jantar:</strong> A fita pula para o restaurante. Eles conhecem Fredway, que é prestativo e gentil. O grupo de Scott aparece com um rádio tocando música alta, chamando todos para um "esquenta" no porão. Ao fundo, um campista levanta, balbucia palavras desconexas com os olhos arregalados e desmaia no chão. O grupo ignora, achando que é bebedeira.</p>
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">05:10:00</span>
+                <p><strong>Gravação Escondida:</strong> [CÂMERA POSICIONADA NO CANTO DO QUARTO] Robissão e os outros saem para buscar cerveja e fliperamas. Jhonatan está no restaurante. A câmera escondida grava Alisson e Shelby fofocando sobre Jhonatan. Ethan entra em quadro e comenta que ele e Alisson dariam um belo casal.</p>
+              </div>
+
+              <h3 class="timeline-title">A Festa e o Desaparecimento</h3>
+
+              <div class="log-entry glitch">
+                <span class="timestamp">06:05:15</span>
+                <p><strong>O Porão:</strong> [LUZES PISCANDO, ÁUDIO ESTOURADO] Festa pesada. Ethan filma takes curtos: Alisson cantando no karaokê pela primeira vez e sendo aplaudida; uma garota estranha canta e rouba a cena; Robissão (vestindo uma regata tie-dye bizarra) tenta novamente flertar com a gótica de muletas e é rejeitado; Daniel e Alisson rindo em um fliperama; [ZOOM] Jane puxando e beijando Alex de surpresa. A lente foca no rosto em choque de Jay-Z e Alisson.</p>
+                <img src="Imagens/festa-no-porao.jpg" alt="" class="vhs-image">
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">07:20:50</span>
+                <p><strong>A Briga:</strong> Fim da festa. O clima explode. Jay-Z está gritando com Shelby por causa de uma foto antiga. Ethan se mete e confessa pela câmera: "Fui eu que tirei a foto". Jay-Z avança com ódio para cima da câmera. A lente treme loucamente. Ouve-se um estalo elétrico ensurdecedor—Shelby acerta Jay-Z com um taser. Jay-Z cai, levanta furioso e sai marchando para a noite.</p>
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">07:35:10</span>
+                <p><strong>A Floresta:</strong> Ethan segue Jay-Z pela neve, filmando suas costas. Ele pede desculpas. Jay-Z para, a voz embargada. Ele confessa que se arrepende "daquela noite", que queria voltar no tempo, que se sente um farsa e que nunca se sentiu realmente parte do grupo.</p>
+              </div>
+
+              <div class="log-entry glitch-severe">
+                <span class="timestamp">07:42:00</span>
+                <p><strong>O Ataque:</strong> [FALHAS NA TELA, CHUVISCO] Do nada, uma sombra colossal passa em rasante no limite superior do quadro. Um impacto sonoro. Jay-Z desaparece do foco. Ethan grita. A câmera balança violentamente enquanto ele corre em direção aos gritos desesperados de Jay-Z.</p>
+                <img src="Imagens/criatura-pegando-jayz.jpg" alt="Ataque da criatura na neve" class="vhs-image">
+              </div>
+
+              <div class="log-entry">
+                <span class="timestamp">07:45:30</span>
+                <p><strong>O Fim da Linha:</strong> Ethan encontra o Walkman na neve. Alguns metros à frente, o casaco rasgado. A câmera captura um ou dois frames borrados de algo—ou alguém—arrastando Jay-Z violentamente para baixo, para dentro da neve e terra. Ethan cai de joelhos. A câmera foca nele cavando a neve histericamente com as mãos nuas. Não há nada. Apenas terra congelada.</p>
+                <img src="Imagens/walkmanNaNeve.jpg" alt="Walkman ensanguentado na neve" class="vhs-image">
+                <img src="Imagens/casacoJay-z.jpg" alt="Casaco rasgado" class="vhs-image" style="margin-top: 15px;">
+              </div>
+
+              <div class="stop-screen">
+                <span class="stop-text">[ STOP ]</span>
+                <p>FIM DA FITA #01</p>
+              </div>
+              
+            </div>
+          </div>
+        </article>
+
+        <!-- ================= FITA 02 (EXEMPLO DE SANFONA FECHADA) ================= -->
+        <article class="episode collapsed" id="fita02">
+          <!-- Poster da Fita 2 - Usando The Apex como placeholder -->
+          <img src="image_4b0de1.jpg" class="episode-poster" alt="Fita 02">
+          
+          <div class="episode-header">
+            <span class="icon-toggle">▼</span>
+            <span class="episode-number">FITA #02</span>
+            <h2 class="episode-title">O Próximo Capítulo</h2>
+            
+            <div class="tape-data">
+              <div><strong>Status</strong><span>A Recuperar</span></div>
+              <div><strong>Cinegrafista</strong><span>Desconhecido</span></div>
+              <div><strong>Mídia</strong><span>VHS</span></div>
+              <div><strong>Data</strong><span>Julho de 1986</span></div>
+            </div>
+          </div>
+          
+          <div class="episode-content">
+            <div class="vhs-player">
+              <div class="player-header">
+                <span class="rec" style="color: #555; animation: none;">● PAUSE</span>
+                <span>PLAYBACK</span>
+                <span>00:00:00</span>
+              </div>
+              <div class="player-screen">
+                <div class="play-tag" style="opacity: 0.5;">[ AGUARDANDO GRAVAÇÃO ]</div>
+              </div>
+            </div>
+            
+            <div class="timeline">
+              <h3 class="timeline-title">Fita corrompida ou não encontrada...</h3>
+              <p style="text-align: center; color: var(--text-dim); margin: 2rem 0;">Adicione o resumo da sessão 2 aqui quando jogar!</p>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script-a-ultima-musica.js"></script>
+</body>
+</html>
